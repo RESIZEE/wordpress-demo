@@ -1,0 +1,94 @@
+@import "utilities";
+@import "config";
+
+// START OF NAVBAR
+.navbar {
+  position: fixed;
+  width: 100vw;
+  .navbar-brand {
+    font-size: 2rem;
+  }
+
+  .nav-item {
+    color: $pure-white;
+  }
+
+  #navmenu {
+    .nav-link {
+      color: $pure-white;
+    }
+  }
+}
+// END OF NAVBAR
+
+// START OF HERO
+.hero {
+  height: 100vh;
+  background-color: $img-placeholder;
+
+  .container {
+    height: 100vh;
+  }
+}
+// END OF HERO
+
+// START OF MOVIES/BOOKS/GAMES
+.movies {
+  .row {
+    a {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .movies-cards {
+      margin: 0;
+      padding: 0;
+      .single-card {
+        .card-placeholder {
+          height: 30em;
+          background-color: $img-placeholder;
+        }
+
+        .description {
+          .rate {
+            .fa-star {
+              color: $warning;
+              font-size: 18px;
+              margin-top: 5px;
+            }
+          }
+        }
+      }
+      // .single-card:not(:last-child){
+      //     margin-right: 10px;
+      // }
+    }
+  }
+}
+// END OF MOVIES/BOOKS/GAMES
+
+// START OF FOOTER
+footer {
+  background-color: $black;
+  padding: 50px 10px;
+  color: $pure-white;
+
+  // .footer2 {
+  //   padding-left: 25%;
+  // }
+
+  .footer3 {
+    padding-left: 15%;
+
+    .form {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    @include media-breakpoint-down(sm) {
+      padding: 10px;
+      flex-direction: column;
+    }
+  }
+}
+// END OF FOOTER

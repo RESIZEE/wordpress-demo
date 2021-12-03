@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url(../OpenSans/);
+}
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+}
+
+h2 {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+p,
+a {
+  font-size: 1.25rem;
+  color: #000;
+}
+
+.text {
+  color: #fff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.25rem;
+  }
+}
+
+input {
+  &[type="email"] {
+    width: 80%;
+    margin-right: 0.5em;
+    padding: 0.4em 1em;
+
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+}
+
+button {
+  &[type="submit"] {
+    background: $yellow;
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+}
