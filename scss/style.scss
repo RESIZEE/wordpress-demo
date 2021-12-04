@@ -1,3 +1,9 @@
+/* Bootstrap imports */
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins/breakpoints";
+
+/* Custom imports */
 @import "utilities";
 @import "config";
 
@@ -5,6 +11,7 @@
 .navbar {
   position: fixed;
   width: 100vw;
+
   .navbar-brand {
     font-size: 2rem;
   }
@@ -19,6 +26,7 @@
     }
   }
 }
+
 // END OF NAVBAR
 
 // START OF HERO
@@ -30,6 +38,7 @@
     height: 100vh;
   }
 }
+
 // END OF HERO
 
 // START OF MOVIES/BOOKS/GAMES
@@ -43,6 +52,7 @@
     .movies-cards {
       margin: 0;
       padding: 0;
+
       .single-card {
         .card-placeholder {
           height: 30em;
@@ -59,12 +69,14 @@
           }
         }
       }
+
       // .single-card:not(:last-child){
       //     margin-right: 10px;
       // }
     }
   }
 }
+
 // END OF MOVIES/BOOKS/GAMES
 
 // START OF FOOTER
@@ -85,10 +97,12 @@ footer {
       flex-direction: row;
       flex-wrap: wrap;
     }
+
     @include media-breakpoint-down(sm) {
       padding: 10px;
       flex-direction: column;
     }
   }
 }
+
 // END OF FOOTER

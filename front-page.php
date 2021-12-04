@@ -4,7 +4,6 @@
         <div class="container">
             <div class="row">
                 <h2 class="col-md-10 my-4">Movies</h2>
-
                 <div class="movies-cards row order-md-2">
                     <?php
                     $movies = new WP_Query([

@@ -1,28 +1,9 @@
-/*!
-Theme Name: Demo
-Theme URI: https://demo.dev
-Author: RESIZE
-Author URI: https://www.resize.rs/
-Description: Demo theme developed by RESIZE team.
-Version: 1.0
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-Demo WordPress Theme, (C) 2021 RESIZE.
-Demo is distributed under the terms of the GNU GPL.
-*/
-
-/* Compiled sass */
-
 /* Bootstrap imports */
-
 /* Custom imports */
-
 @font-face {
 		font-family: "Open Sans";
 		src: url(../OpenSans/);
 }
-
 * {
 		font-family: "Open Sans", sans-serif;
 }
@@ -56,7 +37,6 @@ ul {
 		list-style: none;
 		padding: 0;
 }
-
 ul a {
 		color: #fff;
 		text-decoration: none;
@@ -68,7 +48,6 @@ input[type=email] {
 		margin-right: 0.5em;
 		padding: 0.4em 1em;
 }
-
 @media (max-width: 575.98px) {
 		input[type=email] {
 				width: 100%;
@@ -79,7 +58,6 @@ input[type=email] {
 button[type=submit] {
 		background: #ffc107;
 }
-
 @media (max-width: 575.98px) {
 		button[type=submit] {
 				width: 100%;
@@ -91,15 +69,12 @@ button[type=submit] {
 		position: fixed;
 		width: 100vw;
 }
-
 .navbar .navbar-brand {
 		font-size: 2rem;
 }
-
 .navbar .nav-item {
 		color: #fff;
 }
-
 .navbar #navmenu .nav-link {
 		color: #fff;
 }
@@ -108,7 +83,6 @@ button[type=submit] {
 		height: 100vh;
 		background-color: #d8d8d8;
 }
-
 .hero .container {
 		height: 100vh;
 }
@@ -117,17 +91,14 @@ button[type=submit] {
 		font-size: 1.5rem;
 		font-weight: bold;
 }
-
 .movies .row .movies-cards {
 		margin: 0;
 		padding: 0;
 }
-
 .movies .row .movies-cards .single-card .card-placeholder {
 		height: 30em;
 		background-color: #d8d8d8;
 }
-
 .movies .row .movies-cards .single-card .description .rate .fa-star {
 		color: #ffc107;
 		font-size: 18px;
@@ -139,21 +110,17 @@ footer {
 		padding: 50px 10px;
 		color: #fff;
 }
-
 footer .footer3 {
 		padding-left: 15%;
 }
-
 footer .footer3 .form {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
 }
-
 @media (max-width: 575.98px) {
 		footer .footer3 {
 				padding: 10px;
 				flex-direction: column;
 		}
 }
-
