@@ -7,6 +7,7 @@ Description: Demo theme developed by RESIZE team.
 Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: demo
 
 Demo WordPress Theme, (C) 2021 RESIZE.
 Demo is distributed under the terms of the GNU GPL.
@@ -14,4 +15,3 @@ Demo is distributed under the terms of the GNU GPL.
 
 /* Compiled sass */
 @import "compiled-sass.css";
-

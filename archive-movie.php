@@ -2,6 +2,17 @@
 
     <section class="movies py-5">
         <div class="container">
+            <div class="">
+                <?php
+                $allMovieCategories = get_categories([
+                        'hide_empty' => false,
+                ]);
+
+                foreach($allMovieCategories as $category) {
+                    echo $category->name;
+                }
+                ?>
+            </div>
             <div class="row">
                 <h2 class="col-md-10 my-4">Movies</h2>
                 <div class="movies-cards row order-md-2">
@@ -13,18 +24,19 @@
 
                     while($moviesQuery->have_posts()){
                         $moviesQuery->the_post();
+
+                        $categories = get_the_category();
+
                         get_template_part('template-parts/single-card', get_post_type());
-                        echo the_permalink();
+
+                        foreach($categories as $category){
+                            echo $category->name;
+                        }
                     }
 
                     wp_reset_query();
                     ?>
                 </div>
-                <?php
-                viewAllButton([
-                        'href' => get_post_type_archive_link('movie'),
-                ]);
-                ?>
             </div>
         </div>
     </section>
