@@ -2,3 +2,5 @@
 img
 js/node_modules
 node_modules
+style.css
+css/compiled-sass.css
