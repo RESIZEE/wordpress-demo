@@ -48,11 +48,11 @@
     font-weight: bold;
   }
 
-  .nav-item {
-    color: $pure-white;
+  .menu-item {
     width: 100px;
 
-    .nav-link {
+    a {
+      color: $pure-white;
       text-align: right;
 
       @include media-breakpoint-down(md) {
