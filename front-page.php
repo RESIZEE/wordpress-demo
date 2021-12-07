@@ -29,11 +29,9 @@
                 <!-- END OF CONTAINER -->
 
                 <?php
-
-                get_template_part('template-parts/view-all-btn');
-                //viewAllButton([
-                //        'href' => get_post_type_archive_link('movie'),
-                //]);
+                viewAllButton([
+                        'href' => get_post_type_archive_link('movie'),
+                ]);
                 ?>
             </div>
             <!-- END OF CATEGORY CARDS -->
