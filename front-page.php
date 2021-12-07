@@ -19,7 +19,7 @@
 
                     while($moviesQuery->have_posts()){
                         $moviesQuery->the_post();
-                        get_template_part('template-parts/single-card', get_post_type());
+                        get_template_part('template-parts/single-card');
                     }
 
                     wp_reset_query();
