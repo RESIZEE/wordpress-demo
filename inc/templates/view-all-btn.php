@@ -6,8 +6,8 @@ function viewAllButton($args = []) {
     }
     ?>
 
-    <div class="col-md-2 my-4 order-md-1 d-flex align-items-center justify-content-end">
-        <a href="<?php echo $args['href'] ?>" class="col-sm-12  btn btn-warning text-align-end">View all</a>
+    <div class="col-md-2 order-md-1">
+        <a href="<?php echo $args['href'] ?>" class="btn btn-primary"><?php echo __('View all', 'demo'); ?></a>
     </div>
 
 <?php } ?>
