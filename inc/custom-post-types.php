@@ -30,10 +30,39 @@ function demo_post_types() {
             ],
         ]
     );
+
+    register_post_type(
+        'book',
+        [
+            'labels' => [
+                'name' => __('Books', 'demo'),
+                'singular_name' => __('Book', 'demo'),
+                'add_new_item' => __('Add New Book', 'demo'),
+                'edit_item' => __('Edit Book', 'demo'),
+                'all_items' => __('All Books', 'demo'),
+                'view_item' => __('View Book', 'demo'),
+                'menu_name' => __('Books', 'demo'),
+                'update_item' => __('Update Book', 'demo'),
+                'search_item' => __('Search Book', 'demo'),
+            ],
+            'description' => 'Books and reviews.',
+            'public' => true,
+            'menu_icon' => 'dashicons-book-alt',
+            'has_archive' => true,
+            'rewrite' => ['slug' => 'books'],
+            'supports' => [
+                'title',
+                'editor',
+                'excerpt',
+                'comments',
+            ],
+        ]
+    );
     register_taxonomy(
         'movie-genres',
         [
             'movie',
+            'book',
         ],
         [
             'labels' => [
