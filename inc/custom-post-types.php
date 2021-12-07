@@ -28,9 +28,33 @@ function demo_post_types() {
                 'excerpt',
                 'comments',
             ],
-            'taxonomies' => [
-                'category',
-            ],
         ]
     );
+    register_taxonomy(
+        'movie-genres',
+        [
+            'movie',
+        ],
+        [
+            'labels' => [
+                'name' => __('Genres', 'demo'),
+                'singular_name' => __('Genre', 'demo'),
+                'add_new_item' => __('Add New Genre', 'demo'),
+                'new_item_name' => __('New Genre Name', 'demo'),
+                'edit_item' => __('Edit Genre', 'demo'),
+                'all_items' => __('All Genres', 'demo'),
+                'view_item' => __('View Genre', 'demo'),
+                'menu_name' => __('Genres', 'demo'),
+                'update_item' => __('Update Genre', 'demo'),
+                'search_items' => __('Search Genres', 'demo'),
+                'no_terms' => __('No genres', 'demo'),
+                'not_found' => __('No genres found', 'demo'),
+            ],
+            'description' => 'Genres.',
+            'public' => true,
+            'rewrite' => ['slug' => 'genres'],
+        ]
+    );
+
+    //
 }
