@@ -74,7 +74,7 @@
 
                     <!-- PAGINATION -->
                     <div class="pagination">
-
+                            <?php echo paginate_links() ?>
                     </div>
                     <!-- END OF PAGINATION -->
                 </div>
