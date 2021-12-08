@@ -6,7 +6,6 @@
 
         <div class="container">
             <div class="row">
-
                 <!-- SIDE MENU -->
                 <div class="col-lg-3 side-menu d-none d-lg-block">
                     <h4 class="mb-4"><?php echo __('Genres', 'demo') ?></h4>
@@ -18,7 +17,7 @@
                         foreach($allBookGenres as $genre){
                             ?>
                             <li>
-                                <a href="#">
+                                <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug)); ?>">
                                     <?php echo $genre->name; ?>
                                 </a>
                             </li>
@@ -39,7 +38,7 @@
                         <?php
                         foreach($allBookGenres as $genre){ ?>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug)); ?>" class="nav-link">
                                     <?php echo $genre->name; ?>
                                 </a>
                             </li>
@@ -72,13 +71,17 @@
                                 </h4>
                             </div>
                             <div class="categories">
-                                <a href="#">
-                                    <?php
-                                    if($genres && !is_wp_error($genres)) {
-                                        echo join(', ', wp_list_pluck($genres, 'name'));
+                                <?php
+                                if($genres && !is_wp_error($genres)) {
+                                    $output = [];
+                                    foreach($genres as $genre){
+                                        $genreArchiveLink = get_term_link($genre->slug, 'genre');
+
+                                        $output[] = '<a href="' . $genreArchiveLink . '">' . $genre->name . '</a>';
                                     }
-                                    ?>
-                                </a>
+                                    echo implode(', ', $output);
+                                }
+                                ?>
                             </div>
                         </div>
                         <!-- END OF SINGLE CARD -->
