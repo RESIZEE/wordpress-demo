@@ -6,7 +6,6 @@
 
         <div class="container">
             <div class="row">
-
                 <!-- SIDE MENU -->
                 <div class="col-lg-3 side-menu d-none d-lg-block">
                     <h4 class="mb-4">Genres</h4>
@@ -18,7 +17,7 @@
                         foreach($allMovieGenres as $genre){
                             ?>
                             <li>
-                                <a href="#">
+                                <a href="<?php echo get_term_link($genre->slug, 'genres') ?>">
                                     <?php echo $genre->name; ?>
                                 </a>
                             </li>
@@ -54,6 +53,7 @@
                     while(have_posts()){
                         the_post();
                         $genres = get_the_terms(get_the_ID(), 'movie-genres');
+
                         ?>
                         <!-- START OF SINGLE CARD -->
                         <div class="single-card col-md-4">
@@ -98,7 +98,6 @@
                                 'next_text' => '<i class="fas fa-chevron-right"></i>',
                         ]);
                         ?>
-
                     </div>
                     <!-- END OF PAGINATION -->
                 </div>
