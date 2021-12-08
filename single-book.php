@@ -7,23 +7,23 @@
             <div class="row">
 
                 <!-- DROPDOWN MENU -->
-                <div class="dropdown d-block d-md-none">
+                <div class="dropdown d-block d-md-none mb-5">
                     <button
-                        class="dropdown-toggle col-12 text-start d-flex align-items-center justify-content-between px-3 py-2"
-                        type="button" id="categoriesmenu" data-bs-toggle="dropdown" aria-expanded="false">
-                        <h4 class="m-0"><?php the_title(); ?></h4>
+                            class="dropdown-toggle col-12 text-start d-flex align-items-center justify-content-between px-3 py-2"
+                            type="button" id="categoriesmenu" data-bs-toggle="dropdown" aria-expanded="false">
+                        <h4 class="m-0"><?php echo __('Genres', 'demo') ?></h4>
                         <span class="fs-3">+</span>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
-                        <li class="nav-item"><a href="#" class="nav-link">Action</a></li>
-                        <li class="nav-item active"><a href="#" class="nav-link">Comedy</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Horror</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Musical</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Adventure</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Crime</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Drama</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Thriller</a></li>
-                    </ul>
+                        <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
+                            <?php
+                            foreach($allMovieCategories as $category){ ?>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <?php echo $category->name; ?>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                        </ul>
                 </div>
                 <!-- END OF DROPDOWN MENU -->
 
@@ -50,14 +50,19 @@
                 <div class="col-lg-3 side-menu d-none d-lg-block">
                     <h4 class="mb-4">Categories</h4>
                     <ul>
-                        <li><a href="#">Action</a></li>
-                        <li class="active"><a href="#">Comedy</a></li>
-                        <li><a href="#">Horror</a></li>
-                        <li><a href="#">Musical</a></li>
-                        <li><a href="#">Adventure</a></li>
-                        <li><a href="#">Crime</a></li>
-                        <li><a href="#">Drama</a></li>
-                        <li><a href="#">Thriller</a></li>
+                        <?php
+                        $allMovieCategories = get_terms([
+                                'taxonomy' => 'movie-genres',
+                                'hide_empty' => false,
+                        ]);
+                        foreach($allMovieCategories as $category){
+                            ?>
+                            <li>
+                                <a href="#">
+                                    <?php echo $category->name; ?>
+                                </a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <!-- END OF SIDE MENU -->
