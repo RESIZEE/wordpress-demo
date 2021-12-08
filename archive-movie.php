@@ -12,12 +12,12 @@
                     <ul>
                         <?php
                         $allMovieGenres = get_terms([
-                                'taxonomy' => 'genres',
+                                'taxonomy' => 'genre',
                         ]);
                         foreach($allMovieGenres as $genre){
                             ?>
                             <li>
-                                <a href="<?php echo get_term_link($genre->slug, 'genres') ?>">
+                                <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug)) ?>">
                                     <?php echo $genre->name; ?>
                                 </a>
                             </li>
@@ -38,7 +38,7 @@
                         <?php
                         foreach($allMovieGenres as $genre){ ?>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug)) ?>" class="nav-link">
                                     <?php echo $genre->name; ?>
                                 </a>
                             </li>
@@ -52,7 +52,7 @@
                     <?php
                     while(have_posts()){
                         the_post();
-                        $genres = get_the_terms(get_the_ID(), 'movie-genres');
+                        $genres = get_the_terms(get_the_ID(), 'genre');
 
                         ?>
                         <!-- START OF SINGLE CARD -->
@@ -71,13 +71,17 @@
                                 </h4>
                             </div>
                             <div class="categories">
-                                <a href="#">
-                                    <?php
-                                    if($genres && !is_wp_error($genres)) {
-                                        echo join(', ', wp_list_pluck($genres, 'name'));
+                                <?php
+                                if($genres && !is_wp_error($genres)) {
+                                    $output = [];
+                                    foreach($genres as $genre){
+                                        $genreArchiveLink = get_term_link($genre->slug, 'genre');
+
+                                        $output[] = '<a href="' . $genreArchiveLink . '">' . $genre->name . '</a>';
                                     }
-                                    ?>
-                                </a>
+                                    echo implode(', ', $output);
+                                }
+                                ?>
                             </div>
                         </div>
                         <!-- END OF SINGLE CARD -->
