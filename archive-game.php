@@ -85,6 +85,7 @@
                         'prev_next' => true,
                         'prev_text' => '<i class="fas fa-chevron-left"></i>',
                         'next_text' => '<i class="fas fa-chevron-right"></i>',
+
                     ]);
                     ?>
                 </div>
