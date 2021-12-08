@@ -39,6 +39,7 @@
                         foreach($allBookGenres as $genre){ ?>
                             <li class="nav-item">
                                 <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug)); ?>" class="nav-link">
+
                                     <?php echo $genre->name; ?>
                                 </a>
                             </li>
