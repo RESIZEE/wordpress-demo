@@ -44,23 +44,23 @@ function demo_adjust_queries(WP_Query $query) {
         $query->set('tax_query', $taxonomyQuery);
     }
 
-    if (!is_admin() &&
-         tis_main_query() &&
-        is_tax() 
-    ) {
-        $obj = get_queried_object();
-        $archive_url = get_post_type_archive_link('custom_post_type_name');
-
-        // If the WP_Taxonomy has multiple object_types mapped, and 'custom_post_type' is one of them:
-        if (true === is_array($obj->object_type) && true === in_array($obj->object_type, ['custom_post_type_name'])) {
-            wp_redirect($archive_url);
-            exit;
-        }
-
-        // If the WP_Taxonomy has one object_type mapped, and it's 'custom_post_type'
-        if (true === is_string($obj->object_type) && 'custom_post_type_name' === $obj->object_type) {
-            wp_redirect($archive_url);
-            exit;
-        }
-    }
+    //if (!is_admin() &&
+    //     tis_main_query() &&
+    //    is_tax()
+    //) {
+    //    $obj = get_queried_object();
+    //    $archive_url = get_post_type_archive_link('custom_post_type_name');
+    //
+    //    // If the WP_Taxonomy has multiple object_types mapped, and 'custom_post_type' is one of them:
+    //    if (true === is_array($obj->object_type) && true === in_array($obj->object_type, ['custom_post_type_name'])) {
+    //        wp_redirect($archive_url);
+    //        exit;
+    //    }
+    //
+    //    // If the WP_Taxonomy has one object_type mapped, and it's 'custom_post_type'
+    //    if (true === is_string($obj->object_type) && 'custom_post_type_name' === $obj->object_type) {
+    //        wp_redirect($archive_url);
+    //        exit;
+    //    }
+    //}
 }
