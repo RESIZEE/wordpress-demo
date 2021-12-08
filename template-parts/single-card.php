@@ -1,5 +1,5 @@
 <div class="single-card col-lg-3 col-6">
-    <a href="#">
+    <a href="<?php the_permalink(); ?>">
         <div class="card-placeholder mb-3"></div>
     </a>
     <div class="description d-none d-md-flex">
