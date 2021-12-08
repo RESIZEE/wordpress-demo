@@ -54,7 +54,7 @@
                     <?php
                     $page = get_query_var('page') ?: 1;
                     $moviesQuery = new WP_Query([
-                            'posts_per_page' => 3,
+                            'posts_per_page' => wp_is_mobile() ? 3 : 9,
                             'post_type' => 'movie',
                             'post_status' => 'publish',
                             'paged' => $page,
