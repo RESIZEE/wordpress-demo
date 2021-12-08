@@ -68,7 +68,7 @@ if (is_home()) { ?>
                                 <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                             </div>
                             <div class="excerpt">
-                                <?php the_content(); ?>
+                                <?php the_excerpt(); ?>
                             </div>
                         </div>
                         <!-- SINGLE BLOG POST -->
