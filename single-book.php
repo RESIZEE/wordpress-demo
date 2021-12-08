@@ -65,7 +65,6 @@
                         </ul>
                     </div>
                     <!-- END OF SIDE MENU -->
-
                     <div class="col-lg-9 single-content">
                         <div class="image">
                             <img src="<?php echo get_theme_file_uri('/img/image-placeholder.jpg'); ?>"

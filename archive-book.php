@@ -53,6 +53,7 @@
                     <?php
                     while(have_posts()){
                         the_post();
+
                         $genres = get_the_terms(get_the_ID(), 'genre');
                         ?>
                         <!-- START OF SINGLE CARD -->

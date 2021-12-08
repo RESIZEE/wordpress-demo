@@ -6,3 +6,4 @@ require 'inc/templates.php';
 require 'inc/menus.php';
 require 'inc/template-tags.php';
 require 'inc/adjust-queries.php';
+require 'inc/custom-query-vars.php';
