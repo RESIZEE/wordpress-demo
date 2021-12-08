@@ -10,14 +10,6 @@
                 <!-- START OF CONTAINERS -->
                 <div class="cards-container row col-lg-9 col-12">
                     <?php
-                    //$page = get_query_var('page', 1);
-                    //$query = new WP_Query([
-                    //        'posts_per_page' => wp_is_mobile() ? 3 : 9,
-                    //        'post_type' => 'movie',
-                    //        'post_status' => 'publish',
-                    //        'paged' => $page,
-                    //]);
-
                     while(have_posts()){
                         the_post();
                         ?>
@@ -48,10 +40,7 @@
                     <div class="pagination">
                         <?php
                         echo paginate_links(array(
-                                'total' => $moviesQuery->max_num_pages,
-                                'format' => '?page=%#%',
                                 'type' => 'plain',
-                                'current' => max(1, get_query_var('page')),
                                 'end_size' => 1,
                                 'mid_size' => 3,
                                 'prev_next' => true,
