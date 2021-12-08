@@ -16,7 +16,7 @@
                     </button>
                         <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
                             <?php
-                            foreach($allMovieCategories as $category){ ?>
+                            foreach($allBookGenres as $category){ ?>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <?php echo $category->name; ?>
@@ -51,11 +51,11 @@
                     <h4 class="mb-4">Categories</h4>
                     <ul>
                         <?php
-                        $allMovieCategories = get_terms([
+                        $allBookGenres = get_terms([
                                 'taxonomy' => 'movie-genres',
                                 'hide_empty' => false,
                         ]);
-                        foreach($allMovieCategories as $category){
+                        foreach($allBookGenres as $category){
                             ?>
                             <li>
                                 <a href="#">

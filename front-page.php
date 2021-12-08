@@ -45,13 +45,13 @@
                 <!-- START OF CONTAINER -->
                 <div class="cards-container row order-md-2">
                     <?php
-                    $moviesQuery = new WP_Query([
+                    $booksQuery = new WP_Query([
                             'posts_per_page' => wp_is_mobile() ? 2 : 4,
                             'post_type' => 'book',
                     ]);
 
-                    while($moviesQuery->have_posts()){
-                        $moviesQuery->the_post();
+                    while($booksQuery->have_posts()){
+                        $booksQuery->the_post();
                         get_template_part('template-parts/single-card');
                     }
 
