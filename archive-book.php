@@ -9,18 +9,17 @@
 
                 <!-- SIDE MENU -->
                 <div class="col-lg-3 side-menu d-none d-lg-block">
-                    <h4 class="mb-4">Categories</h4>
+                    <h4 class="mb-4"><?php echo __('Genres', 'demo') ?></h4>
                     <ul>
                         <?php
                         $allBookGenres = get_terms([
-                                'taxonomy' => 'movie-genres',
-                                'hide_empty' => false,
+                                'taxonomy' => 'genre',
                         ]);
-                        foreach($allBookGenres as $category){
+                        foreach($allBookGenres as $genre){
                             ?>
                             <li>
                                 <a href="#">
-                                    <?php echo $category->name; ?>
+                                    <?php echo $genre->name; ?>
                                 </a>
                             </li>
                         <?php } ?>
@@ -38,10 +37,10 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
                         <?php
-                        foreach($allBookGenres as $category){ ?>
+                        foreach($allBookGenres as $genre){ ?>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <?php echo $category->name; ?>
+                                    <?php echo $genre->name; ?>
                                 </a>
                             </li>
                         <?php } ?>
@@ -52,17 +51,10 @@
                 <!-- START OF CONTAINERS -->
                 <div class="cards-container row col-lg-9 col-12">
                     <?php
-                    $page = get_query_var('page') ?: 1;
-                    $booksQuery = new WP_Query([
-                            'posts_per_page' => wp_is_mobile() ? 3 : 9,
-                            'post_type' => 'book',
-                            'post_status' => 'publish',
-                            'paged' => $page,
-                    ]);
+                    while(have_posts()){
+                        the_post();
 
-                    while($booksQuery->have_posts()){
-                        $booksQuery->the_post();
-                        $genres = get_the_terms(get_the_ID(), 'movie-genres');
+                        $genres = get_the_terms(get_the_ID(), 'genre');
                         ?>
                         <!-- START OF SINGLE CARD -->
                         <div class="single-card col-md-4">
@@ -99,10 +91,13 @@
                     <!-- PAGINATION -->
                     <div class="pagination">
                         <?php
-                        echo paginate_links(array(
+                        echo paginate_links([
+                                'end_size' => 2,
+                                'mid_size' => 2,
+                                'prev_next' => true,
                                 'prev_text' => '<i class="fas fa-chevron-left"></i>',
                                 'next_text' => '<i class="fas fa-chevron-right"></i>',
-                        ));
+                        ]);
                         ?>
                     </div>
                     <!-- END OF PAGINATION -->

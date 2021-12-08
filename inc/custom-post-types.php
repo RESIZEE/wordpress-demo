@@ -2,8 +2,7 @@
 
 // Hook for adding custom post types
 add_action('init', 'demo_post_types');
-function demo_post_types()
-{
+function demo_post_types() {
     register_post_type(
         'movie',
         [
@@ -32,7 +31,6 @@ function demo_post_types()
             ],
         ]
     );
-
     register_post_type(
         'book',
         [
@@ -60,7 +58,6 @@ function demo_post_types()
             ],
         ]
     );
-
     register_post_type(
         'game',
         [
@@ -70,7 +67,7 @@ function demo_post_types()
                 'add_new_item' => __('Add New Game', 'demo'),
                 'edit_item' => __('Edit Game', 'demo'),
                 'all_items' => __('All Games', 'demo'),
-                'singular_name' => __('Game')
+                'singular_name' => __('Game'),
             ],
             'description' => 'Games and reviews.',
             'menu_icon' => 'dashicons-games',
@@ -86,7 +83,7 @@ function demo_post_types()
     );
 
     register_taxonomy(
-        'movie-genres',
+        'genre',
         [
             'movie',
             'book',
@@ -112,6 +109,4 @@ function demo_post_types()
             'rewrite' => ['slug' => 'genres'],
         ]
     );
-
-    //
 }
