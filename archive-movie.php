@@ -9,18 +9,17 @@
 
                 <!-- SIDE MENU -->
                 <div class="col-lg-3 side-menu d-none d-lg-block">
-                    <h4 class="mb-4">Categories</h4>
+                    <h4 class="mb-4">Genres</h4>
                     <ul>
                         <?php
-                        $allMovieCategories = get_terms([
-                                'taxonomy' => 'movie-genres',
-                                'hide_empty' => false,
+                        $allMovieGenres = get_terms([
+                                'taxonomy' => 'genres',
                         ]);
-                        foreach($allMovieCategories as $category){
+                        foreach($allMovieGenres as $genre){
                             ?>
                             <li>
                                 <a href="#">
-                                    <?php echo $category->name; ?>
+                                    <?php echo $genre->name; ?>
                                 </a>
                             </li>
                         <?php } ?>
@@ -38,10 +37,10 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
                         <?php
-                        foreach($allMovieCategories as $category){ ?>
+                        foreach($allMovieGenres as $genre){ ?>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <?php echo $category->name; ?>
+                                    <?php echo $genre->name; ?>
                                 </a>
                             </li>
                         <?php } ?>
@@ -52,16 +51,8 @@
                 <!-- START OF CONTAINERS -->
                 <div class="cards-container row col-lg-9 col-12">
                     <?php
-                    $page = get_query_var('page') ?: 1;
-                    $moviesQuery = new WP_Query([
-                            'posts_per_page' => wp_is_mobile() ? 3 : 9,
-                            'post_type' => 'movie',
-                            'post_status' => 'publish',
-                            'paged' => $page,
-                    ]);
-
-                    while($moviesQuery->have_posts()){
-                        $moviesQuery->the_post();
+                    while(have_posts()){
+                        the_post();
                         $genres = get_the_terms(get_the_ID(), 'movie-genres');
                         ?>
                         <!-- START OF SINGLE CARD -->
@@ -99,26 +90,15 @@
                     <!-- PAGINATION -->
                     <div class="pagination">
                         <?php
-                        echo paginate_links(array(
-                                'total' => $moviesQuery->max_num_pages,
-                                'format' => '?page=%#%',
-                                'type' => 'plain',
-                                'current' => max(1, get_query_var('page')),
+                        echo paginate_links([
                                 'end_size' => 2,
                                 'mid_size' => 2,
                                 'prev_next' => true,
                                 'prev_text' => '<i class="fas fa-chevron-left"></i>',
                                 'next_text' => '<i class="fas fa-chevron-right"></i>',
-                        ));
+                        ]);
                         ?>
-                        <!--                        <a href="#"><i class="fas fa-chevron-left"></i></a>-->
-                        <!--                        <a href="#">1</a>-->
-                        <!--                        <a href="#" class="active">2</a>-->
-                        <!--                        <a href="#">3</a>-->
-                        <!--                        <a href="#">4</a>-->
-                        <!--                        <a href="#">5</a>-->
-                        <!--                        <a href="#">6</a>-->
-                        <!--                        <a href="#"><i class="fas fa-chevron-right"></i></a>-->
+
                     </div>
                     <!-- END OF PAGINATION -->
                 </div>
