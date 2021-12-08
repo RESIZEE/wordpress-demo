@@ -14,13 +14,13 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
                         <?php
-                        $allGameCategories = get_terms([
-                            'taxonomy' => 'movie-genres'
+                        $allGameGenres = get_terms([
+                            'taxonomy' => 'genre'
                         ]);
-                        foreach ($allGameCategories as $category) { ?>
+                        foreach ($allGameGenres as $genre) { ?>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <?php echo $category->name; ?>
+                                    <?php echo $genre->name; ?>
                                 </a>
                             </li>
                         <?php } ?>
@@ -49,14 +49,14 @@
 
                 <!-- SIDE MENU -->
                 <div class="col-lg-3 side-menu d-none d-lg-block">
-                    <h4 class="mb-4">Categories</h4>
+                    <h4 class="mb-4"><?php echo __('Genres', 'demo'); ?></h4>
                     <ul>
                         <?php
-                        foreach ($allGameCategories as $category) {
+                        foreach ($allGameGenres as $genre) {
                         ?>
                             <li>
                                 <a href="#">
-                                    <?php echo $category->name; ?>
+                                    <?php echo $genre->name; ?>
                                 </a>
                             </li>
                         <?php } ?>

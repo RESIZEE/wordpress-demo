@@ -78,13 +78,13 @@
             <!-- START OF CONTAINER -->
             <div class="cards-container row order-md-2">
                 <?php
-                $homepageGames = new WP_Query([
+                $gamesQuery = new WP_Query([
                     'posts_per_page' => wp_is_mobile() ? 2 : 4,
                     'post_type' => 'game',
                 ]);
 
-                while ($homepageGames->have_posts()) {
-                    $homepageGames->the_post();
+                while ($gamesQuery->have_posts()) {
+                    $gamesQuery->the_post();
                     get_template_part('template-parts/single-card');
                 }
                 wp_reset_query();

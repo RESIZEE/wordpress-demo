@@ -9,17 +9,17 @@
 
             <!-- SIDE MENU -->
             <div class="col-lg-3 side-menu d-none d-lg-block">
-                <h4 class="mb-4">Categories</h4>
+                <h4 class="mb-4"><?php echo __('Genres', 'demo') ?></h4>
                 <ul>
                     <?php
-                    $allGameCategories = get_terms([
-                        'taxonomy' => 'genres',
+                    $allGameGenres = get_terms([
+                        'taxonomy' => 'genre',
                     ]);
-                    foreach ($allGameCategories as $category) {
+                    foreach ($allGameGenres as $genre) {
                     ?>
                         <li>
                             <a href="#">
-                                <?php echo $category->name; ?>
+                                <?php echo $genre->name; ?>
                             </a>
                         </li>
                     <?php } ?>
@@ -35,10 +35,10 @@
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
                     <?php
-                    foreach ($allGameCategories as $category) { ?>
+                    foreach ($allGameGenres as $genre) { ?>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <?php echo $category->name; ?>
+                                <?php echo $genre->name; ?>
                             </a>
                         </li>
                     <?php } ?>
@@ -78,10 +78,15 @@
 
                 <!-- PAGINATION -->
                 <div class="pagination">
-                    <?php echo paginate_links(array(
-                        'prev_text' => '<i class="fas fa-chevron-left"></i>',
-                        'next_text' => '<i class="fas fa-chevron-right"></i>',
-                    )) ?>
+                    <?php
+                    echo paginate_links([
+                            'end_size' => 2,
+                            'mid_size' => 2,
+                            'prev_next' => true,
+                            'prev_text' => '<i class="fas fa-chevron-left"></i>',
+                            'next_text' => '<i class="fas fa-chevron-right"></i>',
+                    ]);
+                    ?>
                 </div>
                 <!-- END OF PAGINATION -->
             </div>
