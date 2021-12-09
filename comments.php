@@ -10,16 +10,16 @@ if (post_password_required()) {
 
         <?php
         $commentField = sprintf(
-                '<p class="comment-form-comment mt-4">%s</p>',
+                '<p class="comment-form-comment mt-4 col-lg-5">%s</p>',
                 sprintf(
-                        '<textarea id="comment" class="form-control" name="comment" placeholder="%s" cols="45" rows="8" maxlength="65525" required="required"></textarea>',
+                        '<textarea id="comment" class="form-control" name="comment" placeholder="%s" rows="5" maxlength="65525" required="required"></textarea>',
                         _x('Comment', 'noun') . '...'
                 )
         );
 
         $fields = [
                 'author' => sprintf(
-                        '<p class="comment-form-author">%s</p>',
+                        '<p class="comment-form-author col-lg-5">%s</p>',
                         sprintf(
                                 '<input id="author" class="form-control" name="author" type="text" value="%s" placeholder="%s" maxlength="245" />',
                                 esc_attr($commenter['comment_author']),
@@ -27,7 +27,7 @@ if (post_password_required()) {
                         )
                 ),
                 'email' => sprintf(
-                        '<p class="comment-form-email">%s</p>',
+                        '<p class="comment-form-email col-lg-5">%s</p>',
                         sprintf(
                                 '<input id="email" class="form-control" name="email" %s value="%s" placeholder="%s" size="30" maxlength="100" aria-describedby="email-notes" />',
                                 ($html5 ? 'type="email"' : 'type="text"'),
@@ -41,7 +41,7 @@ if (post_password_required()) {
                 '' => '',
                 'comment_notes_before' => '',
                 'logged_in_as' => '',
-                'class_submit' => 'btn btn-warning w-100',
+                'class_submit' => 'col-lg-5 col-12 btn btn-warning fw-bold',
                 'label_submit' => __('Post Comment', 'demo'),
                 'comment_field' => $commentField,
                 'fields' => apply_filters('comment_form_default_fields', $fields),
@@ -61,17 +61,14 @@ if (post_password_required()) {
                         </p>
                 <?php } else { ?>
 
-                        <h2 class="comments-title"><?php echo __('Comments', 'demo') . '(' . get_comments_number() . ')' ?></h2>
+                        <h3 class="comments-title"><?php echo __('Comments', 'demo') . '(' . get_comments_number() . ')' ?></h3>
                         <div class="comment-list">
-                                <?php
-                                wp_list_comments([
+                        <?php wp_list_comments([ 
                                         'max_depth' => '',
                                         'style' => 'div',
-                                        'callback' => null,
-                                        'end_callback' => null,
-                                        'type' => 'all',
                                         'reply_text' => __('Reply', 'demo'),
                                         'page' => '',
+                                        'callback' => 'custom_comments',
                                         'per_page' => '',
                                         'avatar_size' => 64,
                                         'reverse_top_leve' => null,
