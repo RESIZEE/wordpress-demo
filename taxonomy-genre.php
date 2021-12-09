@@ -16,7 +16,7 @@
                         <!-- START OF SINGLE CARD -->
                         <div class="single-card col-md-3">
                             <a href="<?php the_permalink(); ?>">
-                                <div class="card-placeholder mb-3"></div>
+                                <?php get_template_part('template-parts/card-image') ?>
                             </a>
                             <div class="description d-flex">
                                 <h4 class="col-8">

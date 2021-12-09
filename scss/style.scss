@@ -12,13 +12,9 @@
 }
 
 .single-card {
-  .card-placeholder {
+  .card-image-container {
     height: 500px;
     width: 100%;
-    // background-color: $img-placeholder;
-    background-image: url("img/image-placeholder.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
   }
 
   .description {
@@ -29,6 +25,13 @@
         margin-top: 5px;
       }
     }
+  }
+}
+
+.single-content {
+  .single-image-container {
+    height: 430px;
+    width: 100%;
   }
 }
 
