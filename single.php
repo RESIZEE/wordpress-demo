@@ -67,6 +67,12 @@
                             <?php } ?>
                         </ul>
                     </div>
+
+
+                    <!-- START OF COMMENT SECTION -->
+                    <?php get_template_part('template-parts/comments-section') ?>
+                    <!-- END OF COMMENT SECTION -->
+
                     <!-- END OF SIDE MENU -->
                     <div class="col-lg-9 single-content">
                         <div class="image">
@@ -79,6 +85,7 @@
 
                         <!-- START OF COMMENT SECTION -->
                         <!-- END OF COMMENT SECTION -->
+
 
                     </div>
                 </div>
