@@ -19,14 +19,19 @@ if (is_home()) { ?>
                 <div class="col-lg-3 side-menu d-none d-lg-block">
                     <h4 class="mb-4">Categories</h4>
                     <ul>
-                        <li><a href="#">Action</a></li>
-                        <li class="active"><a href="#">Comedy</a></li>
-                        <li><a href="#">Horror</a></li>
-                        <li><a href="#">Musical</a></li>
-                        <li><a href="#">Adventure</a></li>
-                        <li><a href="#">Crime</a></li>
-                        <li><a href="#">Drama</a></li>
-                        <li><a href="#">Thriller</a></li>
+                        <?php
+                        $categories = get_categories([
+                            'orderby' => 'name',
+                            'order' => 'ASC'
+                        ]);
+                        foreach ($categories as $category) {
+                        ?>
+                            <li>
+                                <a href="<?php echo esc_url(get_category_link($category->term_id)) ?>">
+                                    <?php echo $category->name; ?>
+                                </a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <!-- END OF SIDE MENU -->
@@ -38,14 +43,16 @@ if (is_home()) { ?>
                         <span class="fs-3">+</span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
-                        <li class="nav-item"><a href="#" class="nav-link">Action</a></li>
-                        <li class="nav-item active"><a href="#" class="nav-link">Comedy</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Horror</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Musical</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Adventure</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Crime</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Drama</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Thriller</a></li>
+                    <?php
+                    foreach ($categories as $category) {
+                    ?>
+                        <li>
+                            <a href="<?php
+                                        echo esc_url(get_category_link($category->term_id)) ?>">
+                                <?php echo $category->name; ?>
+                            </a>
+                        </li>
+                    <?php } ?>
                     </ul>
                 </div>
                 <!-- END OF DROPDOWN MENU -->
