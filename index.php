@@ -53,27 +53,34 @@ if (is_home()) { ?>
                 <!-- BLOG POSTS -->
                 <div class="col-lg-9 blog-posts">
                     <?php
-                    while (have_posts()) {
-                        the_post();
+                    if (have_posts()) {
+                        while (have_posts()) {
+                            the_post();
                     ?>
-                        <!-- SINGLE BLOG POST -->
-                        <div class="blog-post">
-                            <div class="image">
-                                <img src="<?php echo get_theme_file_uri('/img/image-placeholder.jpg'); ?>" alt="blog-image" />
+                            <!-- SINGLE BLOG POST -->
+                            <div class="blog-post">
+                                <div class="image">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <img src="<?php echo get_theme_file_uri('/img/image-placeholder.jpg'); ?>" alt="blog-image" />
+                                    </a>
+                                </div>
+                                <div class="time">
+                                    <a href="#"><?php echo get_the_date(); ?></a>
+                                </div>
+                                <div class="title">
+                                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                                </div>
+                                <div class="excerpt">
+                                    <?php the_excerpt(); ?>
+                                </div>
                             </div>
-                            <div class="time">
-                                <a href="#"><?php echo get_the_date(); ?></a>
-                            </div>
-                            <div class="title">
-                                <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                            </div>
-                            <div class="excerpt">
-                                <?php the_excerpt(); ?>
-                            </div>
-                        </div>
-                        <!-- SINGLE BLOG POST -->
+                            <!-- SINGLE BLOG POST -->
 
-                    <?php } ?>
+                        <?php }
+                    } else { ?>
+                        <p>There's no posts to show...</p>
+                    <?php }
+                    ?>
 
                     <!-- PAGINATION -->
                     <div class="pagination">
