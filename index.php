@@ -17,7 +17,7 @@ if (is_home()) { ?>
             <div class="row">
                 <!-- SIDE MENU -->
                 <div class="col-lg-3 side-menu d-none d-lg-block">
-                    <h4 class="mb-4">Categories</h4>
+                    <h4 class="mb-4"><?php echo __('Categories', 'demo') ?></h4>
                     <ul>
                         <?php
                         $categories = get_categories([
@@ -39,20 +39,20 @@ if (is_home()) { ?>
                 <!-- DROPDOWN MENU -->
                 <div class="dropdown d-block d-md-none mb-5">
                     <button class="dropdown-toggle col-12 text-start d-flex align-items-center justify-content-between px-3 py-2" type="button" id="categoriesmenu" data-bs-toggle="dropdown" aria-expanded="false">
-                        <h4 class="m-0">Categories</h4>
+                        <h4 class="m-0"><?php echo __('Categories', 'demo') ?></h4>
                         <span class="fs-3">+</span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
-                    <?php
-                    foreach ($categories as $category) {
-                    ?>
-                        <li>
-                            <a href="<?php
-                                        echo esc_url(get_category_link($category->term_id)) ?>">
-                                <?php echo $category->name; ?>
-                            </a>
-                        </li>
-                    <?php } ?>
+                        <?php
+                        foreach ($categories as $category) {
+                        ?>
+                            <li>
+                                <a href="<?php
+                                            echo esc_url(get_category_link($category->term_id)) ?>">
+                                    <?php echo $category->name; ?>
+                                </a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <!-- END OF DROPDOWN MENU -->

@@ -9,15 +9,17 @@
                 <!-- DROPDOWN MENU -->
                 <div class="dropdown d-block d-md-none mb-5">
                     <button class="dropdown-toggle col-12 text-start d-flex align-items-center justify-content-between px-3 py-2" type="button" id="categoriesmenu" data-bs-toggle="dropdown" aria-expanded="false">
-                        <h4 class="m-0"><?php echo __('Genres', 'demo') ?></h4>
+                        <h4 class="m-0"><?php echo __('Categories', 'demo') ?></h4>
                         <span class="fs-3">+</span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
                         <?php
-                        foreach ($allBookGenres as $genre) { ?>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <?php echo $genre->name; ?>
+                        foreach ($categories as $category) {
+                        ?>
+                            <li>
+                                <a href="<?php
+                                            echo esc_url(get_category_link($category->term_id)) ?>">
+                                    <?php echo $category->name; ?>
                                 </a>
                             </li>
                         <?php } ?>
@@ -46,17 +48,19 @@
 
                 <!-- SIDE MENU -->
                 <div class="col-lg-3 side-menu d-none d-lg-block">
-                    <h4 class="mb-4"><?php echo __('Genres', 'demo') ?></h4>
+                    <h4 class="mb-4"><?php echo __('Categories', 'demo') ?></h4>
                     <ul>
                         <?php
-                        $allBookGenres = get_terms([
-                            'taxonomy' => 'genre',
+                        $categories = get_categories([
+                            'orderby' => 'name',
+                            'order' => 'ASC'
                         ]);
-                        foreach ($allBookGenres as $genre) {
+                        foreach ($categories as $category) {
                         ?>
                             <li>
-                                <a href="#">
-                                    <?php echo $genre->name; ?>
+                                <a href="<?php
+                                            echo esc_url(get_category_link($category->term_id)) ?>">
+                                    <?php echo $category->name; ?>
                                 </a>
                             </li>
                         <?php } ?>
@@ -94,6 +98,7 @@
 
                         <!-- START OF COMMENTS -->
                         <div class="comments">
+                            <?php comments_template(); ?>
                             <h3>Commnts (2)</h3>
                             <div class="comments-body">
                                 <div class="single-comment d-flex">
@@ -143,7 +148,6 @@
         </div>
     </section>
     <!-- END OF PAGE TITLE -->
-    <?php comments_template(); ?>
 </div>
 
 <?php get_footer(); ?>
