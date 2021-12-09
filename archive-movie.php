@@ -8,16 +8,20 @@
             <div class="row">
                 <!-- SIDE MENU -->
                 <div class="col-lg-3 side-menu d-none d-lg-block">
-                    <h4 class="mb-4">Genres</h4>
+                    <h4 class="mb-4"><?php echo __('Genres', 'demo') ?></h4>
                     <ul>
                         <?php
-                        $allMovieGenres = get_terms([
-                                'taxonomy' => 'genre',
+                        $posts_in_post_type = get_posts([
+                                'fields' => 'ids',
+                                'post_type' => 'movie',
+                                'posts_per_page' => -1,
                         ]);
+                        /* PERFORMANCE WARNING */
+                        $allMovieGenres = wp_get_object_terms($posts_in_post_type, 'genre', ['ids']);
                         foreach($allMovieGenres as $genre){
                             ?>
-                            <li>
-                                <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug)) ?>">
+                            <li class="<?php echo get_query_var('genre') === $genre->slug ? 'active' : '' ?>">
+                                <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug, get_post_type_archive_link('movie'))) ?>">
                                     <?php echo $genre->name; ?>
                                 </a>
                             </li>
@@ -38,7 +42,8 @@
                         <?php
                         foreach($allMovieGenres as $genre){ ?>
                             <li class="nav-item">
-                                <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug)) ?>" class="nav-link">
+                                <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug, get_post_type_archive_link('movie'))) ?>"
+                                   class="nav-link">
                                     <?php echo $genre->name; ?>
                                 </a>
                             </li>
@@ -77,7 +82,12 @@
                                     foreach($genres as $genre){
                                         $genreArchiveLink = get_term_link($genre->slug, 'genre');
 
-                                        $output[] = '<a href="' . $genreArchiveLink . '">' . $genre->name . '</a>';
+                                        $output[] =
+                                                '<a href="' .
+                                                esc_url(add_query_arg('cpt', 'movie', $genreArchiveLink)) .
+                                                '">' .
+                                                $genre->name .
+                                                '</a>';
                                     }
                                     echo implode(', ', $output);
                                 }
