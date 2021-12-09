@@ -76,8 +76,11 @@
                                  alt="single-image">
                         </div>
                         <div class="content">
-                            <?php echo has_content(); ?>
-                            <p><?php the_content(); ?></p>
+                            <?php if(has_content()) { ?>
+                                <p><?php the_content(); ?></p>
+                            <?php }else {
+                                get_template_part('template-parts/no-post-content');
+                            } ?>
                         </div>
 
                         <!-- START OF COMMENT SECTION -->
