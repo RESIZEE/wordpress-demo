@@ -1,4 +1,4 @@
-#Demo Theme
+# Demo Theme
 
 ---
 
@@ -27,7 +27,7 @@
 
 
 
-####Developed by:
+#### Developed by:
 - [Nikola Stankovic](https://github.com/mrdisa97)
 - [Miljan Jovic](https://github.com/SHM420)
 - [Dusan Djordjevic](https://github.com/usanzadunje)

@@ -1,1 +1,1 @@
-<p>There's no content to show...</p>
+<p class="py-2">There's no content to show...</p>
