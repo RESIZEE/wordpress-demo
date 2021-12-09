@@ -8,13 +8,13 @@
         <div class="container">
             <div class="row">
                 <!-- START OF CONTAINERS -->
-                <div class="cards-container row col-lg-9 col-12">
+                <div class="cards-container row col-12">
                     <?php
                     while(have_posts()){
                         the_post();
                         ?>
                         <!-- START OF SINGLE CARD -->
-                        <div class="single-card col-md-4">
+                        <div class="single-card col-md-3">
                             <a href="<?php the_permalink(); ?>">
                                 <div class="card-placeholder mb-3"></div>
                             </a>

@@ -18,7 +18,7 @@
                     foreach ($allGameGenres as $genre) {
                     ?>
                         <li>
-                            <a href="#">
+                            <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug)) ?>">
                                 <?php echo $genre->name; ?>
                             </a>
                         </li>
@@ -80,11 +80,12 @@
                 <div class="pagination">
                     <?php
                     echo paginate_links([
-                            'end_size' => 2,
-                            'mid_size' => 2,
-                            'prev_next' => true,
-                            'prev_text' => '<i class="fas fa-chevron-left"></i>',
-                            'next_text' => '<i class="fas fa-chevron-right"></i>',
+                        'end_size' => 2,
+                        'mid_size' => 2,
+                        'prev_next' => true,
+                        'prev_text' => '<i class="fas fa-chevron-left"></i>',
+                        'next_text' => '<i class="fas fa-chevron-right"></i>',
+
                     ]);
                     ?>
                 </div>
