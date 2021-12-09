@@ -38,46 +38,60 @@
                         <!-- RATE -->
                         <div class="rate order-lg-2">
                             <h4 class="rate d-flex align-items-center">
-                                <i class="fas fa-star"></i>&nbsp;8.5
+                                <i class="fas fa-star"></i>&nbsp;<?php echo review_score() ?>
                             </h4>
                         </div>
-                        <!-- TITLE -->
-                        <div class="title order-lg-1">
-                            <h1><?php the_title(); ?></h1>
+                        <!-- END OF DROPDOWN MENU -->
+
+                        <!-- START OF EMPTY COLUMN -->
+                        <div class="col-3"></div>
+                        <!-- END OF EMPTY COLUMN -->
+
+                        <!-- START OF TITLE AND RATE -->
+                        <div class="title-rate col-lg-9 d-lg-flex justify-content-between">
+                            <!-- RATE -->
+                            <div class="rate order-lg-2">
+                                <h4 class="rate d-flex align-items-center">
+                                    <i class="fas fa-star"></i>&nbsp;8.5
+                                </h4>
+                            </div>
+                            <!-- TITLE -->
+                            <div class="title order-lg-1">
+                                <h1><?php the_title(); ?></h1>
+                            </div>
                         </div>
-                    </div>
-                    <!-- END OF TITLE AND RATE -->
+                        <!-- END OF TITLE AND RATE -->
 
-                    <!-- SIDE MENU -->
-                    <div class="col-lg-3 side-menu d-none d-lg-block">
-                        <h4 class="mb-4"><?php echo __('Genres', 'demo'); ?></h4>
-                        <ul>
-                            <?php
-                            foreach($allGameGenres as $genre){
-                                ?>
-                                <li>
-                                    <a href="#">
-                                        <?php echo $genre->name; ?>
-                                    </a>
-                                </li>
-                            <?php } ?>
-                        </ul>
-                    </div>
-                    <!-- END OF SIDE MENU -->
-
-                    <div class="col-lg-9 single-content">
-                        <?php get_template_part('template-parts/single-image') ?>
-                        <div class="content">
-                            <p><?php the_content(); ?></p>
+                        <!-- SIDE MENU -->
+                        <div class="col-lg-3 side-menu d-none d-lg-block">
+                            <h4 class="mb-4"><?php echo __('Genres', 'demo'); ?></h4>
+                            <ul>
+                                <?php
+                                foreach($allGameGenres as $genre){
+                                    ?>
+                                    <li>
+                                        <a href="#">
+                                            <?php echo $genre->name; ?>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                            </ul>
                         </div>
+                        <!-- END OF SIDE MENU -->
 
-                        <!-- START OF COMMENT SECTION -->
-                        <?php get_template_part('template-parts/comments-section') ?>
-                        <!-- END OF COMMENT SECTION -->
+                        <div class="col-lg-9 single-content">
+                            <?php get_template_part('template-parts/single-image') ?>
+                            <div class="content">
+                                <p><?php the_content(); ?></p>
+                            </div>
 
+                            <!-- START OF COMMENT SECTION -->
+                            <?php get_template_part('template-parts/comments-section') ?>
+                            <!-- END OF COMMENT SECTION -->
+
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
         <!-- END OF PAGE TITLE -->
     </div>

@@ -6,12 +6,10 @@
 
     <div class="container">
         <div class="row">
-
             <?php
             get_template_part('template-parts/genre-side-menu');
             get_template_part('template-parts/archive-cards');
             ?>
-
         </div>
     </div>
 </section>
