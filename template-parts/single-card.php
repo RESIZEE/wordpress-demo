@@ -1,6 +1,6 @@
 <div class="single-card col-lg-3 col-6">
     <a href="<?php the_permalink(); ?>">
-        <div class="card-placeholder mb-3"></div>
+        <?php get_template_part('template-parts/card-image') ?>
     </a>
     <div class="description d-none d-md-flex">
         <h4 class="col-md-8"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>

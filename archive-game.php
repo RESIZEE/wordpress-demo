@@ -54,8 +54,8 @@
 
                     <!-- START OF SINGLE CARD -->
                     <div class="single-card col-md-4">
-                        <a href="">
-                            <div class="card-placeholder mb-3"></div>
+                        <a href="<?php the_permalink(); ?>">
+                            <?php get_template_part('template-parts/card-image') ?>
                         </a>
                         <div class="description d-flex">
                             <h4 class="col-8">

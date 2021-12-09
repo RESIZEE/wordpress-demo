@@ -54,6 +54,7 @@ function demo_post_types() {
                 'title',
                 'editor',
                 'excerpt',
+                'thumbnail',
                 'comments',
             ],
         ]
@@ -77,6 +78,7 @@ function demo_post_types() {
                 'title',
                 'editor',
                 'excerpt',
+                'thumbnail',
                 'comments',
             ],
         ]
