@@ -23,7 +23,7 @@
                     ]);
                     foreach ($categories as $category) {
                     ?>
-                        <li>
+                        <li class="<?php echo is_category($category->term_id) ? 'active' : ''; ?>">
                             <a href="<?php
                                         echo esc_url(get_category_link($category->term_id)) ?>">
                                 <?php echo $category->name; ?>
@@ -41,7 +41,7 @@
                     <span class="fs-3">+</span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
-                <?php
+                    <?php
                     foreach ($categories as $category) {
                     ?>
                         <li>
