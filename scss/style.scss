@@ -7,6 +7,10 @@
 @import "config";
 @import "utilities";
 
+::selection {
+  background-color: $yellow;
+}
+
 .single-card {
   .card-placeholder {
     height: 500px;
@@ -158,6 +162,7 @@
 
       .title-rate {
         margin-top: 3rem;
+
         .rate {
           font-size: 2.5rem;
           font-weight: bold;
