@@ -87,6 +87,27 @@ function demo_post_types()
             ],
         ]
     );
+    register_post_type(
+        'review',
+        [
+            'labels' => [
+                'name' => __('Reviews', 'demo'),
+                'singular_name' => __('Review', 'demo'),
+                'add_new_item' => __('Add New Review', 'demo'),
+                'edit_item' => __('Edit Review', 'demo'),
+                'all_items' => __('All Reviews', 'demo'),
+                'view_item' => __('View Review', 'demo'),
+                'menu_name' => __('Reviews', 'demo'),
+                'update_item' => __('Update Review', 'demo'),
+                'search_items' => __('Search Review', 'demo'),
+            ],
+            'description' => 'Reviews.',
+            'public' => false,
+            'show_ui' => true,
+            'menu_icon' => 'dashicons-star-filled',
+            'supports' => ['title'],
+        ]
+    );
 
     register_taxonomy(
         'genre',

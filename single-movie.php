@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+<?php the_ID(); ?>
     <div class="container">
         <!-- START OF PAGE TITLE -->
         <section class="page-title single-post-type">
@@ -44,7 +44,7 @@
                         <!-- RATE -->
                         <div class="rate order-lg-2">
                             <h4 class="rate d-flex align-items-center">
-                                <i class="fas fa-star"></i>&nbsp;8.5
+                                <i class="fas fa-star"></i>&nbsp;<?php echo review_score() ?>
                             </h4>
                         </div>
                         <!-- TITLE -->

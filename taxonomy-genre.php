@@ -25,7 +25,7 @@
                                     </a>
                                 </h4>
                                 <h4 class="rate col-4 d-flex justify-content-end">
-                                    <i class="fas fa-star"></i>&nbsp;8.5
+                                    <i class="fas fa-star"></i>&nbsp;<?php echo review_score() ?>
                                 </h4>
                             </div>
                         </div>
