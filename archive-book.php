@@ -11,13 +11,17 @@
                     <h4 class="mb-4"><?php echo __('Genres', 'demo') ?></h4>
                     <ul>
                         <?php
-                        $allBookGenres = get_terms([
-                                'taxonomy' => 'genre',
+                        $posts_in_post_type = get_posts([
+                                'fields' => 'ids',
+                                'post_type' => 'book',
+                                'posts_per_page' => -1,
                         ]);
+                        /* PERFORMANCE WARNING */
+                        $allBookGenres = wp_get_object_terms($posts_in_post_type, 'genre', ['ids']);
                         foreach($allBookGenres as $genre){
                             ?>
-                            <li>
-                                <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug)); ?>">
+                            <li class="<?php echo get_query_var('genre') === $genre->slug ? 'active' : '' ?>">
+                                <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug, get_post_type_archive_link('book'))) ?>">
                                     <?php echo $genre->name; ?>
                                 </a>
                             </li>
@@ -38,8 +42,8 @@
                         <?php
                         foreach($allBookGenres as $genre){ ?>
                             <li class="nav-item">
-                                <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug)); ?>" class="nav-link">
-
+                                <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug, get_post_type_archive_link('book'))) ?>"
+                                   class="nav-link">
                                     <?php echo $genre->name; ?>
                                 </a>
                             </li>
@@ -53,8 +57,8 @@
                     <?php
                     while(have_posts()){
                         the_post();
-
                         $genres = get_the_terms(get_the_ID(), 'genre');
+
                         ?>
                         <!-- START OF SINGLE CARD -->
                         <div class="single-card col-md-4">
@@ -78,7 +82,12 @@
                                     foreach($genres as $genre){
                                         $genreArchiveLink = get_term_link($genre->slug, 'genre');
 
-                                        $output[] = '<a href="' . $genreArchiveLink . '">' . $genre->name . '</a>';
+                                        $output[] =
+                                                '<a href="' .
+                                                esc_url(add_query_arg('cpt', 'book', $genreArchiveLink)) .
+                                                '">' .
+                                                $genre->name .
+                                                '</a>';
                                     }
                                     echo implode(', ', $output);
                                 }
