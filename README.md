@@ -1,4 +1,4 @@
-#Demo Theme
+# Demo Theme
 
 ---
 
@@ -15,10 +15,10 @@
     R::::R     R:::::R  E::::::EEEEEEEEEE          SSSSSS::::S   I::::I      Z:::::Z          E::::::EEEEEEEEEE   
     R::::R     R:::::R  E:::::E                         S:::::S  I::::I     Z:::::Z           E:::::E             
     R::::R     R:::::R  E:::::E       EEEEEE            S:::::S  I::::I  ZZZ:::::Z     ZZZZZ  E:::::E       EEEEEE
-    RR:::::R     R:::::REE::::::EEEEEEEE:::::ESSSSSSS     S:::::SII::::::IIZ::::::ZZZZZZZZ:::ZEE::::::EEEEEEEE:::::E
-    R::::::R     R:::::RE::::::::::::::::::::ES::::::SSSSSS:::::SI::::::::IZ:::::::::::::::::ZE::::::::::::::::::::E
-    R::::::R     R:::::RE::::::::::::::::::::ES:::::::::::::::SS I::::::::IZ:::::::::::::::::ZE::::::::::::::::::::E
-    RRRRRRRR     RRRRRRREEEEEEEEEEEEEEEEEEEEEE SSSSSSSSSSSSSSS   IIIIIIIIIIZZZZZZZZZZZZZZZZZZZEEEEEEEEEEEEEEEEEEEEEE
+    RR:::::R    R:::::REE::::::EEEEEEEE:::::ESSSSSSS     S:::::SII::::::IIZ::::::ZZZZZZZZ:::ZEE::::::EEEEEEEE:::::E
+    R::::::R    R:::::RE::::::::::::::::::::ES::::::SSSSSS:::::SI::::::::IZ:::::::::::::::::ZE::::::::::::::::::::E
+    R::::::R    R:::::RE::::::::::::::::::::ES:::::::::::::::SS I::::::::IZ:::::::::::::::::ZE::::::::::::::::::::E
+    RRRRRRRR    RRRRRRREEEEEEEEEEEEEEEEEEEEEE SSSSSSSSSSSSSSS   IIIIIIIIIIZZZZZZZZZZZZZZZZZZZEEEEEEEEEEEEEEEEEEEEEE
 
 
 
@@ -27,7 +27,7 @@
 
 
 
-####Developed by:
+#### Developed by:
 - [Nikola Stankovic](https://github.com/mrdisa97)
 - [Miljan Jovic](https://github.com/SHM420)
 - [Dusan Djordjevic](https://github.com/usanzadunje)
