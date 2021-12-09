@@ -106,7 +106,7 @@ function demo_post_types() {
             ],
             'description' => 'Genres.',
             'public' => true,
-            'rewrite' => ['slug' => 'genres'],
+            'query_var' => false,
         ]
     );
 }
