@@ -6,20 +6,27 @@
             <div class="container">
                 <div class="row">
 
+
                     <!-- DROPDOWN MENU -->
                     <div class="dropdown d-block d-md-none mb-5">
-                        <button
-                                class="dropdown-toggle col-12 text-start d-flex align-items-center justify-content-between px-3 py-2"
+                        <button class="dropdown-toggle col-12 text-start d-flex align-items-center justify-content-between px-3 py-2"
                                 type="button" id="categoriesmenu" data-bs-toggle="dropdown" aria-expanded="false">
                             <h4 class="m-0"><?php echo __('Genres', 'demo') ?></h4>
                             <span class="fs-3">+</span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
                             <?php
+                            $posts_in_post_type = get_posts([
+                                    'fields' => 'ids',
+                                    'post_type' => 'book',
+                                    'posts_per_page' => -1,
+                            ]);
+                            /* PERFORMANCE WARNING */
+                            $allBookGenres = wp_get_object_terms($posts_in_post_type, 'genre', ['ids']);
                             foreach($allBookGenres as $genre){ ?>
                                 <li class="nav-item">
-                                    <a href="<?php
-                                            echo esc_url(get_category_link($genre->term_id)) ?>" class="nav-link">
+                                    <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug, get_post_type_archive_link('book'))) ?>"
+                                       class="nav-link">
                                         <?php echo $genre->name; ?>
                                     </a>
                                 </li>
@@ -49,16 +56,13 @@
 
                     <!-- SIDE MENU -->
                     <div class="col-lg-3 side-menu d-none d-lg-block">
-                        <h4 class="mb-4"><?php echo __('Genres', 'demo') ?></h4>
+                        <h4 class="mb-4"><?php echo __('Genres', 'demo'); ?></h4>
                         <ul>
                             <?php
-                            $allBookGenres = get_terms([
-                                    'taxonomy' => 'genre',
-                            ]);
                             foreach($allBookGenres as $genre){
                                 ?>
-                                <li>
-                                    <a href="#">
+                                <li class="<?php echo get_query_var('genre') === $genre->slug ? 'active' : '' ?>">
+                                    <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug, get_post_type_archive_link('book'))) ?>">
                                         <?php echo $genre->name; ?>
                                     </a>
                                 </li>
@@ -69,7 +73,11 @@
                     <div class="col-lg-9 single-content">
                         <?php get_template_part('template-parts/single-image') ?>
                         <div class="content">
-                            <p><?php the_content(); ?></p>
+                            <?php if(has_content()) { ?>
+                                <p><?php the_content(); ?></p>
+                            <?php }else {
+                                get_template_part('template-parts/no-post-content');
+                            } ?>
                         </div>
 
                         <!-- START OF COMMENT SECTION -->
