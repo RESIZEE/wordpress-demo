@@ -5,7 +5,7 @@ function has_content() {
 }
 
 
-// START OF CUSTOM COMMENTS SECTION
+// START OF CUSTOM COMMENT SECTION
 function custom_comments($comment, $args, $depth){
 
     if(get_comment_type() == 'pingback' || get_comment_type() == 'trackback') : ?>
@@ -32,4 +32,4 @@ function custom_comments($comment, $args, $depth){
         </div>
     <?php endif; 
 } 
-// END OF CUSTOM COMMENTS SECTION
+// END OF CUSTOM COMMENT SECTION
