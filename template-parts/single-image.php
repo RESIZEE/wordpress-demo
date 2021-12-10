@@ -9,6 +9,6 @@ $imageSrc = has_post_thumbnail() ?
             alt="<?php the_title_attribute([
                     'before' => ' Image of ',
             ]) ?>"
-            class="fit-image w-100"
+            class="fit-image"
     >
 </div>
