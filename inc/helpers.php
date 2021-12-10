@@ -34,7 +34,7 @@ function custom_comments($comment, $args, $depth){
         </div>
     <?php endif; 
 
-} 
+ 
 // END OF CUSTOM COMMENT SECTION
 } ?>
 
