@@ -14,7 +14,7 @@
                             <div class="description d-flex">
                                 <h4 class="col-8">
                                     <a href="<?php the_permalink() ?>">
-                                        <?php the_title() ?>
+                                        <?php echo wp_trim_words( get_the_title(), 5 ); ?>
                                     </a>
                                 </h4>
                                 <h4 class="rate col-4 d-flex justify-content-end">
