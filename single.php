@@ -37,7 +37,7 @@
                         <!-- RATE -->
                         <div class="rate order-lg-2">
                             <h4 class="rate d-flex align-items-center">
-                                <i class="fas fa-star"></i>&nbsp;8.5
+                                <?php get_template_part('template-parts/review-score') ?>
                             </h4>
                         </div>
                         <!-- TITLE -->

@@ -20,17 +20,25 @@ function demo_resources() {
 
     /* Scripts */
     wp_enqueue_script(
+        'bootstrap-bundled',
+        get_theme_file_uri('/js/bootstrap.bundle.min.js'),
+        null,
+        null,
+        true,
+    );
+    wp_enqueue_script(
         'demo-main-bundled',
         get_theme_file_uri('/js/scripts-bundled.js'),
         null,
         microtime(),
         true,
     );
-    wp_enqueue_script(
-        'bootstrap-bundled',
-        get_theme_file_uri('/js/bootstrap.bundle.min.js'),
-        null,
-        microtime(),
-        true,
+    wp_localize_script(
+        'demo-main-bundled',
+        'demoData',
+        [
+            'rootUrl' => get_site_url(),
+            'nonce' => wp_create_nonce('wp_rest'),
+        ]
     );
 }

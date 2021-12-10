@@ -25,7 +25,7 @@
                                     </a>
                                 </h4>
                                 <h4 class="rate col-4 d-flex justify-content-end">
-                                    <i class="fas fa-star"></i>&nbsp;8.5
+                                    <?php get_template_part('template-parts/review-score') ?>
                                 </h4>
                             </div>
                         </div>
