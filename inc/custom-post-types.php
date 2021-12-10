@@ -111,6 +111,7 @@ function demo_post_types()
                 'no_terms' => __('No genres', 'demo'),
                 'not_found' => __('No genres found', 'demo'),
             ],
+            'hierarchical' => true,
             'description' => 'Genres.',
             'public' => true,
             'query_var' => false,
