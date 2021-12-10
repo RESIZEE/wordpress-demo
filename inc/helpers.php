@@ -4,8 +4,6 @@ function has_content() {
     return strlen(get_the_content()) > 0;
 }
 
-
-
 function custom_comments($comment, $args, $depth){
 
     if(get_comment_type() == 'pingback' || get_comment_type() == 'trackback') : ?>
