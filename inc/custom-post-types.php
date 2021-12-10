@@ -96,6 +96,7 @@ function demo_post_types()
             'game',
         ],
         [
+            'show_in_rest' => true,
             'labels' => [
                 'name' => __('Genres', 'demo'),
                 'singular_name' => __('Genre', 'demo'),
