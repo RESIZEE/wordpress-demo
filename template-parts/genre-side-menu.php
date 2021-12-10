@@ -6,13 +6,13 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
                             <?php
-                            $posts_in_post_type = get_posts([
+                            $postsInPostType = get_posts([
                                 'fields' => 'ids',
                                 'post_type' => get_post_type(),
                                 'posts_per_page' => -1,
                             ]);
                             /* PERFORMANCE WARNING */
-                            $allGenres = wp_get_object_terms($posts_in_post_type, 'genre', ['ids']);
+                            $allGenres = wp_get_object_terms($postsInPostType, 'genre', ['ids']);
                             foreach ($allGenres as $genre) { ?>
                                 <li class="nav-item">
                                     <a href="<?php echo esc_url(add_query_arg('genre', $genre->slug, get_post_type_archive_link(get_post_type()))) ?>" class="nav-link">

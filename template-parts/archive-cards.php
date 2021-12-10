@@ -22,9 +22,24 @@
                                 </h4>
                             </div>
                             <div class="categories">
-                                <a href="#">
 
-                                </a>
+                                <?php
+                                $genres = get_the_terms(get_the_ID(), 'genre');
+                                if ($genres && !is_wp_error($genres)) {
+                                    $output = [];
+                                    foreach ($genres as $genre) {
+                                        $genreArchiveLink = get_term_link($genre->slug, 'genre');
+                                        $output[] =
+                                            '<a href="' .
+                                            esc_url(add_query_arg('cpt', get_post_type(), $genreArchiveLink)) .
+                                            '">' .
+                                            $genre->name .
+                                            '</a>';
+                                    }
+                                    echo implode(', ', $output);
+                                }
+                                ?>
+
                             </div>
                         </div>
                         <!-- END OF SINGLE CARD -->
