@@ -5,7 +5,6 @@
 <?php
 
 function custom_comments($comment, $args, $depth){
-    $GLOBALS['comment'] = $comment;
 
     if(get_comment_type() == 'pingback' || get_comment_type() == 'trackback') : ?>
     display trackbacks
@@ -18,7 +17,7 @@ function custom_comments($comment, $args, $depth){
                     <div class="avatar col-3 col-lg-2"><?php echo get_avatar($comment); ?></div>
                     <div class="comment-author col-9 col-lg-10">
                         <cite class="fn"><?php comment_author_link(); ?></cite>
-                        <div class="comment-meta my-3"><?php comment_time('H:i:s'); ?> min ago</div>
+                        <div class="comment-meta mt-3"><?php echo human_time_diff( strtotime( $comment->comment_date ), current_time( 'timestamp', 1 ) ); ?> ago</div>
                     </div>
                 </div>
                 <div class="d-flex col-lg-8">

@@ -56,7 +56,7 @@
   }
 
   .menu-item {
-    width: 100px;
+    margin-left: 1.5em;
 
     a {
       color: $pure-white;
@@ -228,12 +228,13 @@
   .d-flex{
     .avatar{
       border-radius: 50%;
-      margin-right: 10px;
+      margin-right: 1em;
     }
     .comment-author{
+      margin-top: 0.5em;
       .fn{
         font-style: normal;
-        font-size: 1.75rem;
+        font-size: 1.5rem;
       }
   
       .says{
@@ -249,7 +250,7 @@
   .comment-text-area{
     margin-top: 1.5em;
     margin-bottom: 2.5em;
-    margin-left: 10px;
+    margin-left: 1em;
   }
 
 // END OF COMMENTS SECTION
