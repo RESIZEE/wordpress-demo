@@ -6,7 +6,7 @@
             <!-- BLOG TITLE -->
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="text-center my-5"><?php single_cat_title(); ?></h1>
+                    <h1 class="text-center my-5"><?php the_archive_title(); ?></h1>
                 </div>
             </div>
             <!-- END OF BLOG TITLE -->
@@ -67,7 +67,7 @@
                             <div class="blog-post">
                                 <?php get_template_part('template-parts/single-image') ?>
                                 <div class="time">
-                                    <a href="#"><?php echo get_the_date(); ?></a>
+                                    <a href="<?php echo get_day_link(get_the_date('Y'), get_the_date('m'), get_the_date('d')); ?>"><?php echo get_the_date(); ?></a>
                                 </div>
                                 <div class="title">
                                     <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>

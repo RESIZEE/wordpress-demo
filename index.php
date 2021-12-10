@@ -81,7 +81,7 @@ if(is_home()) { ?>
                             <div class="blog-post">
                                 <?php get_template_part('template-parts/single-image') ?>
                                 <div class="time">
-                                    <a href="#"><?php echo get_the_date(); ?></a>
+                                    <a href="<?php echo get_day_link(get_the_date('Y'), get_the_date('m'), get_the_date('d')); ?>"><?php echo get_the_date(); ?></a>
                                 </div>
                                 <div class="title">
                                     <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
@@ -119,7 +119,6 @@ if(is_home()) { ?>
         </section>
     </div>
     <!-- END OF BLOG -->
-
 
 <?php }
 get_footer() ?>
