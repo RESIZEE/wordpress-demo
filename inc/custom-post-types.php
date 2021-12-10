@@ -2,10 +2,12 @@
 
 // Hook for adding custom post types
 add_action('init', 'demo_post_types');
-function demo_post_types() {
+function demo_post_types()
+{
     register_post_type(
         'movie',
         [
+            'show_in_rest' => true,
             'labels' => [
                 'name' => __('Movies', 'demo'),
                 'singular_name' => __('Movie', 'demo'),
@@ -34,6 +36,7 @@ function demo_post_types() {
     register_post_type(
         'book',
         [
+            'show_in_rest' => true,
             'labels' => [
                 'name' => __('Books', 'demo'),
                 'singular_name' => __('Book', 'demo'),
@@ -63,6 +66,7 @@ function demo_post_types() {
         'game',
         [
             'public' => true,
+            'show_in_rest' => true,
             'labels' => [
                 'name' => __('Games', 'demo'),
                 'add_new_item' => __('Add New Game', 'demo'),
