@@ -46,8 +46,8 @@
 // START OF NAVBAR
 .navbar {
   z-index: 100;
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
+  width: 100vw;
   top: 0;
 
   .navbar-brand {
@@ -121,6 +121,7 @@
 
 // START OF CUSTOM POST TYPE
 .page-title {
+  margin-top: 10em;
   .cards-container {
     padding: 0;
     margin: 0;
