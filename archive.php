@@ -65,7 +65,9 @@
                             ?>
                             <!-- SINGLE BLOG POST -->
                             <div class="blog-post">
-                                <?php get_template_part('template-parts/single-image') ?>
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php get_template_part('template-parts/single-image') ?>
+                                </a>
                                 <div class="time">
                                     <a href="#"><?php echo get_the_date(); ?></a>
                                 </div>
