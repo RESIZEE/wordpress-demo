@@ -41,8 +41,43 @@ function review_score($postId = null) {
     return round($sum / $totalReviewsCount, 1);
 }
 
+// Retrieve review score for current or provided post
+function current_user_review_score($postId = null) {
+    if(!is_user_logged_in()) {
+        return 0;
+    }
+
+    $id = $postId ?: get_the_ID();
+
+    // Getting review score for cerain post(movie, game, book)
+    $reviewQuery = new WP_Query([
+            'author' => get_current_user_id(),
+            'post_type' => 'review',
+            'meta_query' => [
+                    [
+                            'key' => 'reviewed_post_id',
+                            'compare' => '=',
+                            'value' => $id,
+                    ],
+            ],
+    ]);
+
+    // If there is review with current users ID on current/provided post
+    // return review score otherwise return false
+    $reviewScore = $reviewQuery->found_posts ?
+            $reviewQuery->post->review_score : 0;
+
+    wp_reset_query();
+
+    return $reviewScore;
+}
+
 // Calculates avarage review score for current or provided post
 function current_user_has_reviewed($postId = null) {
+    if(!is_user_logged_in()) {
+        return 0;
+    }
+
     $id = $postId ?: get_the_ID();
 
     // Getting review for current user on current/provided post
@@ -59,8 +94,7 @@ function current_user_has_reviewed($postId = null) {
     ]);
 
     // If there is review with current users ID on current/provided post
-    // return true otherwise return false
-
+    // return review ID otherwise return false
     $hasReviewed = $reviewQuery->found_posts ?
             $reviewQuery->post->ID : 0;
 
@@ -70,7 +104,6 @@ function current_user_has_reviewed($postId = null) {
 }
 
 function custom_comments($comment, $args, $depth) {
-
     if(get_comment_type() == 'pingback' || get_comment_type() == 'trackback') : ?>
         display trackbacks
 
