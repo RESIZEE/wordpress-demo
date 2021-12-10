@@ -69,10 +69,7 @@
                     </div>
                     <!-- END OF SIDE MENU -->
                     <div class="col-lg-9 single-content">
-                        <div class="image">
-                            <img src="<?php echo get_theme_file_uri('/img/image-placeholder.jpg'); ?>"
-                                 alt="single-image">
-                        </div>
+                        <?php get_template_part('template-parts/single-image') ?>
                         <div class="content">
                             <p><?php the_content(); ?></p>
                         </div>

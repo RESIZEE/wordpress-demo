@@ -12,7 +12,7 @@
  * @package Dosth
  */
 
-if (is_home()) { ?>
+if(is_home()) { ?>
 
 
     <!-- START OF BLOG -->
@@ -33,11 +33,11 @@ if (is_home()) { ?>
                     <ul>
                         <?php
                         $categories = get_categories([
-                            'orderby' => 'name',
-                            'order' => 'ASC'
+                                'orderby' => 'name',
+                                'order' => 'ASC',
                         ]);
-                        foreach ($categories as $category) {
-                        ?>
+                        foreach($categories as $category){
+                            ?>
                             <li>
                                 <a href="<?php echo esc_url(get_category_link($category->term_id)) ?>">
                                     <?php echo $category->name; ?>
@@ -50,17 +50,18 @@ if (is_home()) { ?>
 
                 <!-- DROPDOWN MENU -->
                 <div class="dropdown d-block d-md-none mb-5">
-                    <button class="dropdown-toggle col-12 text-start d-flex align-items-center justify-content-between px-3 py-2" type="button" id="categoriesmenu" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="dropdown-toggle col-12 text-start d-flex align-items-center justify-content-between px-3 py-2"
+                            type="button" id="categoriesmenu" data-bs-toggle="dropdown" aria-expanded="false">
                         <h4 class="m-0"><?php echo __('Categories', 'demo') ?></h4>
                         <span class="fs-3">+</span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
                         <?php
-                        foreach ($categories as $category) {
-                        ?>
+                        foreach($categories as $category){
+                            ?>
                             <li>
                                 <a href="<?php
-                                            echo esc_url(get_category_link($category->term_id)) ?>">
+                                echo esc_url(get_category_link($category->term_id)) ?>">
                                     <?php echo $category->name; ?>
                                 </a>
                             </li>
@@ -72,17 +73,13 @@ if (is_home()) { ?>
                 <!-- BLOG POSTS -->
                 <div class="col-lg-9 blog-posts">
                     <?php
-                    if (have_posts()) {
-                        while (have_posts()) {
+                    if(have_posts()) {
+                        while(have_posts()){
                             the_post();
-                    ?>
+                            ?>
                             <!-- SINGLE BLOG POST -->
                             <div class="blog-post">
-                                <div class="image">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <img src="<?php echo get_theme_file_uri('/img/image-placeholder.jpg'); ?>" alt="blog-image" />
-                                    </a>
-                                </div>
+                                <?php get_template_part('template-parts/single-image') ?>
                                 <div class="time">
                                     <a href="#"><?php echo get_the_date(); ?></a>
                                 </div>
@@ -96,7 +93,7 @@ if (is_home()) { ?>
                             <!-- SINGLE BLOG POST -->
 
                         <?php }
-                    } else { ?>
+                    }else { ?>
                         <p>There's no posts to show...</p>
                     <?php }
                     ?>
@@ -105,11 +102,11 @@ if (is_home()) { ?>
                     <div class="pagination">
                         <?php
                         echo paginate_links([
-                            'end_size' => 2,
-                            'mid_size' => 2,
-                            'prev_next' => true,
-                            'prev_text' => '<i class="fas fa-chevron-left"></i>',
-                            'next_text' => '<i class="fas fa-chevron-right"></i>',
+                                'end_size' => 2,
+                                'mid_size' => 2,
+                                'prev_next' => true,
+                                'prev_text' => '<i class="fas fa-chevron-left"></i>',
+                                'next_text' => '<i class="fas fa-chevron-right"></i>',
                         ]);
                         ?>
                     </div>

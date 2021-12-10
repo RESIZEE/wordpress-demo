@@ -73,11 +73,7 @@
                     <div class="col-lg-9 single-content">
                         <?php get_template_part('template-parts/single-image') ?>
                         <div class="content">
-                            <?php if(has_content()) { ?>
-                                <p><?php the_content(); ?></p>
-                            <?php }else {
-                                get_template_part('template-parts/no-post-content');
-                            } ?>
+                            <p><?php the_content(); ?></p>
                         </div>
 
                         <!-- START OF COMMENT SECTION -->
