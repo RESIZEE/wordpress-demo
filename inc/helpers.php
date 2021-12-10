@@ -4,6 +4,10 @@ function has_content() {
     return strlen(get_the_content()) > 0;
 }
 
+
+
+// START OF CUSTOM COMMENT SECTION
+
 function custom_comments($comment, $args, $depth){
 
     if(get_comment_type() == 'pingback' || get_comment_type() == 'trackback') : ?>
@@ -29,4 +33,8 @@ function custom_comments($comment, $args, $depth){
             </div>
         </div>
     <?php endif; 
+
+} 
+// END OF CUSTOM COMMENT SECTION
 } ?>
+
