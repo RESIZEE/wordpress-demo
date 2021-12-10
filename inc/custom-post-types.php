@@ -2,8 +2,7 @@
 
 // Hook for adding custom post types
 add_action('init', 'demo_post_types');
-function demo_post_types()
-{
+function demo_post_types() {
     register_post_type(
         'movie',
         [
@@ -103,7 +102,7 @@ function demo_post_types()
             ],
             'description' => 'Reviews.',
             'public' => false,
-            'show_ui' => true,
+            'show_ui' => false,
             'menu_icon' => 'dashicons-star-filled',
             'supports' => ['title'],
         ]
