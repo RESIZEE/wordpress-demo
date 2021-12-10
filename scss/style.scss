@@ -83,12 +83,12 @@
 // END OF NAVBAR
 
 // START OF HERO
-.hero {
-  height: 90vh;
+.hero { 
+  height: 100vh;
   background-color: $img-placeholder;
 
   .container {
-    height: 90vh;
+    height: 100vh;
   }
 }
 
@@ -259,6 +259,7 @@ p {
 
 // START OF BLOG INDEX
 .blog-index {
+  margin-top: 6em;
   .blog-posts {
     padding-right: 8em;
 
