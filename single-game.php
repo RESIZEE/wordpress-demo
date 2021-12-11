@@ -5,7 +5,6 @@
         <section class="page-title single-post-type">
             <div class="container">
                 <div class="row">
-
                     <!-- DROPDOWN MENU -->
                     <?php
                     $postsInPostType = get_posts([
@@ -39,28 +38,28 @@
                     </div>
                     <!-- END OF TITLE AND RATE -->
 
-                        <!-- SIDE MENU -->
-                        <?php
-                        get_template_part('template-parts/genre-side-menu', null, ['genres' => $allGenres]);
-                        ?>
-                        <!-- END OF SIDE MENU -->
+                    <!-- SIDE MENU -->
+                    <?php
+                    get_template_part('template-parts/genre-side-menu', null, ['genres' => $allGenres]);
+                    ?>
+                    <!-- END OF SIDE MENU -->
 
-                        <div class="col-lg-9 single-content">
-                            <?php get_template_part('template-parts/single-image') ?>
-                            <div class="content">
-                                <p><?php the_content(); ?></p>
-                            </div>
-
-                            <!-- START OF REVIEW SECTION -->
-                            <?php get_template_part('template-parts/review-picker') ?>
-                            <!-- END OF REVIEW SECTION -->
-
-                            <!-- START OF COMMENT SECTION -->
-                            <?php get_template_part('template-parts/comments-section') ?>
-                            <!-- END OF COMMENT SECTION -->
+                    <div class="col-lg-9 single-content">
+                        <?php get_template_part('template-parts/single-image') ?>
+                        <div class="content">
+                            <p><?php the_content(); ?></p>
                         </div>
+
+                        <!-- START OF REVIEW SECTION -->
+                        <?php get_template_part('template-parts/review-picker') ?>
+                        <!-- END OF REVIEW SECTION -->
+
+                        <!-- START OF COMMENT SECTION -->
+                        <?php get_template_part('template-parts/comments-section') ?>
+                        <!-- END OF COMMENT SECTION -->
                     </div>
                 </div>
+            </div>
         </section>
         <!-- END OF PAGE TITLE -->
     </div>
