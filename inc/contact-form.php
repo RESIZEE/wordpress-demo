@@ -32,12 +32,12 @@ add_filter('manage_demo-contact_posts_columns', 'demo_contact_columns');
 
 function demo_contact_columns($columns)
 {
-    $columns = [];
-    $columns['title'] = 'Full Name';
-    $columns['message'] = 'Message';
-    $columns['email'] = 'E-mail';
-    $columns['date'] = 'Date';
-    return $columns;
+    $newColumns = [];
+    $newColumns['title'] = 'Full Name';
+    $newColumns['message'] = 'Message';
+    $newColumns['email'] = 'E-mail';
+    $newColumns['date'] = 'Date';
+    return $newColumns;
 }
 
 
@@ -83,12 +83,12 @@ function demo_save_contact_email_data($post_id)
 {
     //Check if nonce is not setted
     if (!isset($_POST['demo_contact_metabox_nonce'])) {
-        die("You did something wrong!");
+        return;
     }
 
     //Check if nonce is valid (genereted by WordPress and not manually)
     if (!wp_verify_nonce($_POST['demo_contact_metabox_nonce'], 'demo_save_contact_email_data')) {
-        die("You did something wrong!");
+        return;
     }
 
     //Check if is auto-saved or not
@@ -98,7 +98,7 @@ function demo_save_contact_email_data($post_id)
 
     //Check if user have permission
     if (!current_user_can('edit_post', $post_id)) {
-        die("You did something wrong!");
+        return;
     }
 
     //Check if we pass something inside email input
