@@ -75,6 +75,12 @@ if (post_password_required()) {
                                         'reverse_children' => null,
                                 ])
                                 ?>
+                                <div class="pagination">
+                                <?php paginate_comments_links(array(
+                                        'prev_text' => '<i class="fas fa-chevron-left"></i>',
+                                        'next_text' => '<i class="fas fa-chevron-right"></i>'
+                                )); ?> 
+                        </div>
                         </div>
                 <?php } ?>
 

@@ -6,7 +6,7 @@
         <!-- CATEGORY CARDS -->
         <div class=" cards row">
             <div class="col-md-10 title">
-                <h2><?php echo __('Movies', 'demo') ?></h2>
+                <h2><?php echo __('Movies', 'demo') ?> 🎬</h2>
             </div>
 
             <!-- START OF CONTAINER -->
@@ -39,7 +39,7 @@
         <!-- CATEGORY CARDS -->
         <div class=" cards row">
             <div class="col-md-10 title">
-                <h2><?php echo __('Books', 'demo') ?></h2>
+                <h2><?php echo __('Books', 'demo') ?> 📙</h2>
             </div>
 
             <!-- START OF CONTAINER -->
@@ -72,7 +72,7 @@
         <!-- CATEGORY CARDS -->
         <div class=" cards row">
             <div class="col-md-10 title">
-                <h2><?php echo __('Games', 'demo'); ?></h2>
+                <h2><?php echo __('Games', 'demo'); ?> 🕹</h2>
             </div>
 
             <!-- START OF CONTAINER -->
