@@ -46,7 +46,6 @@
                     <div class="col-lg-9 single-content">
                         <?php get_template_part('template-parts/single-image') ?>
                         <div class="content">
-
                             <p><?php the_content(); ?></p>
                         </div>
 
@@ -57,7 +56,6 @@
                         <!-- START OF COMMENT SECTION -->
                         <?php get_template_part('template-parts/comments-section') ?>
                         <!-- END OF COMMENT SECTION -->
-
                     </div>
                 </div>
             </div>
