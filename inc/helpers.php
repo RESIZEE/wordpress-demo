@@ -13,14 +13,14 @@ function review_score($postId = null) {
 
     // Getting all reviews for cerain post(movie, game, book)
     $reviewQuery = new WP_Query([
-            'post_type' => 'review',
-            'meta_query' => [
-                    [
-                            'key' => 'reviewed_post_id',
-                            'compare' => '=',
-                            'value' => $id,
-                    ],
+        'post_type' => 'review',
+        'meta_query' => [
+            [
+                'key' => 'reviewed_post_id',
+                'compare' => '=',
+                'value' => $id,
             ],
+        ],
     ]);
 
     $totalReviewsCount = $reviewQuery->found_posts;
@@ -33,7 +33,7 @@ function review_score($postId = null) {
     while($reviewQuery->have_posts()){
         $reviewQuery->the_post();
 
-        $sum += (int)get_field('review_score');
+        $sum += (int)$reviewQuery->post->review_score;
     }
 
     wp_reset_query();
@@ -51,21 +51,21 @@ function current_user_review_score($postId = null) {
 
     // Getting review score for cerain post(movie, game, book)
     $reviewQuery = new WP_Query([
-            'author' => get_current_user_id(),
-            'post_type' => 'review',
-            'meta_query' => [
-                    [
-                            'key' => 'reviewed_post_id',
-                            'compare' => '=',
-                            'value' => $id,
-                    ],
+        'author' => get_current_user_id(),
+        'post_type' => 'review',
+        'meta_query' => [
+            [
+                'key' => 'reviewed_post_id',
+                'compare' => '=',
+                'value' => $id,
             ],
+        ],
     ]);
 
     // If there is review with current users ID on current/provided post
     // return review score otherwise return false
     $reviewScore = $reviewQuery->found_posts ?
-            $reviewQuery->post->review_score : 0;
+        $reviewQuery->post->review_score : 0;
 
     wp_reset_query();
 
@@ -82,21 +82,21 @@ function current_user_has_reviewed($postId = null) {
 
     // Getting review for current user on current/provided post
     $reviewQuery = new WP_Query([
-            'author' => get_current_user_id(),
-            'post_type' => 'review',
-            'meta_query' => [
-                    [
-                            'key' => 'reviewed_post_id',
-                            'compare' => '=',
-                            'value' => $id,
-                    ],
+        'author' => get_current_user_id(),
+        'post_type' => 'review',
+        'meta_query' => [
+            [
+                'key' => 'reviewed_post_id',
+                'compare' => '=',
+                'value' => $id,
             ],
+        ],
     ]);
 
     // If there is review with current users ID on current/provided post
     // return review ID otherwise return false
     $hasReviewed = $reviewQuery->found_posts ?
-            $reviewQuery->post->ID : 0;
+        $reviewQuery->post->ID : 0;
 
     wp_reset_query();
 
