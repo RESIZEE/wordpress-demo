@@ -32,26 +32,12 @@
                                 <?php get_template_part('template-parts/review-score') ?>
                             </h4>
                         </div>
-                        <!-- END OF DROPDOWN MENU -->
-
-                        <!-- START OF EMPTY COLUMN -->
-                        <div class="col-3"></div>
-                        <!-- END OF EMPTY COLUMN -->
-
-                        <!-- START OF TITLE AND RATE -->
-                        <div class="title-rate col-lg-9 d-lg-flex justify-content-between">
-                            <!-- RATE -->
-                            <div class="rate order-lg-2">
-                                <h4 class="rate d-flex align-items-center">
-                                    <?php get_template_part('template-parts/review-score') ?>
-                                </h4>
-                            </div>
-                            <!-- TITLE -->
-                            <div class="title order-lg-1">
-                                <h1><?php the_title(); ?></h1>
-                            </div>
+                        <!-- TITLE -->
+                        <div class="title order-lg-1">
+                            <h1><?php the_title(); ?></h1>
                         </div>
-                        <!-- END OF TITLE AND RATE -->
+                    </div>
+                    <!-- END OF TITLE AND RATE -->
 
                         <!-- SIDE MENU -->
                         <?php
