@@ -43,6 +43,7 @@
                     get_template_part('template-parts/genre-side-menu', null, ['genres' => $allGenres]);
                     ?>
                     <!-- END OF SIDE MENU -->
+
                     <div class="col-lg-9 single-content">
                         <?php get_template_part('template-parts/single-image') ?>
                         <div class="content">
