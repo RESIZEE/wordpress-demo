@@ -11,6 +11,6 @@ require_once 'inc/helpers.php';
 require_once 'inc/review-resources.php';
 require_once 'inc/search-resources.php';
 require_once 'inc/filters.php';
-require 'inc/contact-form.php';
-require 'inc/shortcodes.php';
-
+require_once 'inc/contact-form.php';
+require_once 'inc/shortcodes.php';
+require_once 'inc/ajax.php';

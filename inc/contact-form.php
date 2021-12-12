@@ -58,6 +58,7 @@ function demo_contact_custom_columns($column, $post_id)
     }
 }
 
+
 //Custom meta boxes for contact
 add_action('add_meta_boxes', 'demo_contact_add_meta_box');
 function demo_contact_add_meta_box()

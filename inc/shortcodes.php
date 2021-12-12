@@ -13,5 +13,8 @@ function demo_contact_form($atts, $content = null)
     );
 
     //Return HTML
-    return 'This is contact form';
+    ob_start();
+    include 'templates/contact-form.php';
+
+    return ob_get_clean();
 }
