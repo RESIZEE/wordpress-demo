@@ -1,5 +1,5 @@
 <?php
 
-require "templates/view-all-btn.php";
-require "templates/comments-section.php";
+require_once "templates/view-all-btn.php";
+require_once "templates/comments-section.php";
 
