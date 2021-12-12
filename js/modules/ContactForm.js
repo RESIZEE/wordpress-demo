@@ -12,7 +12,7 @@ class ContactForm {
         $("#demo-contact-form").on("submit", this.submitCallback);
     }
 
-    submitCallback() {
+    submitCallback(e) {
         e.preventDefault();
 
         let form = $(this);
