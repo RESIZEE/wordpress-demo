@@ -13,5 +13,5 @@ const search = new Search();
 
 
 //Contact form
-import Contact from './modules/ContactForm';
-const contact = new Contact();
+import ContactForm from './modules/ContactForm';
+const contact = new ContactForm();
