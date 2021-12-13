@@ -110,12 +110,17 @@ ul {
   }
 }
 
+form{
+  .btn{
+    margin-top: 2em;
+  }
+}
 input,
 textarea {
   padding: 0.5em 1em;
   border: none;
   border-radius: 0.2em;
-  margin: 2em 0;
+  margin-top: 2em;
 
   &::placeholder {
     color: $black;

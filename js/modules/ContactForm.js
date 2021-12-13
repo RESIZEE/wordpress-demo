@@ -17,24 +17,38 @@ class ContactForm {
 
         let form = $(this);
 
+        $('.is-invalid').removeClass('is-invalid').addClass('is-valid');
+
         let name = form.find("#name").val(),
             email = form.find("#email").val(),
-            message = form.find("#message").val(),
-            ajaxurl = form.data("url");
+            message = form.find("#message").val();
 
-        if (name == "" || email == "" || message == "") {
-            console.log("empty");
+        // Validation
+        if (name == "") {
+            $('#name').addClass('is-invalid');
+            return;
+        }
+
+        if (email == "") {
+            $('#email').addClass('is-invalid');
+            return;
+        }
+
+        if (message == "") {
+            $('#message').addClass('is-invalid');
             return;
         }
 
         $.ajax({
-            url: ajaxurl,
+            url: `${demoData.rootUrl}/wp-json/demo/v1/contact`,
+            headers: {
+                'X-WP-Nonce': demoData.nonce,
+            },
             type: "POST",
             data: {
                 name: name,
                 email: email,
                 message: message,
-                action: "demo_save_user_contact_form",
             },
             success: (response) => {
                 if (response == 0) {

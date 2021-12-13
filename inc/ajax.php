@@ -1,9 +1,16 @@
 <?php
 
-// AJAX functions
-
-add_action('wp_ajax_nopriv_demo_save_user_contact_form', 'demo_save_contact');
-add_action('wp_ajax_demo_save_user_contact_form', 'demo_save_contact');
+add_action('rest_api_init', 'demo_contact_routes');
+function demo_contact_routes() {
+    register_rest_route(
+        'demo/v1',
+        'contact',
+        [
+            'methods' => 'POST',
+            'callback' => 'demo_save_contact',
+        ]
+    );
+}
 
 function demo_save_contact()
 {
