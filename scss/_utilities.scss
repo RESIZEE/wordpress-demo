@@ -172,3 +172,15 @@ button {
   object-fit: cover;
 }
 
+.card-image-container-search {
+  height: 450px;
+  width: 280px;
+}
+
+.link-list{
+  flex-direction: column;
+
+  li{
+    margin-bottom: 1rem;
+  }
+}

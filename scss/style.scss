@@ -78,6 +78,16 @@
       color: $pure-white;
     }
   }
+
+  .search-trigger{
+    cursor: pointer;
+    margin-left: 1.5rem;
+    color: $pure-white;
+
+    &:hover{
+      color: $yellow
+    }
+  }
 }
 
 // END OF NAVBAR
@@ -386,3 +396,105 @@ footer {
 //}
 
 // END OF REVIEWS
+
+// START OF SEARCH
+.search-overlay{
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 110;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, .96);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transform: scale(1.09);
+          transform: scale(1.09);
+  transition: opacity .3s, visibility .3s, -webkit-transform .3s;
+  transition: opacity .3s, transform .3s, visibility .3s;
+  transition: opacity .3s, transform .3s, visibility .3s, -webkit-transform .3s;
+  box-sizing: border-box;
+
+  p{
+    padding-top: 15px;
+  }
+
+  .event-summary p {
+    padding-top: 0;
+  }
+
+  .event-summary {
+    margin-bottom: 0;
+    margin-top: 20px;
+  }
+
+  .search-overlay__top {
+    background-color: $black;
+    height: 10vh;
+
+    .search-overlay__icon {
+      margin-right: 10px;
+      font-size: 1.8rem;
+      color: $yellow;
+    }
+
+    .search-term{
+      font-size: 1.5rem;
+      color: $yellow;
+      background-color: transparent;
+      outline: none;
+
+      &::placeholder{
+        color: $yellow;
+      }
+    }
+
+    .search-overlay__close {
+      font-size: 2.1rem;
+      cursor: pointer;
+      transition: all .3s;
+      background-color: $black;
+      color: $yellow;
+    }
+
+    .search-overlay__results{
+      margin-top: 2rem !important;
+    }
+  }
+}
+
+.search-overlay--active {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.body-no-scroll {
+  overflow: hidden;
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.spinner-loader {
+  margin-top: 45px;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  border: 0.25rem solid rgba(0, 0, 0, 0.2);
+  border-top-color: black;
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
+}
+// END OF SEARCH

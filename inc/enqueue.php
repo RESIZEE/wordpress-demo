@@ -41,4 +41,9 @@ function demo_resources() {
             'nonce' => wp_create_nonce('wp_rest'),
         ]
     );
+
+    /* Search */
+    wp_localize_script('demo-main-bundled', 'demoData', array(
+        'root_url' => get_site_url()
+    ));
 }
