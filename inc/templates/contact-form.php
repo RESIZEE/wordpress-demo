@@ -1,3 +1,12 @@
+<div class="contact-alert alert alert-info form-submited" role="alert">
+    <span>Sending message, please wait...</span>
+</div>
+<div class="contact-alert alert alert-success form-success" role="alert">
+    <span>Your message was sent successfuly, thank you!</span>
+</div>
+<div class="contact-alert alert alert-danger form-error" role="alert">
+    <span>There was a problem sending your message, please try again later.</span>
+</div>
 <form id="demo-contact-form" action="">
     <div class="form-group">
         <input type="text" class="form-control" name="name" id="name" placeholder="Your Name">

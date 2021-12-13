@@ -18,6 +18,7 @@ class ContactForm {
         let form = $(this);
 
         $('.is-invalid').removeClass('is-invalid').addClass('is-valid');
+        $(".show-feedback").removeClass('show-feedback');
 
         let name = form.find("#name").val(),
             email = form.find("#email").val(),
@@ -39,6 +40,9 @@ class ContactForm {
             return;
         }
 
+        form.find('input, button, textarea').attr('disabled','disabled');
+        $('.form-submited').addClass('show-feedback');
+
         $.ajax({
             url: `${demoData.rootUrl}/wp-json/demo/v1/contact`,
             headers: {
@@ -52,12 +56,27 @@ class ContactForm {
             },
             success: (response) => {
                 if (response == 0) {
-                    console.log("Unable to save post");
+                    setTimeout(function(){
+                        $('.form-submited').removeClass('show-feedback');
+                        $('.form-error').addClass('show-feedback');
+                        form.find('input, button, textarea').removeAttr('disabled');
+                    },1000);
+                    
                 } else {
-                    console.log("Message saved");
+                    setTimeout(function(){
+                        $('.form-submited').removeClass('show-feedback');
+                        $('.form-success').addClass('show-feedback');
+                        form.find('input, button, textarea').removeAttr('disabled').val('');
+                    },1000);
+                    
                 }
             },
             error: (response) => {
+                setTimeout(function(){
+                    $('.form-submited').removeClass('show-feedback');
+                    $('.form-error').addClass('show-feedback');
+                    form.find('input, button, textarea').removeAttr('disabled');
+                },1000);
                 console.log(response);
             },
         });
