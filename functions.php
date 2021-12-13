@@ -8,4 +8,5 @@ require_once 'inc/theme-support.php';
 require_once 'inc/adjust-queries.php';
 require_once 'inc/helpers.php';
 require_once 'inc/review-resources.php';
+require_once 'inc/search-resources.php';
 require_once 'inc/filters.php';

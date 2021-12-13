@@ -44,7 +44,7 @@ class Search{
     }
 
     getResults(){
-        $.getJSON(demoData.root_url + '/wp-json/demo/v1/search?term=' + this.searchField.val(), results => {
+        $.getJSON(demoData.rootUrl + '/wp-json/demo/v1/search?term=' + this.searchField.val(), results => {
             this.resultsDiv.html(`
                 <div class="row">
                     <div class="col-lg-3">
@@ -55,7 +55,7 @@ class Search{
                     </div>
                     <div class="col-lg-3">
                         <h3 class="search-overlay__section-title my-4 text-center">Movies</h3>
-                        ${results.movies.length ? '<ul class="link-list min-list p-0">' : `<p>No movie matches that search. <a href="${demoData.root_url}/movies">View all movies here.</a></p>`}
+                        ${results.movies.length ? '<ul class="link-list min-list p-0">' : `<p>No movie matches that search. <a href="${demoData.rootUrl}/movies">View all movies here.</a></p>`}
                         ${results.movies.map(item => `
                             <div class="single-card mb-3">
                                 <a href="${item.permalink}">
@@ -77,7 +77,7 @@ class Search{
                     </div>
                     <div class="col-lg-3">
                         <h3 class="search-overlay__section-title my-4 text-center">Books</h3>
-                        ${results.books.length ? '<ul class="link-list min-list p-0">' : `<p>No book matches that search. <a href="${demoData.root_url}/books">View all books here.</a></p>`}
+                        ${results.books.length ? '<ul class="link-list min-list p-0">' : `<p>No book matches that search. <a href="${demoData.rootUrl}/books">View all books here.</a></p>`}
                         ${results.books.map(item => `
                             <div class="single-card mb-3">
                                 <a href="${item.permalink}">
@@ -99,7 +99,7 @@ class Search{
                     </div>
                     <div class="col-lg-3">
                         <h3 class="search-overlay__section-title my-4 text-center">Games</h3>
-                        ${results.games.length ? '<ul class="link-list min-list p-0">' : `<p>No game matches that search. <a href="${demoData.root_url}/games">View all games here.</a></p>`}
+                        ${results.games.length ? '<ul class="link-list min-list p-0">' : `<p>No game matches that search. <a href="${demoData.rootUrl}/games">View all games here.</a></p>`}
                         ${results.games.map(item => `
                             <div class="single-card mb-3">
                                 <a href="${item.permalink}">
