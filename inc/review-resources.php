@@ -11,9 +11,9 @@ function demo_review_routes() {
     );
 }
 
-$allowedReviewPostTypes = ['movie', 'book', 'game',];
-
 function create_or_update_review($data) {
+    $allowedReviewPostTypes = ['movie', 'book', 'game',];
+    
     $postId = sanitize_text_field($data['reviewed_post_id']);
     $reviewScore = (int)sanitize_text_field($data['review_score']);
 

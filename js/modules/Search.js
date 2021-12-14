@@ -155,7 +155,7 @@ class Search{
                 <div class="container d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
                         <i class="fa fa-search search-overlay__icon" aria-hidden="true"></i>
-                        <input type="text" class="search-term" placeholder="What are you looking for?" id="search-term">
+                        <input type="text" class="search-term" placeholder="Search..." id="search-term">
                     </div>                
                     <i class="fa fa-window-close search-overlay__close" aria-hidden="true"></i>
                 </div>

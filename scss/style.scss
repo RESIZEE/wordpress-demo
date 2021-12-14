@@ -79,6 +79,12 @@
     }
   }
 
+  .navbar-toggler{
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+
   .search-trigger{
     cursor: pointer;
     margin-left: 1.5rem;
@@ -441,7 +447,7 @@ footer {
     }
 
     .search-term{
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       color: $yellow;
       background-color: transparent;
       outline: none;

@@ -21,6 +21,7 @@ function demoRegisterSearch(){
 }
 
 function demoSearchResults($data){
+    $allowedReviewPostTypes = ['movie', 'book', 'game',];
     $post_type_query = new WP_Query([
         'post_type' => $allowedReviewPostTypes,
         's' => sanitize_text_field($data['term']) 
