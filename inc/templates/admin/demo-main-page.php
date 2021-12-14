@@ -7,6 +7,5 @@
     do_settings_sections( 'resize_demo' );
     submit_button();
     ?>
-
 </form>
 
