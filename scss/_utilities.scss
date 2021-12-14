@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
 @font-face {
   font-family: "Open Sans";
@@ -110,24 +110,29 @@ ul {
   }
 }
 
-input {
+form {
+  .btn {
+    margin-top: 2em;
+  }
+}
+input,
+textarea {
   padding: 0.5em 1em;
   border: none;
   border-radius: 0.2em;
-
-  &[type="email"] {
-    width: 80%;
-    margin-right: 0.5em;
-
-    @include media-breakpoint-down(md) {
-      width: 100%;
-      margin-right: 0;
-    }
-  }
+  margin-top: 2em;
 
   &::placeholder {
     color: $black;
   }
+}
+
+.contact-alert {
+  display: none;
+}
+
+.show-feedback {
+  display: block;
 }
 
 button {
@@ -143,7 +148,8 @@ button {
   display: inline-block;
   margin-top: 3em;
 
-  a, span {
+  a,
+  span {
     color: $black;
     font-weight: bold;
     padding: 0.4em 0.8em;

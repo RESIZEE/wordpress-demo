@@ -1,7 +1,8 @@
 <?php
 
 add_action('after_setup_theme', 'demo_features');
-function demo_features() {
+function demo_features()
+{
     //Post-type features
     add_theme_support('post-thumbnails');
 
@@ -28,14 +29,29 @@ include_once(ACF_PATH . 'acf.php');
 
 // Customize the url setting to fix incorrect asset URLs.
 add_filter('acf/settings/url', 'demo_acf_settings_url');
-function demo_acf_settings_url($url) {
+function demo_acf_settings_url($url)
+{
     return ACF_URL;
 }
 
 // Hide/Show ACF in Admin Panel, HIDE FOR PRODUCTION
 add_filter('acf/settings/show_admin', 'demo_acf_settings_show_admin');
-function demo_acf_settings_show_admin($show_admin) {
+function demo_acf_settings_show_admin($show_admin)
+{
     return true;
 }
 
 require_once 'custom-fields.php';
+
+
+function mailtrap($phpmailer)
+{
+    $phpmailer->isSMTP();
+    $phpmailer->Host = 'smtp.mailtrap.io';
+    $phpmailer->SMTPAuth = true;
+    $phpmailer->Port = 2525;
+    $phpmailer->Username = '0120359271df8c';
+    $phpmailer->Password = 'e729e71e2057be';
+}
+
+add_action('phpmailer_init', 'mailtrap');
