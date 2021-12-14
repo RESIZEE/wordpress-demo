@@ -36,3 +36,16 @@ function add_class_to_nav_menu($classes, $item, $args) {
 
     return $classes;
 }
+
+// Edit default columns in post type
+add_filter('manage_demo-contact_posts_columns', 'demo_contact_columns');
+
+function demo_contact_columns($columns)
+{
+    $newColumns = [];
+    $newColumns['title'] = 'Full Name';
+    $newColumns['message'] = 'Message';
+    $newColumns['email'] = 'E-mail';
+    $newColumns['date'] = 'Date';
+    return $newColumns;
+}

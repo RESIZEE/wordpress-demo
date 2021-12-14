@@ -3,6 +3,7 @@
 // Hook for adding custom post types
 add_action('init', 'demo_post_types');
 function demo_post_types() {
+    // ---MOVIE CUSTOM POST TYPE--- //
     register_post_type(
         'movie',
         [
@@ -32,6 +33,8 @@ function demo_post_types() {
             ],
         ]
     );
+
+    // ---BOOK CUSTOM POST TYPE--- //
     register_post_type(
         'book',
         [
@@ -61,6 +64,8 @@ function demo_post_types() {
             ],
         ]
     );
+
+    // ---GAME CUSTOM POST TYPE--- //
     register_post_type(
         'game',
         [
@@ -86,6 +91,8 @@ function demo_post_types() {
             ],
         ]
     );
+
+    // ---REVIEW CUSTOM POST TYPE--- //
     register_post_type(
         'review',
         [
@@ -108,6 +115,32 @@ function demo_post_types() {
         ]
     );
 
+
+    // ---CONTACT CUSTOM POST TYPE--- //
+    register_post_type('demo-contact', [
+        'labels' => [
+            'name' => __('Messages', 'demo'),
+            'singular_name' => __('Message', 'demo'),
+            'add_new_item' => __('Add New Message', 'demo'),
+            'edit_item' => __('Edit Message', 'demo'),
+            'all_items' => __('All Messages', 'demo'),
+            'view_item' => __('View Message', 'demo'),
+            'name_admin_bar' => __('Message', 'demo')
+        ],
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'supports' => [
+            'title',
+            'editor',
+            'author'
+        ],
+        'menu_icon' => 'dashicons-email-alt'
+    ]);
+
+
+    // ===CUSTOM TAXONOMIES=== //
     register_taxonomy(
         'genre',
         [
@@ -137,4 +170,22 @@ function demo_post_types() {
             'query_var' => false,
         ]
     );
+}
+
+
+//---CUSTOM COLUMNS FOR POST TYPES---//
+add_action('manage_demo-contact_posts_custom_column', 'demo_contact_custom_columns', 10, 2);
+
+function demo_contact_custom_columns($column, $post_id)
+{
+    switch ($column) {
+        case 'message':
+            echo get_the_excerpt();
+            break;
+
+        case 'email':
+            $email = get_post_meta($post_id, '_contact_email_value_key', true);
+            echo '<a href="mailto:' . $email . '">' . $email . '</a>';
+            break;
+    }
 }
