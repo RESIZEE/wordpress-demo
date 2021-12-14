@@ -29,11 +29,29 @@ function demo_save_contact()
             '_contact_email_value_key' => $email
         ]
     ];
-    //WP Insert Post -  Insert fields (create/update) in wp database and returns ID of created post
+    //WP Insert Post -  Insert fields (create/update) in wp database and returns ID of created post or 0 if fail
     $postID = wp_insert_post($args);
 
-    // this is always the post ID, meaning success  
-    echo $postID;
+    //Check if message is saved
+    if($postID !== 0){
+
+        //Send Email to administrator
+        $to = get_bloginfo('admin_email');  
+        $subject = 'Demo Contact Form - '. $name;
+
+        $headers[] = 'From: '.get_bloginfo('name').'<'.$to.'>';
+        $headers[] = 'Replay-To'.$name.'<'.$email.'>';
+        $headers[] = 'Content-Type: text/html: charset=UTF-8';
+
+
+        wp_mail($to,$subject,$message,$headers);
+        
+        echo $postID;
+    } else{
+        echo 0;
+    }
+
+    
 
     die();
 }
