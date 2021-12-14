@@ -41,22 +41,24 @@ function demo_main_menu_page() {
 	require_once 'templates/admin/demo-main-page.php';
 }
 
-
 function demo_forms_page() {
 	require_once 'templates/admin/demo-forms-page.php';
 }
 
-/* END MENU SECTION */
-
-
-/* SETTINGS SECTION */
 function demo_custom_settings() {
 	/* General settings */
 	register_setting(
 		'demo-settings-group',
-		'name',
+		'acf_active',
 		[
-			'default' => 'RESIZE',
+			'default' => false,
+		]
+	);
+	register_setting(
+		'demo-settings-group',
+		'newsletter_active',
+		[
+			'default' => true,
 		]
 	);
 	add_settings_section(
@@ -66,70 +68,107 @@ function demo_custom_settings() {
 		'resize_demo',
 	);
 	add_settings_field(
-		'name',
-		'Name',
-		'demo_general_settings_name',
+		'general-acf-active',
+		'Activate ACF Plugin',
+		'demo_general_settings_acf_active',
+		'resize_demo',
+		'demo-general-settings',
+	);
+	add_settings_field(
+		'general-newsletter-active',
+		'Activate Newsletter',
+		'demo_general_settings_newsletter_active',
 		'resize_demo',
 		'demo-general-settings',
 	);
 
 	/* Forms settings */
-	register_setting(
-		'demo-newsletter-form-group',
-		'newsletter_form_display',
-		[
-			'default' => true,
-		]
-	);
-	register_setting(
-		'demo-newsletter-form-group',
-		'newsletter_form_placeholder',
-		[
-			'default' => 'Email',
-		]
-	);
-	add_settings_section(
-		'demo-newsletter-form',
-		'Newsletter Form Settings',
-		'demo_newsletter_form',
-		'resize_demo_forms',
-	);
-	add_settings_field(
-		'newsletter-form-display',
-		'Display Default Newsletter Form',
-		'demo_newsletter_form_display',
-		'resize_demo_forms',
-		'demo-newsletter-form',
-	);
-	add_settings_field(
-		'newsletter-form-placeholder',
-		'Newsletter Input Placeholder',
-		'demo_newsletter_form_placeholder',
-		'resize_demo_forms',
-		'demo-newsletter-form',
-	);
+	if ( get_option( 'newsletter_active' ) ) {
+		register_setting(
+			'demo-newsletter-form-group',
+			'newsletter_display',
+			[
+				'default' => false,
+			]
+		);
+		register_setting(
+			'demo-newsletter-form-group',
+			'newsletter_placeholder',
+			[
+				'default' => 'Email',
+			],
+		);
+		add_settings_section(
+			'demo-newsletter-form',
+			'Newsletter Form Settings',
+			'demo_newsletter_form',
+			'resize_demo_forms',
+		);
+		add_settings_field(
+			'newsletter-form-active',
+			'Display Default Newsletter Form',
+			'demo_newsletter_form_display',
+			'resize_demo_forms',
+			'demo-newsletter-form',
+		);
+		add_settings_field(
+			'newsletter-form-placeholder',
+			'Newsletter Input Placeholder',
+			'demo_newsletter_form_placeholder',
+			'resize_demo_forms',
+			'demo-newsletter-form',
+		);
+	}
 }
 
+/* END MENU SECTION */
+
+
+/* SETTINGS SECTION */
+// Main page
 function demo_general_settings() {
 	echo 'Customize general settings.';
 }
 
-function demo_general_settings_name() {
-	$name = esc_attr( get_option( 'name', 'RESIZE' ) );
-	echo '<input type="text" name="name" placeholder="Name..." value="' . $name . '">';
+function demo_general_settings_acf_active() {
+	$checked = esc_attr( get_option( 'acf_active' ) ) ? 'checked' : '';
+	echo '<input type="checkbox" name="acf_active" ' . $checked . '>';
 }
 
+function demo_general_settings_newsletter_active() {
+	$checked = esc_attr( get_option( 'newsletter_active' ) ) ? 'checked' : '';
+	echo '<input type="checkbox" name="newsletter_active" ' . $checked . '>';
+}
+
+//Forms - Newsletter
 function demo_newsletter_form() {
 	echo 'Customize newsletter form settings.';
 }
 
 function demo_newsletter_form_display() {
-	$checked = esc_attr( get_option( 'newsletter_form_display' ) ) ? 'checked' : '';
-	echo '<input type="checkbox" name="newsletter_form_display" ' . $checked . '>';
+	$checked = esc_attr( get_option( 'newsletter_display' ) ) ? 'checked' : '';
+	echo '<input type="checkbox" name="newsletter_display" ' . $checked . '>';
 }
 
 function demo_newsletter_form_placeholder() {
-	$placeholder = esc_attr( get_option( 'newsletter_form_placeholder' ) );
-	echo '<input type="text" name="newsletter_form_placeholder" placeholder="Placeholder..." value="' . $placeholder . '">';
+	$placeholder = esc_attr( get_option( 'newsletter_placeholder' ) );
+	$description = __( 'This value will be shown inside input field of default newsletter form in footer.', 'demo' );
+	echo
+		'<input type="text" name="newsletter_placeholder" placeholder="Placeholder..." value="' . $placeholder . '">' .
+		field_description( $description );
 }
 /* END SETTINGS SECTION */
+
+// Validation and sanitization of field with appropriate error
+//function demo_sanitize_validate_newsletter_placeholder( $input ) {
+//	if ( empty( $input ) ) {
+//		$message = __( 'Newsletter placeholder must not be empty.', 'demo' );
+//		add_settings_error(
+//			'newsletter_form_placeholder',
+//			'newsletter-form-placeholder-error',
+//			$message,
+//		);
+//	}
+//
+//	return $input;
+//}

@@ -12,3 +12,4 @@ require_once 'inc/rest-api.php';
 require_once 'inc/filters.php';
 require_once 'inc/custom-meta.php';
 require_once 'inc/shortcodes.php';
+require_once 'inc/admin.php';

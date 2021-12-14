@@ -25,11 +25,11 @@
             </div>
 
             <!-- FOOTER 3 -->
-            <?php if ( get_option( 'newsletter_form_display' ) ) { ?>
+            <?php if ( get_option( 'newsletter_display' ) && get_option( 'newsletter_active' ) ) { ?>
                 <div class="footer3 col-lg-6 col-12">
                     <h4>Newsletter</h4>
                     <form class="form">
-                        <input type="email" placeholder="<?php echo get_option( 'newsletter_form_placeholder' ) ?>">
+                        <input type="email" placeholder="<?php echo get_option( 'newsletter_placeholder' ) ?>">
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-chevron-right"></i>
                         </button>
