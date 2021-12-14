@@ -151,11 +151,11 @@ function demo_contact_routes()
     );
 }
 
-function demo_save_contact()
+function demo_save_contact($data)
 {
-    $name = wp_strip_all_tags($_POST["name"]);
-    $email = wp_strip_all_tags($_POST["email"]);
-    $message = wp_strip_all_tags($_POST["message"]);
+    $name = sanitize_text_field($data["name"]);
+    $email = sanitize_text_field($data["email"]);
+    $message = sanitize_text_field($data["message"]);
 
 
     $args = [
