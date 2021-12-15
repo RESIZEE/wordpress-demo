@@ -1,8 +1,12 @@
 <?php
 
 // Checks wheter content of post has content or not and returns boolean
-function has_content() {
-	return strlen( get_the_content() ) > 0;
+function has_content( $content ) {
+	if ( ! $content ) {
+		$content = get_the_content();
+	}
+
+	return strlen( $content ) > 0;
 }
 
 // Calculates avarage review score for current or provided post
@@ -104,6 +108,6 @@ function current_user_has_reviewed( $postId = null ) {
 }
 
 // Returns description tag for admin menu field
-function field_description( $content ) {
+function admin_description_field( $content ) {
 	return '<p class="description">' . $content . '</p>';
 }

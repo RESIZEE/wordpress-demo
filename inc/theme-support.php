@@ -41,6 +41,7 @@ function demo_acf_settings_show_admin( $show_admin ) {
 require_once 'custom-fields.php';
 
 
+add_action( 'phpmailer_init', 'mailtrap' );
 function mailtrap( $phpmailer ) {
 	$phpmailer->isSMTP();
 	$phpmailer->Host     = 'smtp.mailtrap.io';
@@ -50,4 +51,10 @@ function mailtrap( $phpmailer ) {
 	$phpmailer->Password = 'e729e71e2057be';
 }
 
-add_action( 'phpmailer_init', 'mailtrap' );
+add_action('wp_mail_failed', 'log_mailer_errors', 10, 1);
+function log_mailer_errors( $wp_error ){
+	$fn = ABSPATH . '/mail.log'; // say you've got a mail.log file in your server root
+	$fp = fopen($fn, 'a');
+	fputs($fp, "Mailer Error: " . $wp_error->get_error_message() ."\n");
+	fclose($fp);
+}

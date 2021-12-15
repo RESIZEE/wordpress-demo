@@ -22,7 +22,7 @@ class Review {
         if(!currentElement.attr('data-star-checked')) {
             currentElement.removeClass('far').addClass('fas');
             currentElement.prevAll('i').removeClass('far').addClass('fas');
-        }else {
+        } else {
             currentElement.nextAll('i').removeClass('fas').addClass('far');
         }
     }
@@ -34,7 +34,7 @@ class Review {
             // Stars that are clicked do not get emptied all others do
             if(!currentElement.attr('data-star-checked')) {
                 currentElement.removeClass('fas').addClass('far');
-            }else {
+            } else {
                 currentElement.removeClass('far').addClass('fas');
             }
         });
@@ -65,10 +65,22 @@ class Review {
                 'review_score': reviewScore,
             },
             success: (response) => {
+                let successAlert = $('#success-alert');
+
+                successAlert.removeClass('d-none');
+                setTimeout(() => successAlert.addClass('d-none'), 3000);
+
+                successAlert.html(response.success);
+
                 $('.review-score').html(response.review_score);
             },
             error: (response) => {
-                console.log(response);
+                let errorAlert = $('#error-alert');
+
+                errorAlert.removeClass('d-none');
+                setTimeout(() => errorAlert.addClass('d-none'), 3000);
+
+                errorAlert.html(response.error);
             },
         });
     }

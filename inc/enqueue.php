@@ -50,10 +50,28 @@ function demo_admin_resources( $hook ) {
 	if ( strpos( $hook, 'resize_demo' ) === false ) {
 		return;
 	}
+	/* Styles */
 	wp_enqueue_style(
 		'demo-admin-main',
 		get_theme_file_uri( '/css/admin/admin.css' ),
 		null,
 		microtime(),
+	);
+
+	/* Scripts */
+	wp_enqueue_script(
+		'demo-admin-main-bundled',
+		get_theme_file_uri( '/js/admin/scripts-bundled.js' ),
+		null,
+		microtime(),
+		true,
+	);
+	wp_localize_script(
+		'demo-admin-main-bundled',
+		'demoData',
+		[
+			'rootUrl' => get_site_url(),
+			'nonce'   => wp_create_nonce( 'wp_rest' ),
+		]
 	);
 }
