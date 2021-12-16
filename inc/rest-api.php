@@ -172,9 +172,10 @@ function demo_save_contact( $data ) {
 		$to      = get_bloginfo( 'admin_email' );
 		$subject = 'Demo Contact Form - ' . $name;
 
-		$headers[] = 'From: ' . get_bloginfo( 'name' ) . '<' . $to . '>';
-		$headers[] = 'Replay-To' . $name . '<' . $email . '>';
-		$headers[] = 'Content-Type: text/html: charset=UTF-8';
+
+        $headers[] = 'From: ' . get_bloginfo('name') . '<' . $to . '>';
+        $headers[] = 'Replay-To' . $name . '<' . $email . '>';
+        $headers[] = 'Content-Type: text/html; charset=UTF-8';
 
 
 		wp_mail( $to, $subject, $message, $headers );
