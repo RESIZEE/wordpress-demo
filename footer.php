@@ -25,9 +25,9 @@
             </div>
 
             <!-- FOOTER 3 -->
-            <?php if ( get_option( 'newsletter_display' ) && get_option( 'newsletter_active' ) ) { ?>
+            <?php if ( get_option( 'newsletter_display', false ) && get_option( 'newsletter_active', true ) ) { ?>
                 <div class="footer3 col-lg-6 col-12">
-                    <h4><?php __( 'Newsletter', 'demo' ) ?></h4>
+                    <h4><?php echo __( 'Newsletter', 'demo' ) ?></h4>
                     <?php
                     get_template_part(
                             'template-parts/alerts/error',
@@ -42,7 +42,7 @@
                     ?>
                     <form class="form">
                         <input id="newsletter-email" type="email"
-                               placeholder="<?php echo get_option( 'newsletter_placeholder' ) ?>">
+                               placeholder="<?php echo get_option( 'newsletter_placeholder', 'Email' ) ?>">
                         <button id="newsletter-button" type="submit" class="btn btn-primary">
                             <i class="fas fa-chevron-right"></i>
                         </button>
