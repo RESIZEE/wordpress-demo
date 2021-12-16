@@ -86,7 +86,7 @@ function demo_custom_settings() {
 	if ( get_option( 'newsletter_active' ) ) {
 		// General Form Settings section
 		register_setting(
-			'demo-forms-general-settings-group',
+			'demo-form-group',
 			'forms_from_email',
 			[
 				'default' => get_bloginfo( 'admin_email' ),
@@ -108,28 +108,28 @@ function demo_custom_settings() {
 
 		// General newsletter settings section
 		register_setting(
-			'demo-newsletter-form-group',
+			'demo-form-group',
 			'newsletter_display',
 			[
 				'default' => false,
 			]
 		);
 		register_setting(
-			'demo-newsletter-form-group',
+			'demo-form-group',
 			'newsletter_placeholder',
 			[
 				'default' => 'Email',
 			],
 		);
 		register_setting(
-			'demo-newsletter-form-group',
+			'demo-form-group',
 			'newsletter_success_message',
 			[
 				'default' => __( 'Successfully subscribed to newsletter.' ),
 			],
 		);
 		register_setting(
-			'demo-newsletter-form-group',
+			'demo-form-group',
 			'newsletter_error_message',
 			[
 				'default' => __( 'Invalid e-mail input.' ),

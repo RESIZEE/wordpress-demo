@@ -3,8 +3,7 @@
 <?php settings_errors(); ?>
 <form action="options.php" method="POST" id="newsletter-form">
     <?php
-    settings_fields( 'demo-newsletter-form-group' );
-    settings_fields( 'demo-forms-general-settings-group' );
+    settings_fields( 'demo-form-group' );
     do_settings_sections( 'resize_demo_forms' );
     submit_button();
     ?>
