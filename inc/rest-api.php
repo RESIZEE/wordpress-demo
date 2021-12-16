@@ -180,7 +180,7 @@ function demo_save_contact($data)
 
         $headers[] = 'From: ' . get_bloginfo('name') . '<' . $to . '>';
         $headers[] = 'Replay-To' . $name . '<' . $email . '>';
-        $headers[] = 'Content-Type: text/html: charset=UTF-8';
+        $headers[] = 'Content-Type: text/html; charset=UTF-8';
 
 
         wp_mail($to, $subject, $message, $headers);
