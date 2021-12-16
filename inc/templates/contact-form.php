@@ -36,5 +36,5 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Send</button>
+    <button type="submit" class="btn btn-primary mt-4">Send</button>
 </form>

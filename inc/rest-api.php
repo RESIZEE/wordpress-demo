@@ -74,7 +74,7 @@ function demoRegisterSearch() {
 
 //---DEMO SEARCH API---//
 function demoSearchResults( $data ) {
-	$allowedReviewPostTypes = [ 'movie', 'book', 'game', ];
+	$allowedReviewPostTypes = ['post', 'page', 'movie', 'book', 'game'];
 	$post_type_query        = new WP_Query( [
 		'post_type' => $allowedReviewPostTypes,
 		's'         => sanitize_text_field( $data['term'] ),
@@ -125,6 +125,7 @@ function demoSearchResults( $data ) {
 				'title'      => get_the_title(),
 				'permalink'  => get_the_permalink(),
 				'authorName' => get_the_author(),
+				'image'      => get_the_post_thumbnail_url( 0, 'card-image-container' ),
 			] );
 		}
 	}
