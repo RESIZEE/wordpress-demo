@@ -1,5 +1,5 @@
 import $                                    from 'jquery';
-import { showSuccessAlert, showErrorAlert } from './ResponseAlerts';
+import { showSuccessAlert, showErrorAlert } from '../helpers/ResponseAlerts';
 
 class Review {
     constructor() {
