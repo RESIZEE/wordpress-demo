@@ -1,5 +1,5 @@
-import $ from 'jquery';
-import { subscribe } from "../../../../../wp-includes/js/dist/redux-routine";
+import $                                    from 'jquery';
+import { showSuccessAlert, showErrorAlert } from './ResponseAlerts';
 
 class Review {
     constructor() {
@@ -14,8 +14,6 @@ class Review {
     onClickCallback(e) {
         e.preventDefault();
 
-        let successAlert = $('#success-alert');
-        let errorAlert = $('#error-alert');
         let subscriberEmail = $('#newsletter-email').val();
 
         $.ajax({
@@ -29,28 +27,20 @@ class Review {
             },
             success: (response) => {
                 if(response.success) {
-                    successAlert.removeClass('d-none');
-                    setTimeout(() => successAlert.addClass('d-none'), 3000);
+                    showSuccessAlert(response.success);
 
-                    successAlert.html(response.success);
+                    $('#newsletter-email').val('');
                 }
 
                 if(response.error) {
-                    errorAlert.removeClass('d-none');
-                    setTimeout(() => errorAlert.addClass('d-none'), 3000);
-
-                    errorAlert.html(response.error);
+                    showErrorAlert(response.error);
                 }
             },
             error: () => {
-                errorAlert.removeClass('d-none');
-                setTimeout(() => errorAlert.addClass('d-none'), 3000);
-
-                errorAlert.html('Unhandled error occurred.');
+                showErrorAlert('Unhandled error occurred.');
             },
         });
     }
 }
-
 
 export default Review;

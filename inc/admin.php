@@ -295,7 +295,10 @@ function demo_newsletter_email_content() {
 	echo
 		'<textarea id="newsletter-email-content" name="newsletter_email_content" placeholder="Newsletter content..." rows="10"></textarea>' .
 		'<br>' .
-		'<button id="newsletter-email-output-button" type="button" class="button button-primary">' . __( 'Send' ) . '</button>';
+		'<div class="d-flex">
+			<button id="newsletter-email-output-button" type="button" class="button button-primary">' . __( 'Send' ) . '</button>
+			<div class="d-none loading-spinner ml-8"></div>
+		</div>';
 }
 
 

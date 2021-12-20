@@ -1,6 +1,10 @@
 @import "utilities";
 @import "alerts";
 
+#wpwrap {
+  background-color: #F0F0F1;
+}
+
 input[type="text"] {
   width: 35%;
 }

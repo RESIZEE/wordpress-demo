@@ -1,4 +1,5 @@
-import $ from 'jquery';
+import $                                    from 'jquery';
+import { showSuccessAlert, showErrorAlert } from './ResponseAlerts';
 
 class NewsletterEmailOutput {
     constructor() {
@@ -13,10 +14,11 @@ class NewsletterEmailOutput {
     }
 
     onClickCallback() {
-        let successAlert = $('#success-alert');
-        let errorAlert = $('#error-alert');
+        let loadingSpinner = $('.loading-spinner');
         let emailTitle = $('#newsletter-email-title');
         let emailContent = $('#newsletter-email-content');
+
+        loadingSpinner.removeClass('d-none');
 
         $.ajax({
             url: `${demoData.rootUrl}/wp-json/demo/v1/admin/newsletter/email`,
@@ -29,36 +31,26 @@ class NewsletterEmailOutput {
                 'email_content': emailContent.val(),
             },
             success: (response) => {
-                emailTitle.val('');
-                emailContent.val('');
-
                 if(response.success) {
-                    successAlert.removeClass('d-none');
+                    emailTitle.val('');
+                    emailContent.val('');
 
-                    setTimeout(() => successAlert.addClass('d-none'), 3000);
-                    successAlert.html(response.success);
+                    showSuccessAlert(response.success);
                 }
 
                 if(response.error) {
-                    errorAlert.removeClass('d-none');
-
-                    setTimeout(() => errorAlert.addClass('d-none'), 3000);
-                    errorAlert.html(response.error);
-
+                    showErrorAlert(response.error);
                 }
+
+                loadingSpinner.addClass('d-none');
             },
             error: (response) => {
-                emailTitle.val('');
-                emailContent.val('');
+                showErrorAlert(response.error);
 
-                errorAlert.removeClass('d-none');
-                setTimeout(() => errorAlert.addClass('d-none'), 3000);
-
-                errorAlert.html(response.error);
+                loadingSpinner.addClass('d-none');
             },
         });
     }
 }
-
 
 export default NewsletterEmailOutput;

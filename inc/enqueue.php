@@ -52,6 +52,10 @@ function demo_admin_resources( $hook ) {
 	}
 	/* Styles */
 	wp_enqueue_style(
+		'bootstrap',
+		get_theme_file_uri( '/css/bootstrap.min.css' ),
+	);
+	wp_enqueue_style(
 		'demo-admin-main',
 		get_theme_file_uri( '/css/admin/admin.css' ),
 		null,
