@@ -1,8 +1,8 @@
 <?php
 
-/* GLOBAL SCRIPTS AND STYLES */
-add_action( 'init', 'demo_global_resources' );
-function demo_global_resources() {
+/* FRONTEND SCRIPTS AND STYLES */
+add_action( 'wp_enqueue_scripts', 'demo_resources' );
+function demo_resources() {
 	/* Styles */
 	wp_enqueue_style(
 		'font-awesome',
@@ -11,6 +11,12 @@ function demo_global_resources() {
 	wp_enqueue_style(
 		'bootstrap',
 		get_theme_file_uri( '/css/bootstrap.min.css' ),
+	);
+	wp_enqueue_style(
+		'demo-main',
+		get_stylesheet_uri(),
+		null,
+		microtime()
 	);
 
 	/* Scripts */
@@ -21,20 +27,6 @@ function demo_global_resources() {
 		null,
 		true,
 	);
-}
-
-/* FRONTEND SCRIPTS AND STYLES */
-add_action( 'wp_enqueue_scripts', 'demo_resources' );
-function demo_resources() {
-	/* Styles */
-	wp_enqueue_style(
-		'demo-main',
-		get_stylesheet_uri(),
-		null,
-		microtime()
-	);
-
-	/* Scripts */
 	wp_enqueue_script(
 		'demo-main-bundled',
 		get_theme_file_uri( '/js/scripts-bundled.js' ),
