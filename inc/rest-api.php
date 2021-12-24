@@ -14,6 +14,7 @@ function demo_review_routes() {
 		[
 			'methods'  => 'POST',
 			'callback' => 'create_or_update_review',
+			'permission_callback' => '__return_true'
 		]
 	);
 }
@@ -67,6 +68,7 @@ function demoRegisterSearch() {
 		[
 			'methods'  => WP_REST_SERVER::READABLE,
 			'callback' => 'demoSearchResults',
+			'permission_callback' => '__return_true'
 		]
 	);
 }
@@ -129,7 +131,6 @@ function demoSearchResults( $data ) {
 			] );
 		}
 	}
-
 	return $results;
 }
 
@@ -143,6 +144,7 @@ function demo_contact_routes() {
 		[
 			'methods'  => 'POST',
 			'callback' => 'demo_save_contact',
+			'permission_callback' => '__return_true',
 		]
 	);
 }
@@ -181,9 +183,9 @@ function demo_save_contact( $data ) {
 
 		wp_mail( $to, $subject, $message, $headers );
 
-		echo $postID;
+		return $postID;
 	} else {
-		echo 0;
+		return 0;
 	}
 
 
@@ -199,6 +201,7 @@ function demo_newsletter_routes() {
 		[
 			'methods'  => 'POST',
 			'callback' => 'subscribe_to_newsletter',
+			'permission_callback' => '__return_true'
 		]
 	);
 }

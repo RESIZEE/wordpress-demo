@@ -14,6 +14,7 @@ function demo_admin_newsletter_routes() {
 		[
 			'methods'  => 'POST',
 			'callback' => 'output_newsletter_email',
+			'permission_callback' => '__return_true'
 		]
 	);
 }
