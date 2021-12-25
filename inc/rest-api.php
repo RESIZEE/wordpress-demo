@@ -5,51 +5,6 @@
 *
 */
 
-// ---DEMO REVIEW API--- //
-add_action( 'rest_api_init', 'demo_review_routes' );
-function demo_review_routes() {
-	register_rest_route(
-		'demo/v1',
-		'review',
-		[
-			'methods'  => 'POST',
-			'callback' => 'create_or_update_review',
-			'permission_callback' => '__return_true'
-		]
-	);
-}
-
-function create_or_update_review( $data ) {
-	$allowedReviewPostTypes = [ 'movie', 'book', 'game', ];
-
-	$postId      = sanitize_text_field( $data['reviewed_post_id'] );
-	$reviewScore = (int) sanitize_text_field( $data['review_score'] );
-
-	if (
-		! is_user_logged_in() ||
-		! in_array( get_post_type( $postId ), $allowedReviewPostTypes ) ||
-		! in_array( $reviewScore, range( 1, 5 ) )
-	) {
-		return [ 'error' => __( 'You did something wrong.', 'demo' ) ];
-	}
-
-	wp_insert_post( [
-		'ID'          => current_user_has_reviewed( $postId ),
-		'post_type'   => 'review',
-		'post_status' => 'publish',
-		'meta_input'  => [
-			'reviewed_post_id' => $postId,
-			'review_score'     => $reviewScore,
-		],
-	] );
-
-	return [
-		'review_score' => review_score( $postId ),
-		'success'      => __( 'Your review was saved successfully.', 'demo' ),
-	];
-}
-
-
 add_action( 'rest_api_init', 'demo_custom_rest' );
 function demo_custom_rest() {
 	register_rest_field( 'post', 'authorName', [

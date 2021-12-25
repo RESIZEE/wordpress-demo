@@ -22,7 +22,7 @@ class Review {
         if(!currentElement.attr('data-star-checked')) {
             currentElement.removeClass('far').addClass('fas');
             currentElement.prevAll('i').removeClass('far').addClass('fas');
-        } else {
+        }else {
             currentElement.nextAll('i').removeClass('fas').addClass('far');
         }
     }
@@ -34,7 +34,7 @@ class Review {
             // Stars that are clicked do not get emptied all others do
             if(!currentElement.attr('data-star-checked')) {
                 currentElement.removeClass('fas').addClass('far');
-            } else {
+            }else {
                 currentElement.removeClass('far').addClass('fas');
             }
         });
@@ -55,14 +55,13 @@ class Review {
         currentElementSiblings.attr('data-star-checked', 'true');
 
         $.ajax({
-            url: `${demoData.rootUrl}/wp-json/demo/v1/review`,
-            headers: {
-                'X-WP-Nonce': demoData.nonce,
-            },
+            url: demoData.ajaxUrl,
             type: 'POST',
             data: {
-                'reviewed_post_id': postId,
-                'review_score': reviewScore,
+                _ajax_nonce: demoData.nonce,
+                action: "create_or_update_review",
+                reviewed_post_id: postId,
+                review_score: reviewScore,
             },
             success: (response) => {
                 let successAlert = $('#success-alert');
@@ -70,9 +69,9 @@ class Review {
                 successAlert.removeClass('d-none');
                 setTimeout(() => successAlert.addClass('d-none'), 3000);
 
-                successAlert.html(response.success);
+                successAlert.html(response.data.message);
 
-                $('.review-score').html(response.review_score);
+                $('.review-score').html(response.data.review_score);
             },
             error: (response) => {
                 let errorAlert = $('#error-alert');
@@ -80,7 +79,7 @@ class Review {
                 errorAlert.removeClass('d-none');
                 setTimeout(() => errorAlert.addClass('d-none'), 3000);
 
-                errorAlert.html(response.error);
+                errorAlert.html(response.responseJSON.data.message);
             },
         });
     }

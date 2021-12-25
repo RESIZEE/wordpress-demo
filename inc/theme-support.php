@@ -17,6 +17,9 @@ function demo_features() {
 		'flex-width'           => true,
 		'unlink-homepage-logo' => true,
 	] );
+
+	// Theme support
+	add_theme_support( 'title-tag' );
 }
 
 // Advanced Custom Fields integration
@@ -51,10 +54,10 @@ function mailtrap( $phpmailer ) {
 	$phpmailer->Password = 'e729e71e2057be';
 }
 
-add_action('wp_mail_failed', 'log_mailer_errors', 10, 1);
-function log_mailer_errors( $wp_error ){
+add_action( 'wp_mail_failed', 'log_mailer_errors', 10, 1 );
+function log_mailer_errors( $wp_error ) {
 	$fn = ABSPATH . '/mail.log'; // say you've got a mail.log file in your server root
-	$fp = fopen($fn, 'a');
-	fputs($fp, "Mailer Error: " . $wp_error->get_error_message() ."\n");
-	fclose($fp);
+	$fp = fopen( $fn, 'a' );
+	fputs( $fp, "Mailer Error: " . $wp_error->get_error_message() . "\n" );
+	fclose( $fp );
 }

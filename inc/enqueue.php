@@ -39,7 +39,8 @@ function demo_resources() {
 		'demoData',
 		[
 			'rootUrl' => get_site_url(),
-			'nonce'   => wp_create_nonce( 'wp_rest' ),
+			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+			'nonce'   => wp_create_nonce( 'wp_ajax' ),
 		]
 	);
 }

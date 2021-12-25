@@ -1,5 +1,5 @@
 <?php
-if(is_user_logged_in()) {
+if ( is_user_logged_in() ) {
     $postId = get_the_ID();
 
     get_template_part(
@@ -20,8 +20,8 @@ if(is_user_logged_in()) {
             data-post-id="<?php echo $postId; ?>"
     >
         <?php
-        for($i = 1; $i <= 5; $i++){
-            $currentStarIsChecked = current_user_review_score($postId) >= $i;
+        for ( $i = 1; $i <= 5; $i ++ ) {
+            $currentStarIsChecked = current_user_review_score( $postId ) >= $i;
             ?>
             <i
                     class="<?php echo $currentStarIsChecked ? 'fas' : 'far' ?> fa-star text-3xl text-yellow"
