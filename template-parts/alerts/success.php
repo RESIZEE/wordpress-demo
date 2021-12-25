@@ -1,8 +1,14 @@
+<?php
+$class = array_key_exists( 'class', $args ) ? $args['class'] : '';
+$style = array_key_exists( 'style', $args ) ? $args['style'] : '';
+$message = array_key_exists( 'message', $args ) ? $args['message'] : __('Success', 'demo');
+?>
+
 <div
         id="success-alert"
-        class="alert alert-success <?php echo $args['class'] ?>"
-        style="<?php echo $args['style'] ?>"
+        class="alert alert-success <?php echo $class ?>"
+        style="<?php echo $style ?>"
         role="alert"
 >
-    <?php echo $args['message'] ?>
+    <?php echo $message ?>
 </div>

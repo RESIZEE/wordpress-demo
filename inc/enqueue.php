@@ -10,7 +10,7 @@ function demo_resources() {
 	);
 	wp_enqueue_style(
 		'bootstrap',
-		get_theme_file_uri( '/css/bootstrap.min.css' ),
+		DEMO_CSS_URI . '/bootstrap.min.css',
 	);
 	wp_enqueue_style(
 		'demo-main',
@@ -22,14 +22,14 @@ function demo_resources() {
 	/* Scripts */
 	wp_enqueue_script(
 		'bootstrap-bundled',
-		get_theme_file_uri( '/js/bootstrap.bundle.min.js' ),
-		null,
+		DEMO_JS_URI . '/bootstrap.bundle.min.js',
+		[ 'jquery' ],
 		null,
 		true,
 	);
 	wp_enqueue_script(
 		'demo-main-bundled',
-		get_theme_file_uri( '/js/scripts-bundled.js' ),
+		DEMO_JS_URI . '/scripts-bundled.js',
 		null,
 		microtime(),
 		true,
@@ -56,7 +56,7 @@ function demo_admin_resources( $hook ) {
 	/* Styles */
 	wp_enqueue_style(
 		'demo-admin-main',
-		get_theme_file_uri( '/css/admin/admin.css' ),
+		DEMO_CSS_URI . '/admin/admin.css',
 		null,
 		microtime(),
 	);
@@ -64,7 +64,7 @@ function demo_admin_resources( $hook ) {
 	/* Scripts */
 	wp_enqueue_script(
 		'demo-admin-main-bundled',
-		get_theme_file_uri( '/js/admin/scripts-bundled.js' ),
+		DEMO_JS_URI . '/admin/scripts-bundled.js',
 		null,
 		microtime(),
 		true,

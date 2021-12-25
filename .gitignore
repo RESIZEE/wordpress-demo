@@ -1,9 +1,8 @@
 .idea
-#img
+img
 js/node_modules
-#js/scripts-bundled.js
-#js/admin/scripts-bundled.js
 node_modules
-#style.css
-#css/compiled-sass.css
-#css/admin/admin-compiled-sass.css
+*.log
+npm-debug.log
+.DS_Store
+**/.DS_Store

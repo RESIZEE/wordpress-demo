@@ -20,6 +20,7 @@ function demo_features() {
 
 	// Theme support
 	add_theme_support( 'title-tag' );
+	add_theme_support( 'html5' );
 }
 
 // Advanced Custom Fields integration

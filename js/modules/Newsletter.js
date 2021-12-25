@@ -36,8 +36,8 @@ class Review {
                     showErrorAlert(response.error);
                 }
             },
-            error: () => {
-                showErrorAlert('Unhandled error occurred.');
+            error: (response) => {
+                showErrorAlert(response.error);
             },
         });
     }
