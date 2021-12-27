@@ -10,6 +10,11 @@ trait Menu {
 
 	/**
 	 * Adds nav menu to the theme.
+	 *
+	 * @param string $location
+	 * @param string $description
+	 *
+	 * @return $this
 	 */
 	public function addNavMenu( $location, $description ) {
 		$this->afterSetupAction( function() use ( $location, $description ) {
@@ -21,6 +26,10 @@ trait Menu {
 
 	/**
 	 * Adds nav menus to the theme.
+	 *
+	 * @param string[] $locations
+	 *
+	 * @return $this
 	 */
 	public function addNavMenus( $locations ) {
 		$this->afterSetupAction( function() use ( $locations ) {

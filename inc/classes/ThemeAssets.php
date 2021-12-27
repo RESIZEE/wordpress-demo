@@ -28,6 +28,8 @@ class ThemeAssets extends ResourceBase {
 
 	/**
 	 * Enqueue frontend styles.
+	 *
+	 * @return void
 	 */
 	private function enqueueStyles() {
 		$this
@@ -49,6 +51,8 @@ class ThemeAssets extends ResourceBase {
 
 	/**
 	 * Enqueue frontend scripts.
+	 *
+	 * @return void
 	 */
 	private function enqueueScripts() {
 		$mainScriptLocalization = [
@@ -80,6 +84,8 @@ class ThemeAssets extends ResourceBase {
 
 	/**
 	 * Enqueue admin styles.
+	 *
+	 * @return void
 	 */
 	private function enqueueAdminStyles() {
 		$this
@@ -97,6 +103,8 @@ class ThemeAssets extends ResourceBase {
 
 	/**
 	 * Enqueue admin scripts.
+	 *
+	 * @return void
 	 */
 	private function enqueueAdminScripts() {
 		$localization = [
@@ -125,6 +133,11 @@ class ThemeAssets extends ResourceBase {
 	 * Checks if we are on desired page.
 	 *
 	 * Used to enqueue styles conditionally on admin pages.
+	 *
+	 * @param string $hook
+	 * @param string $hookSuffix
+	 *
+	 * @return bool
 	 */
 	private function isOnHookSuffix( $hook, $hookSuffix ) {
 		/**

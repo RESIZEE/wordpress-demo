@@ -1,4 +1,5 @@
-import $ from 'jquery';
+import $                                    from 'jquery';
+import { showSuccessAlert, showErrorAlert } from '../helpers/ResponseAlerts';
 
 class Review {
     constructor() {
@@ -6,8 +7,10 @@ class Review {
     }
 
     events() {
-        // On hover fill star on leave make it shallow
-        // simulating hover state of CSS
+        /*
+            On hover fill star on leave make it shallow
+            simulating hover state of CSS
+         */
         $('.reviews i')
             .on('mouseenter', this.fillStarts)
             .on('mouseleave', this.emptyStars)
@@ -17,8 +20,10 @@ class Review {
     fillStarts() {
         let currentElement = $(this);
 
-        // If user hovers over clicked(filled) star make it empty
-        // on the other hand make them filled
+        /*
+            If user hovers over clicked(filled) star make it empty
+            on the other hand make them filled
+         */
         if(!currentElement.attr('data-star-checked')) {
             currentElement.removeClass('far').addClass('fas');
             currentElement.prevAll('i').removeClass('far').addClass('fas');
@@ -40,7 +45,7 @@ class Review {
         });
     }
 
-    onClickCallback() {
+    onClickCallback(event) {
         let currentElement = $(this);
         let currentElementSiblings = currentElement.prevAll('i');
 
@@ -48,8 +53,10 @@ class Review {
         let reviewScore = currentElementSiblings.length + 1;
         let postId = currentElement.closest('.reviews').data('post-id');
 
-        // Adding custom attribute so clicked starts always stay selected
-        // Previously clearing custom attributes of all stars
+        /*
+            Adding custom attribute so clicked starts always stay selected
+            Previously clearing custom attributes of all stars
+         */
         $('.reviews i').removeAttr('data-star-checked');
         currentElement.attr('data-star-checked', 'true');
         currentElementSiblings.attr('data-star-checked', 'true');
@@ -59,27 +66,17 @@ class Review {
             type: 'POST',
             data: {
                 _ajax_nonce: demoData.nonce,
-                action: "create_or_update_review",
+                action: 'create_or_update_review',
                 reviewed_post_id: postId,
                 review_score: reviewScore,
             },
             success: (response) => {
-                let successAlert = $('#success-alert');
-
-                successAlert.removeClass('d-none');
-                setTimeout(() => successAlert.addClass('d-none'), 3000);
-
-                successAlert.html(response.data.message);
+                showSuccessAlert(response.data.message, event);
 
                 $('.review-score').html(response.data.review_score);
             },
             error: (response) => {
-                let errorAlert = $('#error-alert');
-
-                errorAlert.removeClass('d-none');
-                setTimeout(() => errorAlert.addClass('d-none'), 3000);
-
-                errorAlert.html(response.responseJSON.data.message);
+                showErrorAlert(response.responseJSON.data.message, event);
             },
         });
     }

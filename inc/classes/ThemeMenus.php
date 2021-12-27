@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Wrapper for theme assets
+ * Wrapper for theme menus
  *
  * @package demo
  */

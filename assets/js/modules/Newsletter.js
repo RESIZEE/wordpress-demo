@@ -11,33 +11,25 @@ class Review {
             .on('click', this.onClickCallback);
     }
 
-    onClickCallback(e) {
-        e.preventDefault();
+    onClickCallback(event) {
+        event.preventDefault();
 
         let subscriberEmail = $('#newsletter-email').val();
 
         $.ajax({
-            url: `${demoData.rootUrl}/wp-json/demo/v1/newsletter/subscribe`,
-            headers: {
-                'X-WP-Nonce': demoData.nonce,
-            },
+            url: demoData.ajaxUrl,
             type: 'POST',
             data: {
-                'subscriber_email': subscriberEmail,
+                _ajax_nonce: demoData.nonce,
+                action: 'subscribe_to_newsletter',
+                subscriber_email: subscriberEmail,
             },
             success: (response) => {
-                if(response.success) {
-                    showSuccessAlert(response.success);
-
-                    $('#newsletter-email').val('');
-                }
-
-                if(response.error) {
-                    showErrorAlert(response.error);
-                }
+                showSuccessAlert(response.data.message, event);
+                $('#newsletter-email').val('');
             },
             error: (response) => {
-                showErrorAlert(response.error);
+                showErrorAlert(response.responseJSON.data.message, event);
             },
         });
     }

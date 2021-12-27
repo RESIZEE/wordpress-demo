@@ -5,8 +5,7 @@ $message = array_key_exists( 'message', $args ) ? $args['message'] : __( 'Error'
 ?>
 
 <div
-        id="error-alert"
-        class="alert alert-danger <?php echo $class ?>"
+        class="error-alert alert alert-danger <?php echo $class ?>"
         style="<?php echo $style ?>"
         role="alert"
 >

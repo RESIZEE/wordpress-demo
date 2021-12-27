@@ -18,6 +18,7 @@ class DemoTheme extends ResourceBase {
 		ThemeAssets::getInstance();
 		ThemeMenus::getInstance();
 		ThemeMedia::getInstance();
+		ThemeAjax::getInstance();
 
 		// Calls setupHooks
 		parent::__construct();

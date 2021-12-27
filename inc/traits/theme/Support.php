@@ -10,6 +10,11 @@ trait Support {
 
 	/**
 	 * Adds theme support.
+	 *
+	 * @param string $feature
+	 * @param mixed $options
+	 *
+	 * @return $this
 	 */
 	public function addSupport( $feature, $options = null ) {
 		$this->afterSetupAction( function() use ( $feature, $options ) {
@@ -25,6 +30,10 @@ trait Support {
 
 	/**
 	 * Removes theme support.
+	 *
+	 * @param string $feature
+	 *
+	 * @return $this
 	 */
 	public function removeSupport( $feature ) {
 		$this->afterSetupAction( function() use ( $feature ) {

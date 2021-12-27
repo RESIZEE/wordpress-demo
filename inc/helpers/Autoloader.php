@@ -11,6 +11,8 @@ class Autoloader {
 	 *
 	 * You can provide it using get_template_directory() function in combination with untrailingslashit( $string )
 	 * Eg. untrailingslashit( get_template_directory() )
+	 *
+	 * @var string
 	 */
 	private $themeDir;
 
@@ -18,26 +20,36 @@ class Autoloader {
 	 * Root of resource namespace. Preferably theme name.
 	 *
 	 * This is the namespace root you will use for all your resources which you want to autolaod.
+	 *
+	 * @var string
 	 */
 	private $namespaceRoot;
 
 	/**
 	 * Directory where all subdirectories with their resources will live.
+	 *
+	 * @var string
 	 */
 	private $topLevelDir;
 
 	/**
 	 * Subdirectories which you want to include in autoloading.
+	 *
+	 * @var string[]
 	 */
 	private $autoloadDirs;
 
 	/**
 	 * Resource being autoloaded.
+	 *
+	 * @var string
 	 */
 	private $resource;
 
 	/**
 	 * Full path to resource being autoloaded.
+	 *
+	 * @var mixed|string
 	 */
 	private $resourcePath = false;
 
@@ -59,6 +71,10 @@ class Autoloader {
 
 	/**
 	 * Autoload callback
+	 *
+	 * @param string $resource
+	 *
+	 * @return void
 	 */
 	private function autoload( $resource = '' ) {
 		$this->resource = trim( $resource, '\\' );
@@ -70,6 +86,8 @@ class Autoloader {
 
 	/**
 	 * If all required checks are passed this function will return true and let resource be autoloaded.
+	 *
+	 * @return bool
 	 */
 	private function resourceReadyForAutoload() {
 		if (
@@ -85,6 +103,8 @@ class Autoloader {
 
 	/**
 	 * Check if resource trying to get autoloaded is in your namespace.
+	 *
+	 * @return bool
 	 */
 	private function isResourceInNamespace() {
 		if (
@@ -99,9 +119,11 @@ class Autoloader {
 	}
 
 	/**
-	* Generating resource path which is stored in $resourcePath variable.
-    * Will return false if subdirectory is not in your autoload directory or resource has invalid path structure.
-	*/
+	 * Generating resource path which is stored in $resourcePath variable.
+	 * Will return false if subdirectory is not in your autoload directory or resource has invalid path structure.
+	 *
+	 * @return bool
+	 */
 	private function generateResourcePath() {
 		$pathParts = $this->getResourcePathPartsWithoutNamespaceRoot();
 
@@ -137,8 +159,10 @@ class Autoloader {
 	}
 
 	/**
-	* Get path parts of the resource in form of an array without namespace root.
-	*/
+	 * Get path parts of the resource in form of an array without namespace root.
+	 *
+	 * @return string[]
+	 */
 	private function getResourcePathPartsWithoutNamespaceRoot() {
 		$this->resource = str_replace( $this->namespaceRoot, '', $this->resource );
 
@@ -147,6 +171,8 @@ class Autoloader {
 
 	/**
 	 * Check if resource file actually exists and is a valid file.
+	 *
+	 * @return bool
 	 */
 	private function isResourceValidAndExists() {
 		/**

@@ -14,8 +14,10 @@ abstract class ResourceBase {
 		$this->setupHooks();
 	}
 
-	/*
+	/**
 	 * Load all class dependencies
+	 *
+	 * @return void
 	 */
 	abstract protected function setupHooks();
 }

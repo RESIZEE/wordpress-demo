@@ -10,12 +10,16 @@ trait Singleton {
 	 * Protected constructor to prevent direct object creation.
 	 *
 	 * Class implementing this trait will be able to override constructor.
+	 *
+	 * @return void
 	 */
 	protected function __construct() {
 	}
 
 	/**
 	 * Preventing object cloning
+	 *
+	 * @return void
 	 */
 	final protected function __clone() {
 	}
@@ -24,7 +28,9 @@ trait Singleton {
 	 * This method is source of singleton implementation.
 	 *
 	 * If class which is being called has already been instantiated
-	 * it's instance is being returned if not new instance will be created.
+	 * its instance is being returned if not new instance will be created
+	 *
+	 * @return mixed
 	 */
 	final public static function getInstance() {
 		static $instances = [];
@@ -36,7 +42,7 @@ trait Singleton {
 
 			/**
 			 * Custom action in case there is need to hook action at this point of lifecycle.
-             * demo_singleton_init_{class_name}
+			 * demo_singleton_init_{class_name}
 			 */
 			do_action( sprintf( 'demo_singleton_init_%s', $called_class ) );
 		}

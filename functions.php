@@ -53,6 +53,8 @@ function register_autoloader() {
 
 /**
  * Returns instance of singleton Demo Theme Class
+ *
+ * @return Demo\Inc\Classes\DemoTheme
  */
 function demo_get_theme_instance() {
 	return Demo\Inc\Classes\DemoTheme::getInstance();
@@ -75,4 +77,3 @@ require_once DEMO_INC_DIR_PATH . '/filters.php';
 require_once DEMO_INC_DIR_PATH . '/custom-meta.php';
 require_once DEMO_INC_DIR_PATH . '/shortcodes.php';
 require_once DEMO_INC_DIR_PATH . '/admin.php';
-require_once DEMO_INC_DIR_PATH . '/ajax.php';

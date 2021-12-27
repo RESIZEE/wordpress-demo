@@ -10,6 +10,14 @@ trait Enqueue {
 
 	/**
 	 * Enqueues frontend stylesheet.
+	 *
+	 * @param string $handle
+	 * @param string $src
+	 * @param string[] $deps
+	 * @param string|bool|null $ver
+	 * @param string $media
+	 *
+	 * @return $this
 	 */
 	public function addStyle( $handle, $src, $deps = [], $ver = false, $media = 'all' ) {
 		$this->enqueueScriptsAction( function() use ( $handle, $src, $deps, $ver, $media ) {
@@ -21,6 +29,15 @@ trait Enqueue {
 
 	/**
 	 * Enqueues frontend script.
+	 *
+	 * @param string $handle
+	 * @param string $src
+	 * @param string[] $deps
+	 * @param string|bool|null $ver
+	 * @param bool $inFooter
+	 * @param $localization
+	 *
+	 * @return $this
 	 */
 	public function addScript( $handle, $src = '', $deps = [], $ver = false, $inFooter = false, $localization = [] ) {
 		$this->enqueueScriptsAction( function() use ( $handle, $src, $deps, $ver, $inFooter, $localization ) {
@@ -36,6 +53,15 @@ trait Enqueue {
 
 	/**
 	 * Enqueues stylesheet for admin page.
+	 *
+	 * @param string $handle
+	 * @param string $src
+	 * @param string[] $deps
+	 * @param string|bool|null $ver
+	 * @param string $media
+	 * @param Callable $hookCheckCallback
+	 *
+	 * @return $this
 	 */
 	public function addAdminStyle( $handle, $src, $deps = [], $ver = false, $media = 'all', $hookCheckCallback = null ) {
 		$this->adminEnqueueScriptsAction( function( $hook ) use ( $handle, $src, $deps, $ver, $media, $hookCheckCallback ) {
@@ -49,6 +75,17 @@ trait Enqueue {
 
 	/**
 	 * Enqueues script for admin page.
+	 *
+	 *
+	 * @param string $handle
+	 * @param string $src
+	 * @param string[] $deps
+	 * @param string|bool|null $ver
+	 * @param bool $inFooter
+	 * @param array $localization
+	 * @param Callable $hookCheckCallback
+	 *
+	 * @return $this
 	 */
 	public function addAdminScript( $handle, $src = '', $deps = [], $ver = false, $inFooter = false, $localization = [], $hookCheckCallback = null ) {
 		$this->adminEnqueueScriptsAction( function( $hook ) use ( $handle, $src, $deps, $ver, $inFooter, $localization, $hookCheckCallback ) {
@@ -66,6 +103,12 @@ trait Enqueue {
 
 	/**
 	 * Localizes script.
+	 *
+	 * @param string $handle
+	 * @param string $objectName
+	 * @param array $data
+	 *
+	 * @return $this
 	 */
 	public function localizeScript( $handle, $objectName, $data ) {
 		$this->enqueueScriptsAction( function() use ( $handle, $objectName, $data ) {
