@@ -8,15 +8,16 @@
 
 namespace Demo\Inc\Classes;
 
-use Demo\Inc\Traits\Singleton;
+use Demo\Inc\Helpers\ResourceBase;
 
-class DemoTheme {
-	use Singleton;
-
+class DemoTheme extends ResourceBase {
 	protected function __construct() {
-		$this->setupHooks();
+		Assets::getInstance();
+
+		// Calls setupHooks
+		parent::__construct();
 	}
 
-	private function setupHooks() {
+	protected function setupHooks() {
 	}
 }

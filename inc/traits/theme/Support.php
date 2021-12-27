@@ -6,6 +6,8 @@
 namespace Demo\Inc\Traits\Theme;
 
 trait Support {
+	use Hooks;
+
 	/*
 	 * Adds theme support.
 	 */

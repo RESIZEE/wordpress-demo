@@ -59,7 +59,6 @@ $theme = demo_get_theme_instance();
 
 // Sve ovo da se prosledi u posebne klase
 require_once DEMO_INC_DIR_PATH . '/custom-post-types.php';
-require_once DEMO_INC_DIR_PATH . '/enqueue.php';
 require_once DEMO_INC_DIR_PATH . '/templates.php';
 require_once DEMO_INC_DIR_PATH . '/menus.php';
 require_once DEMO_INC_DIR_PATH . '/theme-support.php';

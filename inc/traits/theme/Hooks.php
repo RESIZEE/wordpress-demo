@@ -19,6 +19,12 @@ trait Hooks {
 		} );
 	}
 
+	public function adminEnqueueScriptsAction( $callback ) {
+		add_action( 'admin_enqueue_scripts', function( $hook ) use ( $callback ) {
+			$callback( $hook );
+		} );
+	}
+
 	public function initAction( $callback ) {
 		add_action( 'init', function() use ( $callback ) {
 			$callback();
