@@ -1,5 +1,5 @@
 <?php
-/**
+/*
  * Autoloader class for theme dependencies.
  */
 
@@ -8,6 +8,8 @@ namespace Demo\Inc\Helpers;
 class Autoloader {
 	/*
 	 * Root of resource namespace. Preferably theme name.
+	 *
+	 * This is the namespace root you will use for all your resources which you want to autolaod.
 	 */
 	private $namespaceRoot;
 
@@ -41,7 +43,7 @@ class Autoloader {
 		$this->autoloadDirectories = $autoloadDirectories;
 	}
 
-	public function registerAutoloader() {
+	public function register() {
 		spl_autoload_register( [ $this, 'autoload' ] );
 	}
 
@@ -92,37 +94,36 @@ class Autoloader {
 	*/
 	private function generateResourcePath() {
 		$pathParts = $this->getResourcePathPartsWithoutNamespaceRoot();
-		$dir       = '';
-		$fileName  = '';
 
 		/*
 		 * If resource path (after stripping namespace root) is not starting with
-		 * directory where all our autoloaded files reside(top level directory) return false.
+		 * directory where all our autoloaded files reside(top level directory)
+		 * or resource is just in top level dir(not in provided subdirectories)
+		 * or if directory where resource lives is not in subdirectories provided(autoload directories) return false.
 		 */
-		if ( $this->topLevelDir !== $pathParts[0] || empty( $pathParts[1] )
+		if (
+			$this->topLevelDir !== $pathParts[0] ||
+			empty( $pathParts[1] ) ||
+			! in_array( $pathParts[1], $this->autoloadDirectories )
 		) {
 			return false;
 		}
 
-		foreach ( $this->autoloadDirectories as $autoloadDirectory ) {
-			if ( $pathParts[1] === $autoloadDirectory ) {
-				$dir      = $pathParts[1];
-				$fileName = trim( $pathParts[2] );
-				break;
-			}
-		}
+		/*
+		 * It only matters that resource is in any of our autoload directories and we autoload any resource in it
+		 * regardless of structure inside autoload directories.
+		 *
+		 * Eg. classes/some_dir/another_dir/resource.php
+		 * Eg. classes/resource.php
+		 * Both will work in the same way.
+		 */
 		$this->resourcePath = sprintf(
-			"%s/$this->topLevelDir/%s/%s.php",
+			"%s/%s.php",
 			DEMO_DIR_PATH,
-			$dir,
-			$fileName
+			implode( '/', $pathParts ),
 		);
 
-		if ( empty( $dir ) || empty( $fileName ) ) {
-			return false;
-		} else {
-			return true;
-		}
+		return true;
 	}
 
 	/*
@@ -139,8 +140,7 @@ class Autoloader {
 	 */
 	private function isResourceValidAndExists() {
 		/*
-		 * If the file is valid 0 is returned,
-		 * also 2 is returned if file is valid but file path contains Windows drive path
+		 * If the file is valid 0 is returned and 2 is returned if file is valid but file path contains Windows drive path
 		 */
 		$isValidFile = validate_file( $this->resourcePath );
 

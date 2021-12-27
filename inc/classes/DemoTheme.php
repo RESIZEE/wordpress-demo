@@ -8,18 +8,12 @@
 
 namespace Demo\Inc\Classes;
 
-use Demo\Inc\Traits\Singleton;
+class DemoTheme extends ThemeBase {
 
-class DemoTheme {
-	use Singleton;
-
-	/*
-	 * Loading all dependencies.
-	 */
 	protected function __construct() {
+		parent::__construct();
 	}
 
 	protected function setupHooks() {
-
 	}
 }

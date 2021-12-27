@@ -37,7 +37,7 @@ function register_autoloader() {
 		]
 	);
 
-	$autoloader->registerAutoloader();
+	$autoloader->register();
 }
 
 /*
