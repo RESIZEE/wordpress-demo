@@ -28,13 +28,17 @@ if ( ! defined( 'DEMO_JS_URI' ) ) {
  */
 require_once DEMO_DIR_PATH . '/inc/helpers/Autoloader.php';
 function register_autoloader() {
+	$themeDir     = untrailingslashit( get_template_directory() );
+	$autoloadDirs = [
+		'classes',
+		'traits',
+	];
+
 	$autoloader = new Demo\Inc\Helpers\Autoloader(
+		$themeDir,
 		'Demo\\',
 		'inc',
-		[
-			'classes',
-			'traits',
-		]
+		$autoloadDirs
 	);
 
 	$autoloader->register();

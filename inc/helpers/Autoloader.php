@@ -7,6 +7,14 @@ namespace Demo\Inc\Helpers;
 
 class Autoloader {
 	/*
+	 * Absolute path to your theme folder.
+	 *
+	 * You can provide it using get_template_directory() function in combination with untrailingslashit( $string )
+	 * Eg. untrailingslashit( get_template_directory() )
+	 */
+	private $themeDir;
+
+	/*
 	 * Root of resource namespace. Preferably theme name.
 	 *
 	 * This is the namespace root you will use for all your resources which you want to autolaod.
@@ -21,7 +29,7 @@ class Autoloader {
 	/*
 	 * Subdirectories which you want to include in autoloading.
 	 */
-	private $autoloadDirectories;
+	private $autoloadDirs;
 
 	/*
 	 * Resource being autoloaded.
@@ -34,13 +42,15 @@ class Autoloader {
 	private $resourcePath = false;
 
 	public function __construct(
+		$themeDir,
 		$namespaceRoot,
 		$topLevelDir = 'inc',
-		$autoloadDirectories = [ 'classes', ]
+		$autoloadDirs = [ 'classes', ]
 	) {
-		$this->namespaceRoot       = $namespaceRoot;
-		$this->topLevelDir         = $topLevelDir;
-		$this->autoloadDirectories = $autoloadDirectories;
+		$this->themeDir      = $themeDir;
+		$this->namespaceRoot = $namespaceRoot;
+		$this->topLevelDir   = $topLevelDir;
+		$this->autoloadDirs  = $autoloadDirs;
 	}
 
 	public function register() {
@@ -104,7 +114,7 @@ class Autoloader {
 		if (
 			$this->topLevelDir !== $pathParts[0] ||
 			empty( $pathParts[1] ) ||
-			! in_array( $pathParts[1], $this->autoloadDirectories )
+			! in_array( $pathParts[1], $this->autoloadDirs )
 		) {
 			return false;
 		}
@@ -119,7 +129,7 @@ class Autoloader {
 		 */
 		$this->resourcePath = sprintf(
 			"%s/%s.php",
-			DEMO_DIR_PATH,
+			$this->themeDir,
 			implode( '/', $pathParts ),
 		);
 
