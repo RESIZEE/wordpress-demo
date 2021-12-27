@@ -1,8 +1,6 @@
 <?php
-/**
+/*
  * Singleton trait which implements Singleton pattern in any class in which this trait is used.
- *
- * @package demo
  */
 
 namespace Demo\Inc\Traits;

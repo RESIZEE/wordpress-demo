@@ -8,6 +8,8 @@
 
 namespace Demo\Inc\Classes;
 
+use Demo\Inc\Helpers\ThemeBase;
+
 class DemoTheme extends ThemeBase {
 
 	protected function __construct() {

@@ -1,6 +1,7 @@
 <?php
 /*
  * Functions for demo theme.
+ *
  * @package demo
  */
 
@@ -10,15 +11,15 @@
 if ( ! defined( 'DEMO_DIR_PATH' ) ) {
 	define( 'DEMO_DIR_PATH', untrailingslashit( get_template_directory() ) );
 }
-
+if ( ! defined( 'DEMO_INC_DIR_PATH' ) ) {
+	define( 'DEMO_INC_DIR_PATH', untrailingslashit( get_template_directory() . '/inc' ) );
+}
 if ( ! defined( 'DEMO_DIR_URI' ) ) {
 	define( 'DEMO_DIR_URI', untrailingslashit( get_template_directory_uri() ) );
 }
-
 if ( ! defined( 'DEMO_CSS_URI' ) ) {
 	define( 'DEMO_CSS_URI', untrailingslashit( get_template_directory_uri() . '/css' ) );
 }
-
 if ( ! defined( 'DEMO_JS_URI' ) ) {
 	define( 'DEMO_JS_URI', untrailingslashit( get_template_directory_uri() . '/js' ) );
 }
@@ -26,16 +27,16 @@ if ( ! defined( 'DEMO_JS_URI' ) ) {
 /*
  * Autoloader configuration
  */
-require_once DEMO_DIR_PATH . '/inc/helpers/Autoloader.php';
+require_once DEMO_INC_DIR_PATH . '/helpers/Autoloader.php';
 function register_autoloader() {
-	$themeDir     = untrailingslashit( get_template_directory() );
 	$autoloadDirs = [
 		'classes',
 		'traits',
+		'helpers',
 	];
 
 	$autoloader = new Demo\Inc\Helpers\Autoloader(
-		$themeDir,
+		DEMO_DIR_PATH,
 		'Demo\\',
 		'inc',
 		$autoloadDirs
@@ -48,25 +49,26 @@ function register_autoloader() {
  * Instantiating Demo Theme class
  */
 function demo_get_theme_instance() {
-	Demo\Inc\Classes\DemoTheme::getInstance();
+	return Demo\Inc\Classes\DemoTheme::getInstance();
 }
 
 register_autoloader();
 
-demo_get_theme_instance();
+$theme = demo_get_theme_instance();
+
 
 // Sve ovo da se prosledi u posebne klase
-require_once DEMO_DIR_PATH . '/inc/custom-post-types.php';
-require_once DEMO_DIR_PATH . '/inc/enqueue.php';
-require_once DEMO_DIR_PATH . '/inc/templates.php';
-require_once DEMO_DIR_PATH . '/inc/menus.php';
-require_once DEMO_DIR_PATH . '/inc/theme-support.php';
-require_once DEMO_DIR_PATH . '/inc/adjust-queries.php';
-require_once DEMO_DIR_PATH . '/inc/helpers.php';
-require_once DEMO_DIR_PATH . '/inc/rest-api.php';
-require_once DEMO_DIR_PATH . '/inc/admin-rest-api.php';
-require_once DEMO_DIR_PATH . '/inc/filters.php';
-require_once DEMO_DIR_PATH . '/inc/custom-meta.php';
-require_once DEMO_DIR_PATH . '/inc/shortcodes.php';
-require_once DEMO_DIR_PATH . '/inc/admin.php';
-require_once DEMO_DIR_PATH . '/inc/ajax.php';
+require_once DEMO_INC_DIR_PATH . '/custom-post-types.php';
+require_once DEMO_INC_DIR_PATH . '/enqueue.php';
+require_once DEMO_INC_DIR_PATH . '/templates.php';
+require_once DEMO_INC_DIR_PATH . '/menus.php';
+require_once DEMO_INC_DIR_PATH . '/theme-support.php';
+require_once DEMO_INC_DIR_PATH . '/adjust-queries.php';
+require_once DEMO_INC_DIR_PATH . '/helpers.php';
+require_once DEMO_INC_DIR_PATH . '/rest-api.php';
+require_once DEMO_INC_DIR_PATH . '/admin-rest-api.php';
+require_once DEMO_INC_DIR_PATH . '/filters.php';
+require_once DEMO_INC_DIR_PATH . '/custom-meta.php';
+require_once DEMO_INC_DIR_PATH . '/shortcodes.php';
+require_once DEMO_INC_DIR_PATH . '/admin.php';
+require_once DEMO_INC_DIR_PATH . '/ajax.php';
