@@ -13,6 +13,7 @@ use Demo\Inc\Helpers\ResourceBase;
 class DemoTheme extends ResourceBase {
 	protected function __construct() {
 		Assets::getInstance();
+		Menus::getInstance();
 
 		// Calls setupHooks
 		parent::__construct();
