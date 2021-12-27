@@ -3,7 +3,7 @@
  * Wrappers for Wordpress menus.
  */
 
-namespace Demo\Inc\Traits;
+namespace Demo\Inc\Traits\Theme;
 
 trait Menus {
 	/*

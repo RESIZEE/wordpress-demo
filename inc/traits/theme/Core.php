@@ -3,7 +3,7 @@
  * Core functionalities not dependant on Wordpress alone.
  */
 
-namespace Demo\Inc\Traits;
+namespace Demo\Inc\Traits\Theme;
 
 trait Core {
 	/*

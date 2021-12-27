@@ -3,7 +3,7 @@
  * Wrappers for Wordpress theme support.
  */
 
-namespace Demo\Inc\Traits;
+namespace Demo\Inc\Traits\Theme;
 
 trait Support {
 	/*
