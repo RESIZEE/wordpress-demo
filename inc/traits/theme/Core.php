@@ -1,12 +1,12 @@
 <?php
-/*
+/**
  * Core functionalities not dependant on Wordpress alone.
  */
 
 namespace Demo\Inc\Traits\Theme;
 
 trait Core {
-	/*
+	/**
 	 * Defining single constant.
 	 */
 	public function defineConstant( $name, $value = false ) {
@@ -15,7 +15,7 @@ trait Core {
 		}
 	}
 
-	/*
+	/**
 	 * Defining multiple constants.
 	 */
 	public function defineConstants( $constants = [] ) {

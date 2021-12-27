@@ -1,9 +1,9 @@
 <?php
-/* 
-*
-*   WORDPRESS ADMIN REST API INIT
-*
-*/
+/**
+ * WORDPRESS ADMIN REST API INIT
+ *
+ * @package demo
+ */
 
 // ---DEMO NEWSLETTER API--- //
 add_action( 'rest_api_init', 'demo_admin_newsletter_routes' );
@@ -12,9 +12,9 @@ function demo_admin_newsletter_routes() {
 		'demo/v1/admin',
 		'newsletter/email',
 		[
-			'methods'  => 'POST',
-			'callback' => 'output_newsletter_email',
-			'permission_callback' => '__return_true'
+			'methods'             => 'POST',
+			'callback'            => 'output_newsletter_email',
+			'permission_callback' => '__return_true',
 		]
 	);
 }
@@ -38,7 +38,7 @@ function output_newsletter_email( $data ) {
 		'post_type' => 'newsletter',
 	] );
 
-	while( $newsletterQuery->have_posts() ) {
+	while( $newsletterQuery->have_posts() ){
 		$newsletterQuery->the_post();
 
 		$emails[] = $newsletterQuery->post->subscriber_email;

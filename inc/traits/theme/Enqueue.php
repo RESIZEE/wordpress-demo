@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Wrappers for Wordpress enqueue.
  */
 
@@ -8,7 +8,7 @@ namespace Demo\Inc\Traits\Theme;
 trait Enqueue {
 	use Hooks;
 
-	/*
+	/**
 	 * Enqueues frontend stylesheet.
 	 */
 	public function addStyle( $handle, $src, $deps = [], $ver = false, $media = 'all' ) {
@@ -19,7 +19,7 @@ trait Enqueue {
 		return $this;
 	}
 
-	/*
+	/**
 	 * Enqueues frontend script.
 	 */
 	public function addScript( $handle, $src = '', $deps = [], $ver = false, $inFooter = false, $localization = [] ) {
@@ -34,7 +34,7 @@ trait Enqueue {
 		return $this;
 	}
 
-	/*
+	/**
 	 * Enqueues stylesheet for admin page.
 	 */
 	public function addAdminStyle( $handle, $src, $deps = [], $ver = false, $media = 'all', $hookCheckCallback = null ) {
@@ -47,7 +47,7 @@ trait Enqueue {
 		return $this;
 	}
 
-	/*
+	/**
 	 * Enqueues script for admin page.
 	 */
 	public function addAdminScript( $handle, $src = '', $deps = [], $ver = false, $inFooter = false, $localization = [], $hookCheckCallback = null ) {
@@ -64,7 +64,7 @@ trait Enqueue {
 		return $this;
 	}
 
-	/*
+	/**
 	 * Localizes script.
 	 */
 	public function localizeScript( $handle, $objectName, $data ) {

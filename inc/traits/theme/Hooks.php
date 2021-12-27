@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Wrappers for Wordpress hooks.
  */
 

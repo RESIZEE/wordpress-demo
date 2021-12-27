@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * Wrapper for theme assets
  *
  * @package demo
@@ -11,7 +11,7 @@ namespace Demo\Inc\Classes;
 use Demo\Inc\Helpers\ResourceBase;
 use Demo\Inc\Traits\Theme\Menu;
 
-class Menus extends ResourceBase {
+class ThemeMenus extends ResourceBase {
 	use Menu;
 
 	protected function setupHooks() {

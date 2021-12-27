@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Wrappers for Wordpress menus.
  */
 
@@ -8,7 +8,7 @@ namespace Demo\Inc\Traits\Theme;
 trait Menu {
 	use Hooks;
 
-	/*
+	/**
 	 * Adds nav menu to the theme.
 	 */
 	public function addNavMenu( $location, $description ) {
@@ -19,7 +19,7 @@ trait Menu {
 		return $this;
 	}
 
-	/*
+	/**
 	 * Adds nav menus to the theme.
 	 */
 	public function addNavMenus( $locations ) {

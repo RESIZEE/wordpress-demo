@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * Wrapper for theme assets
  *
  * @package demo
@@ -11,10 +11,10 @@ namespace Demo\Inc\Classes;
 use Demo\Inc\Helpers\ResourceBase;
 use Demo\Inc\Traits\Theme\Enqueue;
 
-class Assets extends ResourceBase {
+class ThemeAssets extends ResourceBase {
 	use Enqueue;
 
-	/*
+	/**
 	 * Scripts and styles version number.
 	 */
 	//const VERSION = '1.0.0';
@@ -26,7 +26,7 @@ class Assets extends ResourceBase {
 		$this->enqueueAdminScripts();
 	}
 
-	/*
+	/**
 	 * Enqueue frontend styles.
 	 */
 	private function enqueueStyles() {
@@ -47,7 +47,7 @@ class Assets extends ResourceBase {
 			);
 	}
 
-	/*
+	/**
 	 * Enqueue frontend scripts.
 	 */
 	private function enqueueScripts() {
@@ -78,7 +78,7 @@ class Assets extends ResourceBase {
 			);
 	}
 
-	/*
+	/**
 	 * Enqueue admin styles.
 	 */
 	private function enqueueAdminStyles() {
@@ -95,7 +95,7 @@ class Assets extends ResourceBase {
 			);
 	}
 
-	/*
+	/**
 	 * Enqueue admin scripts.
 	 */
 	private function enqueueAdminScripts() {
@@ -121,13 +121,13 @@ class Assets extends ResourceBase {
 			);
 	}
 
-	/*
+	/**
 	 * Checks if we are on desired page.
 	 *
 	 * Used to enqueue styles conditionally on admin pages.
 	 */
 	private function isOnHookSuffix( $hook, $hookSuffix ) {
-		/*
+		/**
 		 * strpos returns 0 if needle is at the beginning  of the haystack
 		 * therefore check needs to explicitly look for false value since 0 is false too
 		 */

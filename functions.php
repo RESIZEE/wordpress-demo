@@ -1,11 +1,11 @@
 <?php
-/*
+/**
  * Functions for demo theme.
  *
  * @package demo
  */
 
-/*
+/**
  * Definition of constants used in Demo Theme
  */
 if ( ! defined( 'DEMO_DIR_PATH' ) ) {
@@ -24,7 +24,7 @@ if ( ! defined( 'DEMO_JS_URI' ) ) {
 	define( 'DEMO_JS_URI', untrailingslashit( get_template_directory_uri() . '/js' ) );
 }
 
-/*
+/**
  * Autoloader configuration
  */
 require_once DEMO_INC_DIR_PATH . '/helpers/Autoloader.php';
@@ -45,8 +45,8 @@ function register_autoloader() {
 	$autoloader->register();
 }
 
-/*
- * Instantiating Demo Theme class
+/**
+ * Returns instance of singleton Demo Theme Class
  */
 function demo_get_theme_instance() {
 	return Demo\Inc\Classes\DemoTheme::getInstance();

@@ -1,5 +1,5 @@
 <?php
-/* 
+/** 
 *
 *   WORDPRESS REST API INIT
 *
@@ -14,7 +14,7 @@ function demo_custom_rest() {
 	] );
 }
 
-/* Custom route for custom_post_type */
+/** Custom route for custom_post_type */
 add_action( 'rest_api_init', 'demoRegisterSearch' );
 function demoRegisterSearch() {
 	register_rest_route(

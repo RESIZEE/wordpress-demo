@@ -13,7 +13,6 @@ function has_content( $content ) {
 function review_score( $postId = null ) {
 	$id                = $postId ?: get_the_ID();
 	$sum               = 0;
-	$totalReviewsCount = 0;
 
 	// Getting all reviews for cerain post(movie, game, book)
 	$reviewQuery = new WP_Query( [

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Base class future classes that implement Singleton pattern.
+ */
 
 namespace Demo\Inc\Helpers;
 
@@ -11,5 +14,8 @@ abstract class ResourceBase {
 		$this->setupHooks();
 	}
 
+	/*
+	 * Load all class dependencies
+	 */
 	abstract protected function setupHooks();
 }
