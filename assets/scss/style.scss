@@ -8,7 +8,7 @@
 @import "utilities";
 
 ::selection {
-  background-color: $yellow;
+  background-color: red;
 }
 
 .single-card {
@@ -29,10 +29,10 @@
 }
 
 
-  .single-image-container {
-    height: 430px;
-    width: 100%;
-  }
+.single-image-container {
+  height: 430px;
+  width: 100%;
+}
 
 
 .image {
@@ -79,18 +79,18 @@
     }
   }
 
-  .navbar-toggler{
+  .navbar-toggler {
     border: none;
     outline: none;
     box-shadow: none;
   }
 
-  .search-trigger{
+  .search-trigger {
     cursor: pointer;
     margin-left: 1.5rem;
     color: $pure-white;
 
-    &:hover{
+    &:hover {
       color: $yellow
     }
   }
@@ -369,12 +369,13 @@ footer {
       flex-direction: row;
       flex-wrap: wrap;
 
-      input{
+      input {
         margin: 0;
+
         &[type="email"] {
           width: 80%;
           margin-right: 0.5em;
-      
+
           @include media-breakpoint-down(md) {
             width: 100%;
             margin-right: 0;
@@ -418,7 +419,7 @@ footer {
 // END OF REVIEWS
 
 // START OF SEARCH
-.search-overlay{
+.search-overlay {
   overflow-y: auto;
   overflow-x: hidden;
   z-index: 110;
@@ -431,13 +432,13 @@ footer {
   visibility: hidden;
   opacity: 0;
   -webkit-transform: scale(1.09);
-          transform: scale(1.09);
+  transform: scale(1.09);
   transition: opacity .3s, visibility .3s, -webkit-transform .3s;
   transition: opacity .3s, transform .3s, visibility .3s;
   transition: opacity .3s, transform .3s, visibility .3s, -webkit-transform .3s;
   box-sizing: border-box;
 
-  p{
+  p {
     padding-top: 15px;
   }
 
@@ -460,14 +461,14 @@ footer {
       color: $yellow;
     }
 
-    .search-term{
+    .search-term {
       font-size: 1.25rem;
       color: $yellow;
       background-color: transparent;
       outline: none;
       margin: 0;
 
-      &::placeholder{
+      &::placeholder {
         color: $yellow;
       }
     }
@@ -480,7 +481,7 @@ footer {
       color: $yellow;
     }
 
-    .search-overlay__results{
+    .search-overlay__results {
       margin-top: 2rem !important;
     }
   }
@@ -490,7 +491,7 @@ footer {
   visibility: visible;
   opacity: 1;
   -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 
 .body-no-scroll {
@@ -500,11 +501,11 @@ footer {
 @keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -516,6 +517,7 @@ footer {
   border: 0.25rem solid rgba(0, 0, 0, 0.2);
   border-top-color: black;
   -webkit-animation: spin 1s infinite linear;
-          animation: spin 1s infinite linear;
+  animation: spin 1s infinite linear;
 }
+
 // END OF SEARCH

@@ -168,10 +168,10 @@ textarea::placeholder {
 		margin-bottom: 1rem;
 }
 ::-moz-selection {
-		background-color: #fac900;
+		background-color: red;
 }
 ::selection {
-		background-color: #fac900;
+		background-color: red;
 }
 .single-card .card-image-container {
 		height: 500px;

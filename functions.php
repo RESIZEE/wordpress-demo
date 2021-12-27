@@ -12,16 +12,22 @@ if ( ! defined( 'DEMO_DIR_PATH' ) ) {
 	define( 'DEMO_DIR_PATH', untrailingslashit( get_template_directory() ) );
 }
 if ( ! defined( 'DEMO_INC_DIR_PATH' ) ) {
-	define( 'DEMO_INC_DIR_PATH', untrailingslashit( get_template_directory() . '/inc' ) );
+	define( 'DEMO_INC_DIR_PATH', untrailingslashit( DEMO_DIR_PATH . '/inc' ) );
 }
 if ( ! defined( 'DEMO_DIR_URI' ) ) {
 	define( 'DEMO_DIR_URI', untrailingslashit( get_template_directory_uri() ) );
 }
+if ( ! defined( 'DEMO_DIR_ASSETS_URI' ) ) {
+	define( 'DEMO_DIR_ASSETS_URI', untrailingslashit( get_template_directory_uri() . '/assets' ) );
+}
+if ( ! defined( 'DEMO_IMG_URI' ) ) {
+	define( 'DEMO_IMG_URI', untrailingslashit( DEMO_DIR_ASSETS_URI . '/img' ) );
+}
 if ( ! defined( 'DEMO_CSS_URI' ) ) {
-	define( 'DEMO_CSS_URI', untrailingslashit( get_template_directory_uri() . '/css' ) );
+	define( 'DEMO_CSS_URI', untrailingslashit( DEMO_DIR_ASSETS_URI . '/css' ) );
 }
 if ( ! defined( 'DEMO_JS_URI' ) ) {
-	define( 'DEMO_JS_URI', untrailingslashit( get_template_directory_uri() . '/js' ) );
+	define( 'DEMO_JS_URI', untrailingslashit( DEMO_DIR_ASSETS_URI . '/js' ) );
 }
 
 /**
