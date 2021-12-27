@@ -8,14 +8,15 @@
 
 namespace Demo\Inc\Classes;
 
-use Demo\Inc\Helpers\ThemeBase;
+use Demo\Inc\Traits\Singleton;
 
-class DemoTheme extends ThemeBase {
+class DemoTheme {
+	use Singleton;
 
 	protected function __construct() {
-		parent::__construct();
+		$this->setupHooks();
 	}
 
-	protected function setupHooks() {
+	private function setupHooks() {
 	}
 }

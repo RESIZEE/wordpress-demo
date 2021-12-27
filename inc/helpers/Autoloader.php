@@ -64,7 +64,6 @@ class Autoloader {
 		$this->resource = trim( $resource, '\\' );
 
 		if ( $this->resourceReadyForAutoload() ) {
-			echo $this->resourcePath . '---';
 			require_once( $this->resourcePath );
 		}
 	}
