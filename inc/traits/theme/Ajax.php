@@ -13,7 +13,7 @@ trait Ajax {
 	 *
 	 * @return void
 	 */
-	public function addGuestAjaxHandler( $callback ) {
+	public function addNotAuthAjaxHandler( $callback ) {
 		add_action( 'wp_ajax_nopriv_' . $callback[1], $callback );
 	}
 
@@ -48,7 +48,7 @@ trait Ajax {
 	public function checkNonce( $nonceAction, $queryArg = false, $errorMessage = null ) {
 		if ( ! check_ajax_referer( $nonceAction, $queryArg, false ) ) {
 			wp_send_json_error( [
-				'message' => $errorMessage ?: __( 'Invalid security token sent.', 'demo' ),
+				'message' => $errorMessage ?: __( 'Invalid security token provided.', 'demo' ),
 			], 400 );
 		}
 	}

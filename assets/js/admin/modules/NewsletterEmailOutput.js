@@ -21,31 +21,24 @@ class NewsletterEmailOutput {
         loadingSpinner.removeClass('d-none');
 
         $.ajax({
-            url: `${demoData.rootUrl}/wp-json/demo/v1/admin/newsletter/email`,
-            headers: {
-                'X-WP-Nonce': demoData.nonce,
-            },
+            url: demoData.ajaxUrl,
             type: 'POST',
             data: {
-                'email_title': emailTitle.val(),
-                'email_content': emailContent.val(),
+                _ajax_nonce: demoData.nonce,
+                action: 'output_newsletter_email',
+                email_title: emailTitle.val(),
+                email_content: emailContent.val(),
             },
             success: (response) => {
-                if(response.success) {
-                    emailTitle.val('');
-                    emailContent.val('');
+                emailTitle.val('');
+                emailContent.val('');
 
-                    showSuccessAlert(response.success);
-                }
-
-                if(response.error) {
-                    showErrorAlert(response.error);
-                }
+                showSuccessAlert(response.data.message, 'admin-newsletter-alert');
 
                 loadingSpinner.addClass('d-none');
             },
             error: (response) => {
-                showErrorAlert(response.error);
+                showErrorAlert(response.responseJSON.data.message, 'admin-newsletter-alert');
 
                 loadingSpinner.addClass('d-none');
             },

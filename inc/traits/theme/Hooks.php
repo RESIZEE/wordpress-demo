@@ -7,6 +7,12 @@ namespace Demo\Inc\Traits\Theme;
 
 trait Hooks {
 
+	public function afterThemeSwitchedAction( $callback ) {
+		add_action( 'after_switch_theme', function() use ( $callback ) {
+			$callback();
+		} );
+	}
+
 	public function afterSetupAction( $callback ) {
 		add_action( 'after_setup_theme', function() use ( $callback ) {
 			$callback();

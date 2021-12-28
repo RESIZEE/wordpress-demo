@@ -9,22 +9,28 @@
 namespace Demo\Inc\Classes;
 
 use Demo\Inc\Classes\Base\ResourceBase;
+use Demo\Inc\Classes\Base\Roles;
 use Demo\Inc\Traits\Theme\Support;
 
 class DemoTheme extends ResourceBase {
 	use Support;
 
 	protected function __construct() {
+		// Calls setupHooks
+		parent::__construct();
+
 		ThemeAssets::getInstance();
 		ThemeMenus::getInstance();
 		ThemeMedia::getInstance();
 		ThemeAjax::getInstance();
-
-		// Calls setupHooks
-		parent::__construct();
 	}
 
 	protected function setupHooks() {
+		/**
+		 * Sets up roles.
+		 */
+		$this->roles();
+
 		$this
 			/**
 			 * Enable support for post thumbnails. This will allow usage of Featured Image on post types pages.
@@ -52,5 +58,14 @@ class DemoTheme extends ResourceBase {
 			 * If you want to display them on front to have a base to work with, in this case, you can add support for wp-block-styles, as done below.
 			 */
 			->addSupport( 'wp-block-styles' );
+	}
+
+	/**
+	 * Sets up custom roles and capabilities.
+	 *
+	 * @return void
+	 */
+	private function roles() {
+		( new Roles( [ 'editor', 'administrator' ] ) )->attachCap( 'output_newsletter' );
 	}
 }

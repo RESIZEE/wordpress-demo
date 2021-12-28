@@ -111,7 +111,8 @@ class ThemeAssets extends ResourceBase {
 			'objectName' => 'demoData',
 			'data'       => [
 				'rootUrl' => get_site_url(),
-				'nonce'   => wp_create_nonce( 'wp_rest' ),
+				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+				'nonce'   => wp_create_nonce( 'wp_ajax' ),
 			],
 		];
 

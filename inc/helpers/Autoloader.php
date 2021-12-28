@@ -10,7 +10,7 @@ class Autoloader {
 	 * Absolute path to your theme folder.
 	 *
 	 * You can provide it using get_template_directory() function in combination with untrailingslashit( $string )
-	 * Eg. untrailingslashit( get_template_directory() )
+	 * e.g. untrailingslashit( get_template_directory() )
 	 *
 	 * @var string
 	 */
@@ -142,11 +142,11 @@ class Autoloader {
 		}
 
 		/**
-		 * It only matters that resource is in any of our autoload directories and we autoload any resource in it
+		 * It only matters that resource is in any of our autoload directories, and we autoload any resource in it
 		 * regardless of structure inside autoload directories.
 		 *
-		 * Eg. classes/some_dir/another_dir/resource.php
-		 * Eg. classes/resource.php
+		 * e.g. classes/some_dir/another_dir/resource.php
+		 * e.g. classes/resource.php
 		 * Both will work in the same way.
 		 */
 		$this->resourcePath = sprintf(

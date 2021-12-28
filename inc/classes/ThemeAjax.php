@@ -10,6 +10,7 @@ namespace Demo\Inc\Classes;
 
 use Demo\Inc\Classes\Base\ResourceBase;
 use Demo\Inc\Traits\Theme\Ajax;
+use WP_Query;
 
 class ThemeAjax extends ResourceBase {
 	use Ajax;
@@ -17,6 +18,7 @@ class ThemeAjax extends ResourceBase {
 	protected function setupHooks() {
 		$this->addAuthAjaxHandler( [ $this, 'create_or_update_review' ] );
 		$this->addPublicAjaxHandler( [ $this, 'subscribe_to_newsletter' ] );
+		$this->addAuthAjaxHandler( [ $this, 'output_newsletter_email' ] );
 	}
 
 	/**
@@ -28,15 +30,13 @@ class ThemeAjax extends ResourceBase {
 	public function create_or_update_review() {
 		$this->checkNonce( 'wp_ajax' );
 
-		$data = [
-			'reviewed_post_id' => $_POST['reviewed_post_id'],
-			'review_score'     => $_POST['review_score'],
-		];
+		$reviewedPostId = $_POST['reviewed_post_id'];
+		$reviewScore    = $_POST['review_score'];
 
 		$allowedReviewPostTypes = [ 'movie', 'book', 'game', ];
 
-		$postId      = sanitize_text_field( $data['reviewed_post_id'] );
-		$reviewScore = (int) sanitize_text_field( $data['review_score'] );
+		$postId      = sanitize_text_field( $reviewedPostId );
+		$reviewScore = (int) sanitize_text_field( $reviewScore );
 
 		if (
 			! is_user_logged_in() ||
@@ -90,6 +90,60 @@ class ThemeAjax extends ResourceBase {
 
 		wp_send_json_success( [
 			'message' => get_option( 'newsletter_success_message', __( 'Successfully subscribed to newsletter.', 'demo' ) ),
+		], 200 );
+	}
+
+	/**
+	 * Sends newsletter e-mail to all subscribers.
+	 *
+	 * @return void
+	 */
+	function output_newsletter_email() {
+		$this->checkNonce( 'wp_ajax' );
+
+		if ( ! is_user_logged_in() || ! is_admin() ) {
+			wp_send_json_error( [
+				'message' => __( 'You are not allowed here.', 'demo' ),
+			], 401 );
+		}
+
+		$emails       = [];
+		$emailTitle   = $_POST['email_title'] ?: __( 'Newsletter', 'demo' ) . ' ' . get_bloginfo( 'name' );
+		$emailContent = $_POST['email_content'];
+
+		if ( ! has_content( $emailContent ) ) {
+			wp_send_json_error( [
+				'message' => __( 'Newsletter content cannot be empty.', 'demo' ),
+			], 422 );
+		}
+
+		$newsletterQuery = new WP_Query( [
+			'post_type' => 'newsletter',
+		] );
+
+		while( $newsletterQuery->have_posts() ){
+			$newsletterQuery->the_post();
+
+			$emails[] = $newsletterQuery->post->subscriber_email;
+		}
+
+		wp_reset_query();
+
+		//Send Email all newsletter subscribers
+		$to        = implode( ',', $emails );
+		$headers[] = 'From: ' . get_bloginfo( 'name' ) . '<' . get_option( 'forms_from_email', get_bloginfo( 'admin_email' ) ) . '>';
+		$headers[] = 'Content-Type: text/html; charset=UTF-8';
+
+		$newsletterSendStatus = wp_mail( $to, $emailTitle, $emailContent, $headers );
+
+		if ( ! $newsletterSendStatus ) {
+			wp_send_json_error( [
+				'message' => __( 'Newsletter failed to send. Please try again later.', 'demo' ),
+			], 500 );
+		}
+
+		wp_send_json_success( [
+			'message' => __( 'Successfully sent newsletter.', 'demo' ),
 		], 200 );
 	}
 }

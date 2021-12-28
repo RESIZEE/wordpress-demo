@@ -281,12 +281,12 @@ function demo_newsletter_email_title() {
 		get_template_part(
 			'template-parts/alerts/error',
 			null,
-			[ 'class' => 'w-50 d-none', ]
+			[ 'class' => 'admin-newsletter-alert w-50 d-none', ]
 		) .
 		get_template_part(
 			'template-parts/alerts/success',
 			null,
-			[ 'class' => 'w-50 d-none', ]
+			[ 'class' => 'admin-newsletter-alert w-50 d-none', ]
 		) .
 		'<input id="newsletter-email-title" type="text" name="demo_newsletter_email_title" placeholder="Newsletter title...">';
 }
