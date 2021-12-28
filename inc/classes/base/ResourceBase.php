@@ -3,7 +3,7 @@
  * Base class future classes that implement Singleton pattern.
  */
 
-namespace Demo\Inc\Helpers;
+namespace Demo\Inc\Classes\Base;
 
 use Demo\Inc\Traits\Singleton;
 

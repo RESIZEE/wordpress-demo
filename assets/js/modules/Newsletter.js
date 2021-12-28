@@ -25,11 +25,11 @@ class Review {
                 subscriber_email: subscriberEmail,
             },
             success: (response) => {
-                showSuccessAlert(response.data.message, event);
+                showSuccessAlert(response.data.message, 'newsletter-alert');
                 $('#newsletter-email').val('');
             },
             error: (response) => {
-                showErrorAlert(response.responseJSON.data.message, event);
+                showErrorAlert(response.responseJSON.data.message, 'newsletter-alert');
             },
         });
     }

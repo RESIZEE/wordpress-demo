@@ -5,13 +5,13 @@ if ( is_user_logged_in() ) {
     get_template_part(
             'template-parts/alerts/success',
             null,
-            [ 'class' => 'w-50 d-none', ]
+            [ 'class' => 'review-alert w-50 d-none', ]
     );
 
     get_template_part(
             'template-parts/alerts/error',
             null,
-            [ 'class' => 'w-50 d-none', ]
+            [ 'class' => 'review-alert w-50 d-none', ]
     );
     ?>
 

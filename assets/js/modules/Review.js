@@ -45,7 +45,7 @@ class Review {
         });
     }
 
-    onClickCallback(event) {
+    onClickCallback() {
         let currentElement = $(this);
         let currentElementSiblings = currentElement.prevAll('i');
 
@@ -71,12 +71,12 @@ class Review {
                 review_score: reviewScore,
             },
             success: (response) => {
-                showSuccessAlert(response.data.message, event);
+                showSuccessAlert(response.data.message, 'review-alert');
 
                 $('.review-score').html(response.data.review_score);
             },
             error: (response) => {
-                showErrorAlert(response.responseJSON.data.message, event);
+                showErrorAlert(response.responseJSON.data.message, 'review-alert');
             },
         });
     }

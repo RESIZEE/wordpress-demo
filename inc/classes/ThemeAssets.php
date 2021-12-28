@@ -8,7 +8,7 @@
 
 namespace Demo\Inc\Classes;
 
-use Demo\Inc\Helpers\ResourceBase;
+use Demo\Inc\Classes\Base\ResourceBase;
 use Demo\Inc\Traits\Theme\Enqueue;
 
 class ThemeAssets extends ResourceBase {
