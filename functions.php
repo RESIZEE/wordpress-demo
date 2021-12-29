@@ -62,7 +62,7 @@ function demo_get_theme_instance() {
 
 register_autoloader();
 
-$theme = demo_get_theme_instance();
+demo_get_theme_instance();
 
 
 // Sve ovo da se prosledi u posebne klase

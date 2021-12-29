@@ -3,11 +3,11 @@
  * Wrappers class for Wordpress role and its capabilities.
  */
 
-namespace Demo\Inc\Classes\Base;
+namespace Demo\Inc\Classes\Core;
 
 use Demo\Inc\Traits\Theme\Hooks;
 
-class Roles {
+class Role {
 	use Hooks;
 
 	/**
@@ -102,7 +102,7 @@ class Roles {
 	 *
 	 * @param string $capName
 	 *
-	 * @return Roles
+	 * @return Role
 	 */
 	public function attachCap( $capName ) {
 		$this->afterThemeSwitchedAction( function() use ( $capName ) {
@@ -119,7 +119,7 @@ class Roles {
 	 *
 	 * @param string $capName
 	 *
-	 * @return Roles
+	 * @return Role
 	 */
 	public function detachCap( $capName ) {
 		$this->afterThemeSwitchedAction( function() use ( $capName ) {

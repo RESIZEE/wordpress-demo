@@ -4,8 +4,8 @@ add_action('pre_get_posts', 'demo_adjust_queries');
 function demo_adjust_queries(WP_Query $query)
 {
     /*
-        Modifying main query to display ceratain number of posts per page
-        on arhive for custom post types.
+        Modifying main query to display certain number of posts per page
+        on archive for custom post types.
    */
     if (
         !is_admin() &&

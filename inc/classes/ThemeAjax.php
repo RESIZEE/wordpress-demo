@@ -101,9 +101,9 @@ class ThemeAjax extends ResourceBase {
 	function output_newsletter_email() {
 		$this->checkNonce( 'wp_ajax' );
 
-		if ( ! is_user_logged_in() || ! is_admin() ) {
+		if ( ! is_admin() || ! current_user_can( 'output_newsletter' ) ) {
 			wp_send_json_error( [
-				'message' => __( 'You are not allowed here.', 'demo' ),
+				'message' => __( 'Sorry, you are not allowed to do this action.', 'demo' ),
 			], 401 );
 		}
 
