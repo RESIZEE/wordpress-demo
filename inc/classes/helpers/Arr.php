@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Helper class for working with arrays.
+ */
+
 namespace Demo\Inc\Classes\Helpers;
 
 class Arr {
@@ -29,6 +33,6 @@ class Arr {
 	public static function getIndexFromKey( $array, $key ) {
 		$keys = array_keys( $array );
 
-		return array_search($key, $keys);
+		return array_search( $key, $keys );
 	}
 }
