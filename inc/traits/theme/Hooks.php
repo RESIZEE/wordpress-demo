@@ -36,4 +36,16 @@ trait Hooks {
 			$callback();
 		} );
 	}
+
+	public function managePostColumnsFilter( $postType, $callback ) {
+		add_filter( "manage_{$postType}_posts_columns", function( $columns ) use ( $callback ) {
+			return $callback( $columns );
+		} );
+	}
+
+	public function managePostCustomColumnsAction( $postType, $callback ) {
+		add_action( "manage_{$postType}_posts_custom_column", function( $column, $postId ) use ( $callback ) {
+			$callback( $column, $postId );
+		}, 10, 2 );
+	}
 }

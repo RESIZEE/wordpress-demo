@@ -22,6 +22,7 @@ class DemoTheme extends ResourceBase {
 		ThemeCPTs::getInstance();
 		ThemeCustomTaxonomies::getInstance();
 		ThemeAjax::getInstance();
+		ThemeCustom::getInstance();
 
 		// Calls setupHooks
 		parent::__construct();

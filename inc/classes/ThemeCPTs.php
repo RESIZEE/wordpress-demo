@@ -45,6 +45,22 @@ class ThemeCPTs extends ResourceBase {
 			'comments',
 		];
 		$movie->register();
+
+		/**
+		 * Movie CPT column customization.
+		 */
+		$movie
+			->removeColumn( 'comments' )
+			->appendCustomColumns( [
+				'description'  => 'Description',
+				'review_score' => 'Review Score',
+			], 'title' )
+			->customizeCustomColumnAppearance( 'description', function() {
+				echo get_the_excerpt();
+			} )
+			->customizeCustomColumnAppearance( 'review_score', function( $postId ) {
+				echo review_score( $postId );
+			} );
 	}
 
 	/**
@@ -69,6 +85,22 @@ class ThemeCPTs extends ResourceBase {
 			'comments',
 		];
 		$book->register();
+
+		/**
+		 * Book CPT column customization.
+		 */
+		$book
+			->removeColumn( 'comments' )
+			->appendCustomColumns( [
+				'description'  => 'Description',
+				'review_score' => 'Review Score',
+			], 'title' )
+			->customizeCustomColumnAppearance( 'description', function() {
+				echo get_the_excerpt();
+			} )
+			->customizeCustomColumnAppearance( 'review_score', function( $postId ) {
+				echo review_score( $postId );
+			} );
 	}
 
 	/**
@@ -93,6 +125,22 @@ class ThemeCPTs extends ResourceBase {
 			'comments',
 		];
 		$game->register();
+
+		/**
+		 * Game CPT column customization.
+		 */
+		$game
+			->removeColumn( 'comments' )
+			->appendCustomColumns( [
+				'description'  => 'Description',
+				'review_score' => 'Review Score',
+			], 'title' )
+			->customizeCustomColumnAppearance( 'description', function() {
+				echo get_the_excerpt();
+			} )
+			->customizeCustomColumnAppearance( 'review_score', function( $postId ) {
+				echo review_score( $postId );
+			} );
 	}
 
 	/**
@@ -112,6 +160,29 @@ class ThemeCPTs extends ResourceBase {
 			'author',
 		];
 		$messages->register();
+
+		/**
+		 * Messages CPT column customization.
+		 */
+		$messages
+			->removeColumn( 'author' )
+			->changeColumnLabel( 'title', 'Full Name' )
+			->appendCustomColumns( [
+				'message' => 'Message',
+				'email'   => 'E-mail',
+			], 'title' )
+			->customizeCustomColumnsAppearance( function( $column, $postId ) {
+				switch ( $column ) {
+					case 'message':
+						echo get_the_excerpt();
+						break;
+
+					case 'email':
+						$email = get_post_meta( $postId, '_contact_email_value_key', true );
+						echo '<a href="mailto:' . $email . '">' . $email . '</a>';
+						break;
+				}
+			} );
 	}
 
 	/**
