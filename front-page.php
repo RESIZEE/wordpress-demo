@@ -15,8 +15,7 @@
                 <div class="cards-container row order-md-2">
                     <?php
                     $moviesQuery = new WP_Query( [
-                            'posts_per_page' => wp_is_mobile() ? 2 : 4,
-                            'post_type'      => 'movie',
+                            'post_type' => 'movie',
                     ] );
 
                     while( $moviesQuery->have_posts() ){
@@ -48,8 +47,7 @@
                 <div class="cards-container row order-md-2">
                     <?php
                     $booksQuery = new WP_Query( [
-                            'posts_per_page' => wp_is_mobile() ? 2 : 4,
-                            'post_type'      => 'book',
+                            'post_type' => 'book',
                     ] );
 
                     while( $booksQuery->have_posts() ){
@@ -81,8 +79,7 @@
                 <div class="cards-container row order-md-2">
                     <?php
                     $gamesQuery = new WP_Query( [
-                            'posts_per_page' => wp_is_mobile() ? 2 : 4,
-                            'post_type'      => 'game',
+                            'post_type' => 'game',
                     ] );
 
                     while( $gamesQuery->have_posts() ){

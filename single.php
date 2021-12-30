@@ -5,7 +5,6 @@
         <section class="page-title single-post-type">
             <div class="container">
                 <div class="row">
-
                     <!-- DROPDOWN MENU -->
                     <div class="dropdown d-block d-md-none mb-5">
                         <button class="dropdown-toggle col-12 text-start d-flex align-items-center justify-content-between px-3 py-2"
@@ -15,6 +14,11 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
                             <?php
+                            $categories = get_categories( [
+                                    'orderby' => 'name',
+                                    'order'   => 'ASC',
+                            ] );
+
                             foreach ( $categories as $category ) {
                                 ?>
                                 <li>
@@ -45,10 +49,6 @@
                         <h4 class="mb-4"><?php echo __( 'Categories', 'demo' ) ?></h4>
                         <ul>
                             <?php
-                            $categories = get_categories( [
-                                    'orderby' => 'name',
-                                    'order'   => 'ASC',
-                            ] );
                             foreach ( $categories as $category ) {
                                 ?>
                                 <li>

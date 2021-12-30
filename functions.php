@@ -68,9 +68,9 @@ demo_get_theme_instance();
 // Sve ovo da se prosledi u posebne klase
 require_once DEMO_INC_DIR_PATH . '/templates.php';
 require_once DEMO_INC_DIR_PATH . '/theme-support.php';
-require_once DEMO_INC_DIR_PATH . '/adjust-queries.php';
 require_once DEMO_INC_DIR_PATH . '/helpers.php';
-require_once DEMO_INC_DIR_PATH . '/rest-api.php';
+
 require_once DEMO_INC_DIR_PATH . '/custom-meta.php';
 require_once DEMO_INC_DIR_PATH . '/shortcodes.php';
 require_once DEMO_INC_DIR_PATH . '/admin.php';
+require_once DEMO_INC_DIR_PATH . '/rest-api.php';
