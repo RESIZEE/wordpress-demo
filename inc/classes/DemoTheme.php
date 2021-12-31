@@ -55,7 +55,15 @@ class DemoTheme extends ResourceBase {
 			 * They are applied visually only in the editor (back-end) but not on the front-end to avoid the risk of conflicts with the styles wanted in the theme.
 			 * If you want to display them on front to have a base to work with, in this case, you can add support for wp-block-styles, as done below.
 			 */
-			->addSupport( 'wp-block-styles' );
+			->addSupport( 'wp-block-styles' )
+			->configurePhpMailer( [
+				'Mailer'   => 'smtp',
+				'Host'     => 'smtp.mailtrap.io',
+				'SMTPAuth' => true,
+				'Port'     => 2525,
+				'Username' => '0120359271df8c',
+				'Password' => 'e729e71e2057be',
+			] );
 	}
 
 

@@ -20,14 +20,3 @@ function demo_acf_settings_show_admin( $show_admin ) {
 }
 
 require_once 'custom-fields.php';
-
-
-add_action( 'phpmailer_init', 'mailtrap' );
-function mailtrap( $phpmailer ) {
-	$phpmailer->isSMTP();
-	$phpmailer->Host     = 'smtp.mailtrap.io';
-	$phpmailer->SMTPAuth = true;
-	$phpmailer->Port     = 2525;
-	$phpmailer->Username = '0120359271df8c';
-	$phpmailer->Password = 'e729e71e2057be';
-}

@@ -66,4 +66,10 @@ trait Hooks {
 			return $callback( $classes, $item );
 		}, 10, 2 );
 	}
+
+	protected function phpMailerInitFilter( $callback ) {
+		add_filter( 'phpmailer_init', function( $phpmailer ) use ( $callback ) {
+			return $callback( $phpmailer );
+		} );
+	}
 }

@@ -144,6 +144,5 @@ function demo_save_contact( $data ) {
 		return 0;
 	}
 
-
 	die();
 }
