@@ -72,4 +72,16 @@ trait Hooks {
 			return $callback( $phpmailer );
 		} );
 	}
+
+	protected function adminMenuAction( $callback ) {
+		add_action( 'admin_menu', function() use ( $callback ) {
+			$callback();
+		} );
+	}
+
+	protected function adminInitAction( $callback ) {
+		add_action( 'admin_init', function() use ( $callback ) {
+			$callback();
+		} );
+	}
 }
