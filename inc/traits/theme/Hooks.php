@@ -60,4 +60,10 @@ trait Hooks {
 			$callback( $postId, $post, $isUpdating );
 		}, 10, 3 );
 	}
+
+	protected function navCssClassesFilter( $callback ) {
+		add_filter( 'nav_menu_css_class', function( $classes, $item ) use ( $callback ) {
+			return $callback( $classes, $item );
+		}, 10, 2 );
+	}
 }

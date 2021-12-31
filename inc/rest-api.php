@@ -110,7 +110,6 @@ function demo_save_contact( $data ) {
 	$email   = sanitize_text_field( $data["email"] );
 	$message = sanitize_text_field( $data["message"] );
 
-
 	$args = [
 		'post_title'   => $name,
 		'post_content' => $message,
@@ -121,6 +120,7 @@ function demo_save_contact( $data ) {
 			'_contact_email_value_key' => $email,
 		],
 	];
+
 	//WP Insert Post -  Insert fields (create/update) in wp database and returns ID of created post or 0 if fail
 	$postID = wp_insert_post( $args );
 

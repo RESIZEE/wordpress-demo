@@ -38,4 +38,18 @@ trait Menu {
 
 		return $this;
 	}
+
+	/**
+	 * Hooking onto Wordpress hook to alter css classes for nav menu.
+	 * Callback provided will be executed inside 'nav_menu_css_class' action.
+	 *
+	 * @param Callable $callback
+	 *
+	 * @return void
+	 */
+	public function customizeNavCssClasses( $callback ) {
+		$this->navCssClassesFilter( function( $classes, $item ) use ( $callback ) {
+			return $callback( $classes, $item );
+		} );
+	}
 }
