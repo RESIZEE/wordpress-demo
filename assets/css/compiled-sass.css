@@ -203,8 +203,7 @@ textarea::placeholder {
 
 .navbar {
 		z-index: 100;
-		position: fixed;
-		width: 100vw;
+		width: 100%;
 		top: 0;
 }
 .navbar .current-menu-item a {
