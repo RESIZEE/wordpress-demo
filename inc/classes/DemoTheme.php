@@ -21,6 +21,7 @@ class DemoTheme extends ResourceBase {
 		ThemeMedia::getInstance();
 		ThemeCPTs::getInstance();
 		ThemeCustomTaxonomies::getInstance();
+		ThemePlugins::getInstance();
 		ThemeAjax::getInstance();
 		ThemeAdmin::getInstance();
 		ThemeCustom::getInstance();

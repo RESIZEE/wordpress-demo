@@ -229,7 +229,7 @@ class ThemeCPTs extends ResourceBase {
 			$newsletter = new CPT( 'newsletter' );
 			$newsletter->setLabels( 'Newsletter', 'Newsletter' );
 			$newsletter->description = 'Newsletter subscriptions.';
-			$newsletter->public      = false;
+			$newsletter->public      = true;
 			$newsletter->menu_icon   = 'dashicons-email-alt';
 			$newsletter->supports    = [ 'title', ];
 			$newsletter->register();
