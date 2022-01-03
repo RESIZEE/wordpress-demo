@@ -1,4 +1,10 @@
 <?php
+/**
+ * Template part which displays featured image for posts or placeholder image if they don't have one.
+ *
+ * @package demo
+ */
+
 $imageSrc = has_post_thumbnail() ?
         wp_get_attachment_image_src( get_post_thumbnail_id(), 'card-image' )[0] :
         DEMO_IMG_URI . '/image-placeholder.jpg'

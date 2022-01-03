@@ -1,3 +1,10 @@
+<?php
+/**
+ * Header file for demo theme.
+ *
+ * @package demo
+ */
+?>
 <!doctype html>
 <html <?php language_attributes() ?>>
 

@@ -1,3 +1,10 @@
+<?php
+/**
+ * Footer file for demo theme.
+ *
+ * @package demo
+ */
+?>
 <footer>
     <div class="container">
         <div class="row">

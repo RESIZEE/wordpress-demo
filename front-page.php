@@ -1,4 +1,12 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Front page for demo theme, which is displayed as first page when theme is active.
+ *
+ * @package demo
+ */
+
+get_header();
+?>
     <!-- START OF HERO -->
 <?php get_template_part( 'template-parts/hero' ) ?>
     <!-- END OF HERO -->

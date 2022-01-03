@@ -1,3 +1,11 @@
+<?php
+/**
+ * Admin menu page that is displayed under General submenu.
+ *
+ * @package demo
+ */
+?>
+
 <h1><?php echo __( 'Demo Theme Options', 'demo' ) ?></h1>
 
 <?php settings_errors(); ?>

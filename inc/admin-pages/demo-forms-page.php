@@ -1,3 +1,11 @@
+<?php
+/**
+ * Admin menu page that is displayed under Forms submenu.
+ *
+ * @package demo
+ */
+?>
+
 <h1><?php echo __( 'Demo Form Options', 'demo' ) ?></h1>
 
 <?php settings_errors(); ?>

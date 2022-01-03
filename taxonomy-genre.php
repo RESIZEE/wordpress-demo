@@ -1,4 +1,10 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Archive page for taxonomy of type 'genre'.
+ */
+
+get_header();
+?>
 
     <!-- START OF PAGE TITLE -->
 <?php $term = get_queried_object(); ?>
@@ -10,13 +16,13 @@
                 <!-- START OF CONTAINERS -->
                 <div class="cards-container row col-12">
                     <?php
-                    while(have_posts()){
+                    while( have_posts() ){
                         the_post();
                         ?>
                         <!-- START OF SINGLE CARD -->
                         <div class="single-card col-md-3">
                             <a href="<?php the_permalink(); ?>">
-                                <?php get_template_part('template-parts/card-image') ?>
+                                <?php get_template_part( 'template-parts/card-image' ) ?>
                             </a>
                             <div class="description d-flex">
                                 <h4 class="col-8">
@@ -25,7 +31,7 @@
                                     </a>
                                 </h4>
                                 <h4 class="rate col-4 d-flex justify-content-end">
-                                    <?php get_template_part('template-parts/review-score') ?>
+                                    <?php get_template_part( 'template-parts/review-score' ) ?>
                                 </h4>
                             </div>
                         </div>
@@ -39,14 +45,14 @@
                     <!-- PAGINATION -->
                     <div class="pagination">
                         <?php
-                        echo paginate_links(array(
-                                'type' => 'plain',
-                                'end_size' => 1,
-                                'mid_size' => 3,
+                        echo paginate_links( array(
+                                'type'      => 'plain',
+                                'end_size'  => 1,
+                                'mid_size'  => 3,
                                 'prev_next' => true,
                                 'prev_text' => '<i class="fas fa-chevron-left"></i>',
                                 'next_text' => '<i class="fas fa-chevron-right"></i>',
-                        ));
+                        ) );
                         ?>
                     </div>
                     <!-- END OF PAGINATION -->
