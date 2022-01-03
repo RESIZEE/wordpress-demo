@@ -62,11 +62,6 @@ class AdminCallbacks {
 	 *           END ADMIN FIELDS
 	 * =======================================
 	 */
-	public static function acfActiveField() {
-		$checked = esc_attr( get_option( 'acf_active' ) ) ? 'checked' : '';
-		echo '<input type="checkbox" name="acf_active" ' . $checked . '>';
-	}
-
 	public static function newsletterActiveField() {
 		$checked = esc_attr( get_option( 'newsletter_active' ) ) ? 'checked' : '';
 		echo '<input type="checkbox" name="newsletter_active" ' . $checked . '>';

@@ -139,13 +139,6 @@ class ThemeAdmin extends ResourceBase {
 	 * @return $this
 	 */
 	private function generalSettings() {
-		$acfActiveSetting        = [
-			'option_group' => 'demo-settings-group',
-			'option_name'  => 'acf_active',
-			'args'         => [
-				'default' => false,
-			],
-		];
 		$newsletterActiveSetting = [
 			'option_group' => 'demo-settings-group',
 			'option_name'  => 'newsletter_active',
@@ -154,7 +147,7 @@ class ThemeAdmin extends ResourceBase {
 			],
 		];
 
-		$this->adminSettings->addSettings( [ $acfActiveSetting, $newsletterActiveSetting ] );
+		$this->adminSettings->addSetting( $newsletterActiveSetting );
 
 		return $this;
 	}
@@ -183,13 +176,6 @@ class ThemeAdmin extends ResourceBase {
 	 * @return $this
 	 */
 	private function generalSettingFields() {
-		$acfActiveField        = [
-			'id'       => 'general-acf-active',
-			'title'    => 'Activate ACF Plugin',
-			'callback' => [ AdminCallbacks::class, 'acfActiveField' ],
-			'page'     => 'resize_demo',
-			'section'  => 'demo-general-settings',
-		];
 		$newsletterActiveField = [
 			'id'       => 'general-newsletter-active',
 			'title'    => 'Activate Newsletter',
@@ -198,7 +184,7 @@ class ThemeAdmin extends ResourceBase {
 			'section'  => 'demo-general-settings',
 		];
 
-		$this->adminSettings->addFields( [ $acfActiveField, $newsletterActiveField ] );
+		$this->adminSettings->addField( $newsletterActiveField );
 
 		return $this;
 	}
