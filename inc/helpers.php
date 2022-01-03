@@ -9,11 +9,10 @@ function has_content( $content ) {
 	return strlen( $content ) > 0;
 }
 
-// Calculates avarage review score for current or provided post
+// Calculates average review score for current or provided post
 function review_score( $postId = null ) {
 	$id                = $postId ?: get_the_ID();
 	$sum               = 0;
-	$totalReviewsCount = 0;
 
 	// Getting all reviews for cerain post(movie, game, book)
 	$reviewQuery = new WP_Query( [
@@ -76,7 +75,7 @@ function current_user_review_score( $postId = null ) {
 	return $reviewScore;
 }
 
-// Calculates avarage review score for current or provided post
+// Calculates average review score for current or provided post
 function current_user_has_reviewed( $postId = null ) {
 	if ( ! is_user_logged_in() ) {
 		return 0;

@@ -32,12 +32,12 @@
                     get_template_part(
                             'template-parts/alerts/error',
                             null,
-                            [ 'class' => 'w-75 d-none', ]
+                            [ 'class' => 'newsletter-alert w-75 d-none' ]
                     );
                     get_template_part(
                             'template-parts/alerts/success',
                             null,
-                            [ 'class' => 'w-75 d-none', ]
+                            [ 'class' => 'newsletter-alert w-75 d-none' ]
                     );
                     ?>
                     <form class="form">

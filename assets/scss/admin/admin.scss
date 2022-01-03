@@ -1,0 +1,16 @@
+@import "utilities";
+@import "alerts";
+
+input[type="text"] {
+  width: 35%;
+}
+
+textarea {
+  width: 80%;
+}
+
+#newsletter-form {
+  th {
+    width: 30%;
+  }
+}
