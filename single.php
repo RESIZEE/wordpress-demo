@@ -1,4 +1,12 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Default content shown for single pages.
+ *
+ * @package demo
+ */
+
+get_header();
+?>
 
     <div class="container">
         <!-- START OF PAGE TITLE -->

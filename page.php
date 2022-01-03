@@ -1,4 +1,12 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Default content shown for all pages.
+ *
+ * @package demo
+ */
+
+get_header();
+?>
 
 
     <!-- START OF HERO -->

@@ -1,18 +1,15 @@
-<?php get_header();
+<?php
 /**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
+ * The main template file which displays blog post archive.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Dosth
+ * @package demo
  */
 
-if(is_home()) { ?>
+get_header();
+
+if ( is_home() ) { ?>
 
 
     <!-- START OF BLOG -->
@@ -29,17 +26,17 @@ if(is_home()) { ?>
             <div class="row">
                 <!-- SIDE MENU -->
                 <div class="col-lg-3 side-menu d-none d-lg-block">
-                    <h4 class="mb-4"><?php echo __('Categories', 'demo') ?></h4>
+                    <h4 class="mb-4"><?php echo __( 'Categories', 'demo' ) ?></h4>
                     <ul>
                         <?php
-                        $categories = get_categories([
+                        $categories = get_categories( [
                                 'orderby' => 'name',
-                                'order' => 'ASC',
-                        ]);
-                        foreach($categories as $category){
+                                'order'   => 'ASC',
+                        ] );
+                        foreach ( $categories as $category ) {
                             ?>
                             <li>
-                                <a href="<?php echo esc_url(get_category_link($category->term_id)) ?>">
+                                <a href="<?php echo esc_url( get_category_link( $category->term_id ) ) ?>">
                                     <?php echo $category->name; ?>
                                 </a>
                             </li>
@@ -52,16 +49,16 @@ if(is_home()) { ?>
                 <div class="dropdown d-block d-md-none mb-5">
                     <button class="dropdown-toggle col-12 text-start d-flex align-items-center justify-content-between px-3 py-2"
                             type="button" id="categoriesmenu" data-bs-toggle="dropdown" aria-expanded="false">
-                        <h4 class="m-0"><?php echo __('Categories', 'demo') ?></h4>
+                        <h4 class="m-0"><?php echo __( 'Categories', 'demo' ) ?></h4>
                         <span class="fs-3">+</span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="categoriesmenu">
                         <?php
-                        foreach($categories as $category){
+                        foreach ( $categories as $category ) {
                             ?>
                             <li>
                                 <a href="<?php
-                                echo esc_url(get_category_link($category->term_id)) ?>">
+                                echo esc_url( get_category_link( $category->term_id ) ) ?>">
                                     <?php echo $category->name; ?>
                                 </a>
                             </li>
@@ -73,17 +70,17 @@ if(is_home()) { ?>
                 <!-- BLOG POSTS -->
                 <div class="col-lg-9 blog-posts">
                     <?php
-                    if(have_posts()) {
-                        while(have_posts()){
+                    if ( have_posts() ) {
+                        while( have_posts() ){
                             the_post();
                             ?>
                             <!-- SINGLE BLOG POST -->
                             <div class="blog-post">
                                 <a href="<?php the_permalink(); ?>">
-                                    <?php get_template_part('template-parts/single-image') ?>
+                                    <?php get_template_part( 'template-parts/single-image' ) ?>
                                 </a>
                                 <div class="time">
-                                    <a href="<?php echo get_day_link(get_the_date('Y'), get_the_date('m'), get_the_date('d')); ?>"><?php echo get_the_date(); ?></a>
+                                    <a href="<?php echo get_day_link( get_the_date( 'Y' ), get_the_date( 'm' ), get_the_date( 'd' ) ); ?>"><?php echo get_the_date(); ?></a>
                                 </div>
                                 <div class="title">
                                     <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
@@ -95,7 +92,7 @@ if(is_home()) { ?>
                             <!-- SINGLE BLOG POST -->
 
                         <?php }
-                    }else { ?>
+                    } else { ?>
                         <p>There's no posts to show...</p>
                     <?php }
                     ?>
@@ -103,13 +100,13 @@ if(is_home()) { ?>
                     <!-- PAGINATION -->
                     <div class="pagination">
                         <?php
-                        echo paginate_links([
-                                'end_size' => 2,
-                                'mid_size' => 2,
+                        echo paginate_links( [
+                                'end_size'  => 2,
+                                'mid_size'  => 2,
                                 'prev_next' => true,
                                 'prev_text' => '<i class="fas fa-chevron-left"></i>',
                                 'next_text' => '<i class="fas fa-chevron-right"></i>',
-                        ]);
+                        ] );
                         ?>
                     </div>
                     <!-- END OF PAGINATION -->
