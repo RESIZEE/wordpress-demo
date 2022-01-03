@@ -126,9 +126,9 @@ class AdminPages {
 	 */
 	public function generateMenu() {
 		foreach ( $this->pages as $page ) {
-			$page['callback'] = array_key_exists( 'callback', $page ) ? $page['callback'] : [];
-			$page['icon_url'] = array_key_exists( 'icon_url', $page ) ? $page['icon_url'] : [];
-			$page['position'] = array_key_exists( 'position', $page ) ? $page['position'] : [];
+			$page['callback'] = array_key_exists( 'callback', $page ) ? $page['callback'] : '';
+			$page['icon_url'] = array_key_exists( 'icon_url', $page ) ? $page['icon_url'] : '';
+			$page['position'] = array_key_exists( 'position', $page ) ? $page['position'] : null;
 
 			add_menu_page(
 				$page['page_title'],
@@ -142,8 +142,8 @@ class AdminPages {
 		}
 
 		foreach ( $this->subpages as $subpage ) {
-			$subpage['callback'] = array_key_exists( 'callback', $subpage ) ? $subpage['callback'] : [];
-			$subpage['position'] = array_key_exists( 'position', $subpage ) ? $subpage['position'] : [];
+			$subpage['callback'] = array_key_exists( 'callback', $subpage ) ? $subpage['callback'] : '';
+			$subpage['position'] = array_key_exists( 'position', $subpage ) ? $subpage['position'] : null;
 
 			add_submenu_page(
 				$subpage['parent_slug'],

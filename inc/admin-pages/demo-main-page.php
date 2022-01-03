@@ -1,4 +1,4 @@
-<h1>Demo Theme Options</h1>
+<h1><?php echo __( 'Demo Theme Options', 'demo' ) ?></h1>
 
 <?php settings_errors(); ?>
 <form action="options.php" method="POST">

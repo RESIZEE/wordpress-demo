@@ -19,11 +19,11 @@ class AdminCallbacks {
 	 * =======================================
 	 */
 	public static function mainPage() {
-		require_once DEMO_INC_DIR_PATH . '/templates/admin/demo-main-page.php';
+		require_once DEMO_INC_DIR_PATH . '/admin-pages/demo-main-page.php';
 	}
 
 	public static function formsSubpage() {
-		require_once DEMO_INC_DIR_PATH . '/templates/admin/demo-forms-page.php';
+		require_once DEMO_INC_DIR_PATH . '/admin-pages/demo-forms-page.php';
 	}
 	/**
 	 * =======================================
@@ -45,11 +45,11 @@ class AdminCallbacks {
 	}
 
 	public static function newsletterGeneralSettingSection() {
-		echo 'Customize newsletter form settings.';
+		echo __( 'Customize newsletter form settings.', 'demo' );
 	}
 
 	public static function newsletterOutputSection() {
-		echo 'Output newsletter e-mail to subscribers.';
+		echo __( 'Output newsletter e-mail to subscribers.', 'demo' );
 	}
 	/**
 	 * =======================================

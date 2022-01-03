@@ -204,7 +204,7 @@ class ThemeAdmin extends ResourceBase {
 	}
 
 	/**
-	 * Adds form & newsletter settings for forms subpage.
+	 * Adds form settings for forms subpage.
 	 *
 	 * @return $this
 	 */
@@ -272,7 +272,7 @@ class ThemeAdmin extends ResourceBase {
 	}
 
 	/**
-	 * Adds form & newsletter sections for forms subpage.
+	 * Adds form sections for forms subpage.
 	 *
 	 * @return $this
 	 */
@@ -311,7 +311,7 @@ class ThemeAdmin extends ResourceBase {
 	}
 
 	/**
-	 * Adds form & newsletter fields for forms subpage.
+	 * Adds form fields for forms subpage.
 	 *
 	 * @return $this
 	 */
