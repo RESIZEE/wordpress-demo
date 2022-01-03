@@ -1,4 +1,10 @@
 <?php
+/**
+ * Template part which displays starts from which user can pick review for current post.
+ *
+ * @package demo
+ */
+
 if ( is_user_logged_in() ) {
     $postId = get_the_ID();
 
