@@ -30,13 +30,10 @@ class ThemeAjax extends ResourceBase {
 	public function create_or_update_review() {
 		$this->checkNonce( 'wp_ajax' );
 
-		$reviewedPostId = $_POST['reviewed_post_id'];
-		$reviewScore    = $_POST['review_score'];
+		$postId      = sanitize_text_field( $_POST['reviewed_post_id'] );
+		$reviewScore = (int) sanitize_text_field( $_POST['review_score'] );
 
 		$allowedReviewPostTypes = [ 'movie', 'book', 'game', ];
-
-		$postId      = sanitize_text_field( $reviewedPostId );
-		$reviewScore = (int) sanitize_text_field( $reviewScore );
 
 		if (
 			! is_user_logged_in() ||
@@ -48,15 +45,20 @@ class ThemeAjax extends ResourceBase {
 			], 422 );
 		}
 
-		wp_insert_post( [
-			'ID'          => current_user_has_reviewed( $postId ),
-			'post_type'   => 'review',
-			'post_status' => 'publish',
-			'meta_input'  => [
-				'reviewed_post_id' => $postId,
-				'review_score'     => $reviewScore,
-			],
-		] );
+		// If user has already reviewed post, update comment meta which stores review score
+		// instead of creating completely new comment, otherwise just create new comment of type 'review'
+		if ( $reviewId = current_user_has_reviewed( $postId ) ) {
+			update_comment_meta( $reviewId, 'review_score', $reviewScore );
+		} else {
+			wp_insert_comment( [
+				'comment_post_ID' => $postId,
+				'comment_type'    => 'review',
+				'user_id'         => get_current_user_id(),
+				'comment_meta'    => [
+					'review_score' => $reviewScore,
+				],
+			] );
+		}
 
 		wp_send_json_success( [
 			'review_score' => review_score( $postId ),

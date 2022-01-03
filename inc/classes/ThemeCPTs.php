@@ -18,7 +18,6 @@ class ThemeCPTs extends ResourceBase {
 		$this->registerMovieCPT();
 		$this->registerBookCPT();
 		$this->registerGameCPT();
-		$this->registerReviewCPT();
 		$this->registerMessagesCPT();
 		$this->registerNewsletterCPT();
 
@@ -155,20 +154,6 @@ class ThemeCPTs extends ResourceBase {
 			->customizeCustomColumnAppearance( 'review_score', function( $postId ) {
 				echo review_score( $postId );
 			} );
-	}
-
-	/**
-	 * Registers review custom post type.
-	 *
-	 * @return void
-	 */
-	private function registerReviewCPT() {
-		$review              = new CPT( 'review' );
-		$review->description = 'Reviews for movies, books and games.';
-		$review->public      = false;
-		$review->show_ui     = false;
-		$review->supports    = [ 'title', ];
-		$review->register();
 	}
 
 	/**

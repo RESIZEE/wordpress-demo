@@ -9,6 +9,7 @@
 namespace Demo\Inc\Classes;
 
 use Demo\Inc\Classes\Base\ResourceBase;
+use WP_Comment_Query;
 use WP_Query;
 
 class ThemeCustom extends ResourceBase {
@@ -18,6 +19,7 @@ class ThemeCustom extends ResourceBase {
 		add_filter( 'excerpt_more', [ $this, 'customizeExcerptReadMore' ] );
 
 		add_action( 'pre_get_posts', [ $this, 'customizeQueries' ] );
+		add_action( 'pre_get_comments', [ $this, 'customizeCommentQueries' ] );
 
 		add_shortcode( 'contact_form', [ $this, 'contactFormShortcode' ] );
 	}
@@ -47,7 +49,7 @@ class ThemeCustom extends ResourceBase {
 	}
 
 	/**
-	 * Customizing queries.
+	 * Customizing post queries.
 	 *
 	 * @param WP_Query $query
 	 *
@@ -112,6 +114,29 @@ class ThemeCustom extends ResourceBase {
 			$query->set( 'post_type', get_query_var( 'cpt' ) );
 
 			return $query;
+		}
+
+		return $query;
+	}
+
+	/**
+	 * Customizing comment queries.
+	 *
+	 * @param WP_Comment_Query $query
+	 *
+	 * @return WP_Comment_Query
+	 */
+	public function customizeCommentQueries( WP_Comment_Query $query ) {
+		/**
+		 * Whenever 'type' query var is not set to 'review' explicitly
+		 * exclude all comments that have type of 'review' and only query 'review' type
+		 * comments when type query var is set to 'review'
+		 */
+		if ( $query->query_vars['type'] !== 'review' ) {
+			$query->query_vars['type__not_in'] = array_merge(
+				(array) $query->query_vars['type__not_in'],
+				[ 'review' ]
+			);
 		}
 
 		return $query;

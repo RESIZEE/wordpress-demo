@@ -60,7 +60,7 @@ if ( post_password_required() ) {
             </p>
         <?php } else { ?>
 
-            <h3 class="comments-title"><?php echo __( 'Comments', 'demo' ) . '(' . get_comments_number() . ')' ?></h3>
+            <h3 class="comments-title"><?php echo __( 'Comments', 'demo' ) . '(' . count( $comments ) . ')'; ?></h3>
             <div class="comment-list">
                 <?php wp_list_comments( [
                         'max_depth'        => '',
